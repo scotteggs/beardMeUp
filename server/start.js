@@ -12,5 +12,6 @@
 
 */
 
+//this is a test;
 require('babel/register');
 require('./main');
