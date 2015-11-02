@@ -3,7 +3,7 @@ var path = require('path');
 var express = require('express');
 var app = express();
 module.exports = app;
-console.log('Mikes test');
+
 
 // Pass our express application pipeline into the configuration
 // function located at server/app/configure/index.js
