@@ -3,22 +3,27 @@ var mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
 	line1: {
-		type: String
+		type: String,
+		required: true
 	},
 	line2: {
 		type: String
 	},
 	city: {
-		type: String
+		type: String,
+		required: true
 	},
 	state: {
-		type: String
+		type: String,
+		required: true
 	},
 	zip: {
-		type: String
+		type: String,
+		required: true
 	},
 	phone: {
-		type: String
+		type: String,
+		required: true
 	}
 })
 
