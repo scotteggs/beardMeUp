@@ -4,21 +4,23 @@ var mongoose = require('mongoose');
 var schema = new mongoose.Schema({
 	product: {
 		type: mongoose.Schema.Types.ObjectId,
-    ref: 'Product',
-    required: true
+    	ref: 'Product',
+    	required: true
 	},
 	rating: {
 		type: Number,
-		enum: [1,2,3,4,5],
+		min: 1,
+		max: 5,
 		required: true
 	},
 	content: {
-		type: String
+		type: String,
+		minlength: 5
 	},
 	reviewer: {
 		type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    reqired: true
+    	ref: 'User',
+    	required: true
 	}
 })
 

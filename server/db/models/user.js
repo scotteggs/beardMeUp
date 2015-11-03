@@ -1,10 +1,13 @@
 'use strict';
 var crypto = require('crypto');
 var mongoose = require('mongoose');
+var validators = require('mongoose-validators');
 
 var schema = new mongoose.Schema({
     email: {
-        type: String
+        type: String,
+        unique: true,
+        validate: validators.isEmail()
     },
     password: {
         type: String
@@ -30,13 +33,13 @@ var schema = new mongoose.Schema({
     lastName: {
         type: String
     },
-    primaryContact: {
+    primaryAddress: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Contact'
+        ref: 'Address'
     },
-    contacts: {
+    addresses: {
         type: [mongoose.Schema.Types.ObjectId],
-        ref: 'Contact'
+        ref: 'Address'
     },
     cart: {
         type: [{
@@ -66,6 +69,13 @@ var encryptPassword = function (plainText, salt) {
     hash.update(salt);
     return hash.digest('hex');
 };
+
+
+//validate email address
+schema.pre('save', function(next){
+    next();
+})
+
 
 schema.pre('save', function (next) {
 
