@@ -23,7 +23,35 @@ var schema = new mongoose.Schema({
     },
     google: {
         id: String
-    }
+    },
+    firstName: {
+        type: String
+    },
+    lastName: {
+        type: String
+    },
+    primaryContact: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Contact'
+    },
+    contacts: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'Contact'
+    },
+    cart: {
+        type: [{
+            product: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Product'
+            },
+            quantity: Number
+        }]
+    },
+    accessibility: {
+        type: String,
+        enum: ['customer', 'storeAdmin', 'storeMgr', 'siteAdmin'],
+        default: 'customer'
+    } 
 });
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations
