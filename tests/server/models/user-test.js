@@ -25,6 +25,26 @@ describe('User model', function () {
         expect(User).to.be.a('function');
     });
 
+    it('should have valid email', function() {
+        var invalidEmail = 'email'
+        User.create({email: invalidEmail})
+        .then(function(user) {
+            expect(user.email).to.equal(invalidEmail)
+        }, function(err) {
+            expect(err).to.equal(ValidationError);
+        })
+
+        var validEmail = 'email@email.com'
+        User.create({email: validEmail})
+        .then(function(user) {
+            expect(user.email).to.equal(validEmail)
+        }, function(err) {
+            expect(err).to.equal(ValidationError);
+        })
+    })
+
+
+
     describe('password encryption', function () {
 
         describe('generateSalt method', function () {

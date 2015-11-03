@@ -1,11 +1,13 @@
 'use strict';
 var crypto = require('crypto');
 var mongoose = require('mongoose');
+var validators = require('mongoose-validators');
 
 var schema = new mongoose.Schema({
     email: {
         type: String,
-        unique: true
+        unique: true,
+        validate: validators.isEmail()
     },
     password: {
         type: String
