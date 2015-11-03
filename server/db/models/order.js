@@ -8,14 +8,6 @@ var cartItem = new mongoose.schema(
 	color: String
 );
 
-var address = new mongoose.schema(
-	street: {type: String, required: true},
-	city: {type: String, required: true},
-	state: {type: String, required: true},
-	zipcode: {type: Number, required: true},
-	country: {type: String, required: true}
-);
-
 var schema = new mongoose.Schema({
 	user: { type: Schema.Types.ObjectId, ref: 'User', required: true},
 	cart: {type: [cartItem], validate: [function (value){
@@ -23,7 +15,7 @@ var schema = new mongoose.Schema({
 	}, "Order is Empty"]},
 	store: { type: Schema.Types.ObjectId, ref: 'Store', required: true}
 	datePlaced: {type: Date, default: Date.now},
-	deliveryAddress: {type: address, required: true}
+	deliveryAddress: {type: Schema.Types.ObjectId, ref: 'Address'}
 });
 
 schema.pre('validate', function(next){
