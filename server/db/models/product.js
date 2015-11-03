@@ -3,23 +3,23 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var colorItem = new mongoose.schema(
+var colorItem = new Schema({
 	name: String,
 	HSB: [Number],
-	stock: Number
-);
+	stock: {type: Number, default: 0}
+});
 
-var schema =  new mongoose.schema({
-	name: {type: String, required: true},
-	sku: {type: String, required: true, unique: true}
+
+var schema =  new Schema({
+	name: {type: String, required: true, unique: true},
+	sku: {type: String, required: true, unique: true},
 	desc: String,
 	price: {type: Number, required: true},
-	type: {type: String, required: true},
-	store: {type: Schema.Types.ObjectId, ref: 'Store', required: true},
+	type: {type: String, required: true, enum: ['Beard', 'Mustache']},
+	// store: {type: Schema.Types.ObjectId, ref: 'Store', required: true},
 	image: {data: Buffer, contentType: String},
-	stockQty: {type: Number, required: true, default: 0},
 	colorOptions: [colorItem],
-	active: {type: boolean, default: false},
+	active: {type: Boolean, default: false},
 	tags: [String]
 })
 
