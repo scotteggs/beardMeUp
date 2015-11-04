@@ -56,7 +56,7 @@ var schema = new mongoose.Schema({
             quantity: Number
         }]
     },
-    accessibility: { // @OB/ND 'role'?
+    role: { // @OB/ND 'role'?
         type: String,
         enum: ['customer', 'storeAdmin', 'storeMgr', 'siteAdmin'],
         default: 'customer'

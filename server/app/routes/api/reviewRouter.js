@@ -64,7 +64,7 @@ router.delete('/:reviewId', function(req, res, next){
 })
 
 function hasAccess(review, req) {
-  return review.reviewer.equals(req.user) || req.user.accessibility === 'siteAdmin'
+  return review.reviewer.equals(req.user) || req.user.role === 'siteAdmin'
 }
 
 

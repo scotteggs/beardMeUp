@@ -26,7 +26,7 @@ router.get('/:productId', function (req, res, next) {
 })
 
 router.post('/', function (req, res, next) {
-	if(req.user && req.user.accessibility === 'siteAdmin') {
+	if(req.user && req.user.role === 'siteAdmin') {
     delete req.body._id;
   	Product.create(req.body)
   	.then(function(newProduct){
@@ -40,7 +40,7 @@ router.post('/', function (req, res, next) {
 
 
 router.put('/:productId', function(req, res, next) {
-  if(req.user && req.user.accessibility === 'siteAdmin') {
+  if(req.user && req.user.role === 'siteAdmin') {
     delete req.body._id;
     req.product.set(req.body)
     req.product.save()
@@ -54,7 +54,7 @@ router.put('/:productId', function(req, res, next) {
 })
 
 router.delete('/:productId', function(req, res, next){
-  if(req.user && req.user.accessibility === 'siteAdmin') {
+  if(req.user && req.user.role === 'siteAdmin') {
     req.product.remove()
     .then(function(){
       res.status(204).end()

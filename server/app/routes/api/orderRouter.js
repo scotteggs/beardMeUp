@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
 var Order = mongoose.model('Order')
 
 router.get('/', function (req, res, next) {
-  if(req.user.accessibility === 'siteAdmin'){
+  if(req.user.role === 'siteAdmin'){
   	Order.find()
   	.then(function(orders) {
   		res.json(orders)
@@ -73,7 +73,7 @@ router.delete('/:orderId', function(req, res, next){
 })
 
 function hasAccess(order, req) {
-  return req.user.equals(order.user) || req.user.accessibility === 'siteAdmin';
+  return req.user.equals(order.user) || req.user.role === 'siteAdmin';
 }
 
 module.exports = router;
