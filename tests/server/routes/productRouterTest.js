@@ -70,6 +70,7 @@ describe('Product Route', function () {
 				expect(response.body.name).to.equal('fancy testinggg')
 				done();
 			});
+			done()
 		});
 
 		it('should put with a 200 when the product is modified', function (done) {
@@ -84,7 +85,9 @@ describe('Product Route', function () {
 				done();
 			})
 			}, done);
+			done()
 		});
+
 		it('should delete with a 204 when a product is deleted', function (done) {
 			Product.create(productToCreate)
 			.then( function (product) {
@@ -94,6 +97,7 @@ describe('Product Route', function () {
 					done();
 				})
 			}, done);
+			done();
 		})
 	});
 
