@@ -1,11 +1,10 @@
 'use strict';
 var router = require('express').Router();
 var mongoose = require('mongoose')
-// var _ = require('lodash');
+var Product = mongoose.model('Product')
 
 router.get('/', function (req, res, next) {
-	mongoose.model('Product')
-	.find()
+	Product.find()
 	.then(function(products) {
 		console.log(products)
 		res.json(products)
@@ -14,8 +13,7 @@ router.get('/', function (req, res, next) {
 })
 
 router.param('productId', function(req, res, next, id) {
-  mongoose.model('Product')
-    .findById(id)
+  Product.findById(id)
     .then(function(product) {
       if(!product) throw new Error('not found!')
       req.product = product
@@ -29,16 +27,27 @@ router.get('/:productId', function (req, res, next) {
 })
 
 
-//post route not working
-// router.post('/', function (req, res, next) {
-// 	console.log('within products post route')
-// 	mongoose.model('Product')
-// 	.create(req.body)
-// 	.then(function(newProduct){
-// 		res.status(201).json(newProduct);
-// 	})
-// 	.then(next, null)
-// })
+router.post('/', function (req, res, next) {
+	delete req.body._id;
+	Product.create(req.body)
+	.then(function(newProduct){
+		res.status(201).json(newProduct);
+	})
+	.then(null, next)
+})
 
-// module.exports = router;
+
+router.put('/:productId', function(req, res, next) {
+  delete req.body._id;
+  req.product.set(req.body)
+  req.product.save()
+    .then(function(product) {
+      res.status(200).json(product)
+    })
+    .then(null, next)
+})
+
+
+
+module.exports = router;
 

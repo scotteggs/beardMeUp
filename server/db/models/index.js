@@ -5,3 +5,4 @@ require('./user');
 require('./review');
 require('./address');
 require('./product');
+require('./order');

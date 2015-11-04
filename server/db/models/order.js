@@ -13,7 +13,7 @@ var schema = new mongoose.Schema({
 	cart: {type: [cartItem], validate: [function (value){
 		return value.length>0;
 	}, "Order is Empty"]},
-	store: { type: Schema.Types.ObjectId, ref: 'Store', required: true},
+	//store: { type: Schema.Types.ObjectId, ref: 'Store', required: true},
 	datePlaced: {type: Date, default: Date.now},
 	deliveryAddress: {type: Schema.Types.ObjectId, ref: 'Address'}
 });
