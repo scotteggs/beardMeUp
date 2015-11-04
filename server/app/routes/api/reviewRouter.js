@@ -26,7 +26,7 @@ router.get('/:reviewId', function (req, res, next) {
 	res.json(req.review)
 })
 
-
+// @OB/ND auth? also maybe set user to be req.user by default?
 router.post('/', function (req, res, next) {
 	delete req.body._id;
 	Review.create(req.body)
@@ -38,26 +38,34 @@ router.post('/', function (req, res, next) {
 
 
 router.put('/:reviewId', function(req, res, next) {
-  if(req.review.reviewer._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+  if (hasAccess(req.review, req)) {
     delete req.body._id;
     req.review.set(req.body)
     req.review.save()
       .then(function(review) {
-        res.status(200).json(review)
+        res.json(review);
       })
       .then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
 
 router.delete('/:reviewId', function(req, res, next){
-  if(req.review.reviewer._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+  if (hasAccess(req.review, req)){
     req.review.remove()
     .then(function(){
       res.status(204).end()
     })
     .then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
+
+function hasAccess(review, req) {
+  return review.reviewer.equals(req.user) || req.user.role === 'siteAdmin'
+}
 
 
 module.exports = router;

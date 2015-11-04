@@ -25,21 +25,22 @@ router.get('/:productId', function (req, res, next) {
 	res.json(req.product)
 })
 
-
 router.post('/', function (req, res, next) {
-	if(req.user && req.user.accessibility === 'siteAdmin') {
+	if(req.user && req.user.role === 'siteAdmin') {
     delete req.body._id;
   	Product.create(req.body)
   	.then(function(newProduct){
   		res.status(201).json(newProduct);
   	})
   	.then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
 
 
 router.put('/:productId', function(req, res, next) {
-  if(req.user && req.user.accessibility === 'siteAdmin') {
+  if(req.user && req.user.role === 'siteAdmin') {
     delete req.body._id;
     req.product.set(req.body)
     req.product.save()
@@ -47,16 +48,20 @@ router.put('/:productId', function(req, res, next) {
         res.status(200).json(product)
       })
       .then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
 
 router.delete('/:productId', function(req, res, next){
-  if(req.user && req.user.accessibility === 'siteAdmin') {
+  if(req.user && req.user.role === 'siteAdmin') {
     req.product.remove()
     .then(function(){
       res.status(204).end()
     })
     .then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
 

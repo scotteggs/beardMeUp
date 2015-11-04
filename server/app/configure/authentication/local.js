@@ -55,7 +55,7 @@ module.exports = function (app) {
     });
 
     app.post('/signup', function(req, res, next){
-        delete req.body.accessibility;
+        delete req.body.role;
         User.create(req.body)
         .then(function(user){
             req.login(user, function(){
