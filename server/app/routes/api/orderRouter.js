@@ -11,7 +11,9 @@ router.get('/', function (req, res, next) {
   		res.json(orders)
   	})
   	.then(null,next)
-  } // @OB/ND else ???
+  } else {
+    res.status(403).end();
+  }
 })
 
 router.param('orderId', function(req, res, next, id) {
@@ -28,7 +30,9 @@ router.get('/:orderId', function (req, res, next) {
   // @OB/ND comparison blues, need .equals()
 	if(req.order.user.equals(req.user)|| req.user.accessibility === 'siteAdmin'){
     res.json(req.order);
-  } // @OB/ND again else ???
+  } else {
+    res.status(403).end();
+  }
 })
 
 
@@ -52,7 +56,9 @@ router.put('/:orderId', function(req, res, next) {
         res.status(200).json(order)
       })
       .then(null, next)
-  } // @OB/ND again else ???
+  } else {
+    res.status(403).end();
+  }
 })
 
 router.delete('/:orderId', function(req, res, next){
@@ -63,7 +69,9 @@ router.delete('/:orderId', function(req, res, next){
       res.status(204).end()
     })
     .then(null, next)
-  } // @OB/ND again else ???
+  } else {
+    res.status(403).end();
+  }
 })
 
 

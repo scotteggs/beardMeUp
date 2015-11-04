@@ -6,8 +6,7 @@ var Product = mongoose.model('Product')
 router.get('/', function (req, res, next) {
 	Product.find()
 	.then(function(products) {
-		console.log(products)
-		res.json(products)
+ 		res.json(products)
 	})
 	.then(null,next)
 })
@@ -28,31 +27,37 @@ router.get('/:productId', function (req, res, next) {
 
 // @OB/ND no auth? haven't gotten here yet?
 router.post('/', function (req, res, next) {
-	delete req.body._id;
-	Product.create(req.body)
-	.then(function(newProduct){
-		res.status(201).json(newProduct);
-	})
-	.then(null, next)
+	if(req.user && req.user.accessibility === 'siteAdmin') {
+    delete req.body._id;
+  	Product.create(req.body)
+  	.then(function(newProduct){
+  		res.status(201).json(newProduct);
+  	})
+  	.then(null, next)
+  }
 })
 
 
 router.put('/:productId', function(req, res, next) {
-  delete req.body._id;
-  req.product.set(req.body)
-  req.product.save()
-    .then(function(product) {
-      res.status(200).json(product)
-    })
-    .then(null, next)
+  if(req.user && req.user.accessibility === 'siteAdmin') {
+    delete req.body._id;
+    req.product.set(req.body)
+    req.product.save()
+      .then(function(product) {
+        res.status(200).json(product)
+      })
+      .then(null, next)
+  }
 })
 
 router.delete('/:productId', function(req, res, next){
-  req.product.remove()
-  .then(function(){
-    res.status(204).end()
-  })
-  .then(null, next)
+  if(req.user && req.user.accessibility === 'siteAdmin') {
+    req.product.remove()
+    .then(function(){
+      res.status(204).end()
+    })
+    .then(null, next)
+  }
 })
 
 

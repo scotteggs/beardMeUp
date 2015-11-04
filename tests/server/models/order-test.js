@@ -15,7 +15,7 @@ var Order = mongoose.model('Order');
 var User = mongoose.model('User');
 var Product = mongoose.model('Product');
 
-xdescribe('Order model', function () {
+describe('Order model', function () {
 
     var product;
     var order;

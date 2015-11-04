@@ -8,7 +8,6 @@ router.use('/product', require('./productRouter'));
 router.use('/user', require('./userRouter'));
 router.use('/order', require('./orderRouter'));
 router.use('/review', require('./reviewRouter'));
-router.use('/address', require('./addressRouter'));
 
 // @OB/ND duplicate logic elsewhere (../index.js)
 router.use(function (req, res) {
