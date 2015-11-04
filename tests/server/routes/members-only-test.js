@@ -82,7 +82,7 @@ describe('Members Route', function () {
 
 		it('should get with 201 response and with an array as the body', function (done) {
 			loggedInAgent.get('/api/members/secret-stash').expect(201).end(function (err, response) {
-				User.findOne({email: "joe@gmail.com"})
+				User.findOne({email: "joe@gmail.com"}).select('+email')
 				.then(function(user){
 					expect(user.email).to.equal("joe@gmail.com");
 					done();
