@@ -47,6 +47,14 @@ router.put('/:userId', function(req, res, next) {
     .then(null, next)
 })
 
+router.delete('/:userId', function(req, res, next){
+  req.user.remove()
+  .then(function(){
+    res.status(204).end()
+  })
+  .then(null, next)
+})
+
 
 
 module.exports = router;

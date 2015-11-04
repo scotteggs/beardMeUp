@@ -47,7 +47,29 @@ router.put('/:orderId', function(req, res, next) {
     .then(null, next)
 })
 
+router.delete('/:orderId', function(req, res, next){
+  req.order.remove()
+  .then(function(){
+    res.status(204).end()
+  })
+  .then(null, next)
+})
 
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
