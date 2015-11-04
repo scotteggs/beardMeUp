@@ -46,6 +46,7 @@ var schema = new mongoose.Schema({
         type: [mongoose.Schema.Types.ObjectId],
         ref: 'Address'
     },
+    // @ OB/ND shouldn't this be an array of `cartItem`s?
     cart: {
         type: [{
             product: {
@@ -55,7 +56,7 @@ var schema = new mongoose.Schema({
             quantity: Number
         }]
     },
-    accessibility: {
+    accessibility: { // @OB/ND 'role'?
         type: String,
         enum: ['customer', 'storeAdmin', 'storeMgr', 'siteAdmin'],
         default: 'customer'
@@ -76,10 +77,13 @@ var encryptPassword = function (plainText, salt) {
 };
 
 
+// @OB/ND dead code?
 //validate email address
 schema.pre('save', function(next){
     next();
 })
+
+// @OB/ND hasRole method? or isSiteAdmin method?
 
 
 schema.pre('save', function (next) {

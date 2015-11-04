@@ -26,7 +26,7 @@ router.get('/:productId', function (req, res, next) {
 	res.json(req.product)
 })
 
-
+// @OB/ND no auth? haven't gotten here yet?
 router.post('/', function (req, res, next) {
 	delete req.body._id;
 	Product.create(req.body)

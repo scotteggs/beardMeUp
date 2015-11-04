@@ -3,6 +3,8 @@ var router = require('express').Router();
 var mongoose = require('mongoose')
 // var _ = require('lodash');
 
+
+// @OB/ND deja vu...
 router.get('/', function (req, res, next) {
 	mongoose.model('Product')
 	.find()

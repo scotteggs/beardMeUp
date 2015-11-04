@@ -43,6 +43,7 @@ xdescribe('Product model', function () {
     });
 
     it('has the right properties', function () {
+        // @OB/ND what is this testing?
         expect(product.name).to.equal('Tom Hank Beard');
         expect(product.sku).to.equal('mysku1');
         expect(product.desc).to.equal('my description');

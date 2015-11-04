@@ -55,6 +55,7 @@ xdescribe('Review model', function () {
     });
 
     it('should have the right properties', function() {
+        // @OB/ND what is this testing?
         expect(review.product).to.equal(product._id);
         expect(review.rating).to.equal(2);
         expect(review.content).to.equal('i love it');
@@ -63,10 +64,11 @@ xdescribe('Review model', function () {
     })
 
     it('should fail if rating is not 1-5', function() {
+        // @OB/ND this will not work, async problems
         review.rating = 6;
-        review.save()
+        return review.save()
         .then(null, function(err) {
-            expect(err).to.equal(ValidationError);
+            expect(err).to.equal(ValidationError); // @OB/ND ValidationError?
         })
 
     })
