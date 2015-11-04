@@ -38,21 +38,25 @@ router.post('/', function (req, res, next) {
 
 
 router.put('/:reviewId', function(req, res, next) {
-  delete req.body._id;
-  req.review.set(req.body)
-  req.review.save()
-    .then(function(review) {
-      res.status(200).json(review)
-    })
-    .then(null, next)
+  if(req.review.reviewer._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+    delete req.body._id;
+    req.review.set(req.body)
+    req.review.save()
+      .then(function(review) {
+        res.status(200).json(review)
+      })
+      .then(null, next)
+  }
 })
 
 router.delete('/:reviewId', function(req, res, next){
-  req.review.remove()
-  .then(function(){
-    res.status(204).end()
-  })
-  .then(null, next)
+  if(req.review.reviewer._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+    req.review.remove()
+    .then(function(){
+      res.status(204).end()
+    })
+    .then(null, next)
+  }
 })
 
 

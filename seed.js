@@ -34,6 +34,11 @@ var seedUsers = function () {
         {
             email: 'obama@gmail.com',
             password: 'potus'
+        },
+        {
+            email: 'admin@beardmeup.com',
+            password: 'password',
+            accessibility: 'siteAdmin'
         }
     ];
 

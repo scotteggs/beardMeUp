@@ -7,8 +7,7 @@ var schema = new mongoose.Schema({
     email: {
         type: String,
         unique: true,
-        validate: validators.isEmail(),
-        select: false
+        validate: validators.isEmail()
     },
     password: {
         type: String,
@@ -16,7 +15,7 @@ var schema = new mongoose.Schema({
     },
     salt: {
         type: String,
-        select: false,
+        select: false
     },
     twitter: {
         id: String,
@@ -59,8 +58,7 @@ var schema = new mongoose.Schema({
     accessibility: {
         type: String,
         enum: ['customer', 'storeAdmin', 'storeMgr', 'siteAdmin'],
-        default: 'customer',
-        select: false
+        default: 'customer'
     } 
 });
 
@@ -85,11 +83,14 @@ schema.pre('save', function(next){
 
 
 schema.pre('save', function (next) {
+
     if (this.isModified('password')) {
         this.salt = this.constructor.generateSalt();
         this.password = this.constructor.encryptPassword(this.password, this.salt);
     }
+
     next();
+
 });
 
 schema.statics.generateSalt = generateSalt;
