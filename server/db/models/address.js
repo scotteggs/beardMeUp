@@ -27,5 +27,4 @@ var schema = new mongoose.Schema({
 	}
 })
 
-// @OB/ND maybe don't bother making a model—no refs, just embedding
-mongoose.model('Address', schema);
+module.exports = schema;

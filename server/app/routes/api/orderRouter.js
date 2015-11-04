@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
 var Order = mongoose.model('Order')
 
 router.get('/', function (req, res, next) {
-  if(req.user.accessibility === 'siteAdmin'){
+  if(req.user.role === 'siteAdmin'){
   	Order.find()
   	.then(function(orders) {
   		res.json(orders)
@@ -26,7 +26,7 @@ router.param('orderId', function(req, res, next, id) {
 
 router.get('/:orderId', function (req, res, next) {
   // @OB/ND comparison blues, need .equals()
-	if(req.order.user.equals(req.user)|| req.user.accessibility === 'siteAdmin'){
+	if(req.order.user.equals(req.user)|| req.user.role === 'siteAdmin'){
     res.json(req.order);
   } // @OB/ND again else ???
 })
@@ -44,7 +44,7 @@ router.post('/', function (req, res, next) {
 
 
 router.put('/:orderId', function(req, res, next) {
-  if(req.order.user._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+  if(req.order.user._id === req.user._id || req.user.role === 'siteAdmin'){
     delete req.body._id;
     req.order.set(req.body)
     req.order.save()
@@ -57,7 +57,7 @@ router.put('/:orderId', function(req, res, next) {
 
 router.delete('/:orderId', function(req, res, next){
   // @OB/ND logic repeat x3: refactor
-  if(req.order.user._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+  if(req.order.user._id === req.user._id || req.user.role === 'siteAdmin'){
     req.order.remove()
     .then(function(){
       res.status(204).end()

@@ -2,6 +2,8 @@
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 var validators = require('mongoose-validators');
+var addressSchema = require('./address');
+var cartSchema = require('./order');
 
 var schema = new mongoose.Schema({
     email: {
@@ -38,25 +40,11 @@ var schema = new mongoose.Schema({
     lastName: {
         type: String
     },
-    primaryAddress: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Address'
-    },
-    addresses: {
-        type: [mongoose.Schema.Types.ObjectId],
-        ref: 'Address'
-    },
+    primaryAddress: [addressSchema],
+    addresses: [addressSchema],
     // @ OB/ND shouldn't this be an array of `cartItem`s?
-    cart: {
-        type: [{
-            product: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Product'
-            },
-            quantity: Number
-        }]
-    },
-    accessibility: { // @OB/ND 'role'?
+    cart: [cartSchema],
+    role: { // @OB/ND 'role'?
         type: String,
         enum: ['customer', 'storeAdmin', 'storeMgr', 'siteAdmin'],
         default: 'customer'
@@ -77,13 +65,9 @@ var encryptPassword = function (plainText, salt) {
 };
 
 
-// @OB/ND dead code?
-//validate email address
-schema.pre('save', function(next){
-    next();
-})
-
-// @OB/ND hasRole method? or isSiteAdmin method?
+schema.methods.hasRole = function(role){
+    return this.role === role;
+}
 
 
 schema.pre('save', function (next) {

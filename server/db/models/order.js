@@ -1,32 +1,34 @@
 'use strict';
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+var addressSchema = require('./address');
+var validators = require('mongoose-validators');
 
 var cartItem = new Schema({
 	qty: Number,
 	product: { type: Schema.Types.ObjectId, ref: 'Product' },
-	color: String // @OB/ND how will this interact with the colorItem stuff in product schema
-	// @OB/ND also price
+	color: String,
+	price: Number 
 });
 
 var schema = new mongoose.Schema({
 	user: { type: Schema.Types.ObjectId, ref: 'User', required: true}, // @OB/ND how will this work for guests?
-	cart: {type: [cartItem], validate: [function (value){
-		return value.length>0;
-	}, "Order is Empty"]}, // @OB/ND minlength or validators.isLength(1)?
+	cart: {type: [cartItem], validate: validators.isLength(1), "Order is Empty"},
 	//store: { type: Schema.Types.ObjectId, ref: 'Store', required: true},
 	datePlaced: {type: Date, default: Date.now},
-	deliveryAddress: {type: Schema.Types.ObjectId, ref: 'Address'}
+	deliveryAddress: [addressSchema]
 });
 
-schema.pre('validate', function(next){
-	this.markModified('cart'); // @OB/ND why?
-	next();
-})
-
-// @OB/ND methods, eg .getTotal?
+schema.methods.getTotal = function(){
+	var total = 0;
+	this.cart.forEach(function(cartItem){
+		total += cartItem.qty * cartItem.price
+	});
+	return total;
+}
 
 mongoose.model('Order', schema);
+module.exports = cartItem;
 
 
 
