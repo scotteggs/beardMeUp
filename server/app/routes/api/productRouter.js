@@ -25,7 +25,6 @@ router.get('/:productId', function (req, res, next) {
 	res.json(req.product)
 })
 
-// @OB/ND no auth? haven't gotten here yet?
 router.post('/', function (req, res, next) {
 	if(req.user && req.user.accessibility === 'siteAdmin') {
     delete req.body._id;
@@ -34,6 +33,8 @@ router.post('/', function (req, res, next) {
   		res.status(201).json(newProduct);
   	})
   	.then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
 
@@ -47,6 +48,8 @@ router.put('/:productId', function(req, res, next) {
         res.status(200).json(product)
       })
       .then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
 
@@ -57,6 +60,8 @@ router.delete('/:productId', function(req, res, next){
       res.status(204).end()
     })
     .then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
 

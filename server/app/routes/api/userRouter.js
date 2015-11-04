@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
   	})
   	.then(null,next)
   } else {
-    res.status(403).end(); // @OB/ND yes!
+    res.status(403).end();
   }
 })
 
@@ -27,8 +27,10 @@ router.param('userId', function(req, res, next, id) {
 })
 
 router.get('/:userId', function (req, res, next) {
-	if(req.foundUser._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+	if(req.foundUser.equals(req.user) || req.user.accessibility === 'siteAdmin'){
     res.json(req.foundUser)
+  } else {
+    res.status(403).end();
   }
 })
 
@@ -48,7 +50,7 @@ router.post('/', function (req, res, next) {
 
 
 router.put('/:userId', function(req, res, next) {
-  if(req.foundUser._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+  if(req.foundUser.equals(req.user) || req.user.accessibility === 'siteAdmin'){
     delete req.body._id;
     req.foundUser.set(req.body)
     req.foundUser.save()
@@ -56,16 +58,20 @@ router.put('/:userId', function(req, res, next) {
         res.status(200).json(user)
       })
       .then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
 
 router.delete('/:userId', function(req, res, next){
-  if(req.foundUser._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+  if(req.foundUser.equals(req.user)|| req.user.accessibility === 'siteAdmin'){
     req.foundUser.remove()
     .then(function(){
       res.status(204).end()
     })
     .then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
 
