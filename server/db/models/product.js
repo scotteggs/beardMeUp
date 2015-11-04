@@ -19,7 +19,7 @@ var schema =  new Schema({
 
 
 schema.methods.getReviews = function(){
-	return Review.find(product: this._id)
+	return Review.find({product: this._id})
 }
 
 

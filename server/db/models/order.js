@@ -13,7 +13,7 @@ var cartItem = new Schema({
 
 var schema = new mongoose.Schema({
 	user: { type: Schema.Types.ObjectId, ref: 'User', required: true}, // @OB/ND how will this work for guests?
-	cart: {type: [cartItem], validate: validators.isLength(1), "Order is Empty"},
+	cart: {type: [cartItem], validate: validators.isLength(1)},
 	//store: { type: Schema.Types.ObjectId, ref: 'Store', required: true},
 	datePlaced: {type: Date, default: Date.now},
 	deliveryAddress: [addressSchema]
