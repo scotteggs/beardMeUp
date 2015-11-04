@@ -38,7 +38,7 @@ var seedUsers = function () {
         {
             email: 'admin@beardmeup.com',
             password: 'password',
-            accessibility: 'siteAdmin'
+            role: 'siteAdmin'
         }
     ];
 

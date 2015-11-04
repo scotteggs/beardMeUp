@@ -11,7 +11,9 @@ router.get('/', function (req, res, next) {
   		res.json(orders)
   	})
   	.then(null,next)
-  } // @OB/ND else ???
+  } else {
+    res.status(403).end();
+  }
 })
 
 router.param('orderId', function(req, res, next, id) {
@@ -25,10 +27,11 @@ router.param('orderId', function(req, res, next, id) {
 })
 
 router.get('/:orderId', function (req, res, next) {
-  // @OB/ND comparison blues, need .equals()
-	if(req.order.user.equals(req.user)|| req.user.role === 'siteAdmin'){
+	if (hasAccess(req.order, req)) {
     res.json(req.order);
-  } // @OB/ND again else ???
+  } else {
+    res.status(403).end();
+  }
 })
 
 
@@ -44,7 +47,7 @@ router.post('/', function (req, res, next) {
 
 
 router.put('/:orderId', function(req, res, next) {
-  if(req.order.user._id === req.user._id || req.user.role === 'siteAdmin'){
+  if (hasAccess(req.order, req)) {
     delete req.body._id;
     req.order.set(req.body)
     req.order.save()
@@ -52,20 +55,26 @@ router.put('/:orderId', function(req, res, next) {
         res.status(200).json(order)
       })
       .then(null, next)
-  } // @OB/ND again else ???
+  } else {
+    res.status(403).end();
+  }
 })
 
 router.delete('/:orderId', function(req, res, next){
-  // @OB/ND logic repeat x3: refactor
-  if(req.order.user._id === req.user._id || req.user.role === 'siteAdmin'){
+  if (hasAccess(req.order, req)) {
     req.order.remove()
     .then(function(){
       res.status(204).end()
     })
     .then(null, next)
-  } // @OB/ND again else ???
+  } else {
+    res.status(403).end();
+  }
 })
 
+function hasAccess(order, req) {
+  return req.user.equals(order.user) || req.user.role === 'siteAdmin';
+}
 
 module.exports = router;
 

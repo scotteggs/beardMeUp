@@ -42,7 +42,6 @@ var schema = new mongoose.Schema({
     },
     primaryAddress: [addressSchema],
     addresses: [addressSchema],
-    // @ OB/ND shouldn't this be an array of `cartItem`s?
     cart: [cartSchema],
     role: { // @OB/ND 'role'?
         type: String,
