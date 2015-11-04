@@ -7,25 +7,31 @@ var schema = new mongoose.Schema({
     email: {
         type: String,
         unique: true,
-        validate: validators.isEmail()
+        validate: validators.isEmail(),
+        select: false
     },
     password: {
-        type: String
+        type: String,
+        select: false
     },
     salt: {
-        type: String
+        type: String,
+        select: false
     },
     twitter: {
         id: String,
         username: String,
         token: String,
-        tokenSecret: String
+        tokenSecret: String,
+        select: false
     },
     facebook: {
-        id: String
+        id: String,
+        select: false
     },
     google: {
         id: String
+        select: false
     },
     firstName: {
         type: String
@@ -53,7 +59,8 @@ var schema = new mongoose.Schema({
     accessibility: {
         type: String,
         enum: ['customer', 'storeAdmin', 'storeMgr', 'siteAdmin'],
-        default: 'customer'
+        default: 'customer',
+        select: false
     } 
 });
 
