@@ -27,31 +27,37 @@ router.get('/:productId', function (req, res, next) {
 
 
 router.post('/', function (req, res, next) {
-	delete req.body._id;
-	Product.create(req.body)
-	.then(function(newProduct){
-		res.status(201).json(newProduct);
-	})
-	.then(null, next)
+	if(req.user && req.user.accessibility === 'siteAdmin') {
+    delete req.body._id;
+  	Product.create(req.body)
+  	.then(function(newProduct){
+  		res.status(201).json(newProduct);
+  	})
+  	.then(null, next)
+  }
 })
 
 
 router.put('/:productId', function(req, res, next) {
-  delete req.body._id;
-  req.product.set(req.body)
-  req.product.save()
-    .then(function(product) {
-      res.status(200).json(product)
-    })
-    .then(null, next)
+  if(req.user && req.user.accessibility === 'siteAdmin') {
+    delete req.body._id;
+    req.product.set(req.body)
+    req.product.save()
+      .then(function(product) {
+        res.status(200).json(product)
+      })
+      .then(null, next)
+  }
 })
 
 router.delete('/:productId', function(req, res, next){
-  req.product.remove()
-  .then(function(){
-    res.status(204).end()
-  })
-  .then(null, next)
+  if(req.user && req.user.accessibility === 'siteAdmin') {
+    req.product.remove()
+    .then(function(){
+      res.status(204).end()
+    })
+    .then(null, next)
+  }
 })
 
 
