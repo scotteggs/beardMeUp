@@ -66,7 +66,7 @@ describe('Members Route', function () {
 
 	});
 
-		describe('Sign-up adds user in database', function () {
+	describe('Sign-up adds customer users in database', function () {
 
 		var loggedInAgent;
 
@@ -85,6 +85,19 @@ describe('Members Route', function () {
 				User.findOne({email: "joe@gmail.com"}).select('+email')
 				.then(function(user){
 					expect(user.email).to.equal("joe@gmail.com");
+					expect(user.accessibility).to.equal("customer");
+					done();
+				})
+				.catch(done);
+			});
+		});
+
+		it('should be restricted from accessing all user data', function (done) {
+			loggedInAgent.get('/api/members/secret-stash').expect(201).end(function (err, response) {
+				User.findOne({email: "joe@gmail.com"}).select('+email')
+				.then(function(user){
+					expect(user.email).to.equal("joe@gmail.com");
+					expect(user.accessibility).to.equal("customer");
 					done();
 				})
 				.catch(done);
@@ -92,5 +105,33 @@ describe('Members Route', function () {
 		});
 
 	});
+
+	describe('Admin accessibility works properly', function () {
+
+		// var loggedInAgent;
+
+		// var userInfo = {
+		// 	email: 'joe@gmail.com',
+		// 	password: 'shoopdawoop'
+		// };
+
+		// beforeEach('Create loggedIn user agent and authenticate', function (done) {
+		// 	loggedInAgent = supertest.agent(app);
+		// 	loggedInAgent.post('/signup').send(userInfo).end(done);
+		// });
+
+		// it('should get with 201 response and with an array as the body', function (done) {
+		// 	loggedInAgent.get('/api/members/secret-stash').expect(201).end(function (err, response) {
+		// 		User.findOne({email: "joe@gmail.com"}).select('+email')
+		// 		.then(function(user){
+		// 			expect(user.email).to.equal("joe@gmail.com");
+		// 			done();
+		// 		})
+		// 		.catch(done);
+		// 	});
+		// });
+
+	});
+
 
 });
