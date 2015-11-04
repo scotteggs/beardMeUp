@@ -4,6 +4,8 @@ var mongoose = require('mongoose')
 
 var Address = mongoose.model('Address')
 
+// @OB/ND probably this whole endpoint is unnecessary
+
 router.get('/', function (req, res, next) {
 	Address.find()
 	.then(function(addresses) {

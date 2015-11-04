@@ -12,17 +12,19 @@ var colorItem = new Schema({
 
 var schema =  new Schema({
 	name: {type: String, required: true, unique: true},
-	sku: {type: String, required: true, unique: true},
-	desc: String,
-	price: {type: Number, required: true},
+	sku: {type: String, required: true, unique: true}, // @OB/ND why not just use _id?
+	desc: String, // @OB/ND 'description'?
+	price: {type: Number, required: true}, // @OB/ND cents
 	type: {type: String, required: true, enum: ['Beard', 'Mustache']},
 	// store: {type: Schema.Types.ObjectId, ref: 'Store', required: true},
-	image: {data: Buffer, contentType: String},
+	image: {data: Buffer, contentType: String}, // @OB/ND consider url + S3 instead of storing image in DB
 	colorOptions: [colorItem],
-	active: {type: Boolean, default: false},
-	tags: [String]
+	active: {type: Boolean, default: false}, // @OB/ND purpose of this field?
+	tags: [String] // @OB/ND no enum?
 })
 
+
+// @OB/ND methods? e.g. getReviews?
 
 
 mongoose.model('Product', schema);

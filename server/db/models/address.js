@@ -23,8 +23,9 @@ var schema = new mongoose.Schema({
 	},
 	phone: {
 		type: String,
-		required: true
+		required: true // @OB/ND really?
 	}
 })
 
+// @OB/ND maybe don't bother making a model—no refs, just embedding
 mongoose.model('Address', schema);

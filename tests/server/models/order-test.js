@@ -21,7 +21,7 @@ describe('Order model', function () {
     var order;
     var user;
 
-    beforeEach('Establish DB connection', function (done) {
+    beforeEach('Establish DB connection', function () {
 
         if(!mongoose.connection.db) mongoose.connect(dbURI);
         var userPromise = User.create({
@@ -37,7 +37,7 @@ describe('Order model', function () {
             tags: ['cool', 'sick']
         });
 
-        Promise.all([userPromise, productPromise])
+        return Promise.all([userPromise, productPromise])
         .then(function(all){
             user = all[0]
             product = all[1]
@@ -47,9 +47,8 @@ describe('Order model', function () {
             });
             return order.save()
         })
-        .then(function(order){
-            order = order;
-            done();
+        .then(function(_order){
+            order = _order;
         })
     });
 
@@ -62,6 +61,8 @@ describe('Order model', function () {
     });
 
     it('should create an order with valid cart and user', function () {
+        // @OB/ND what is this testing? mongoose's save method?
+        // maybe test a validation?
         expect(order.user).to.equal(user._id);
         expect(order.cart[0].product).to.equal(product._id);
 

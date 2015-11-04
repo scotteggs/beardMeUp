@@ -25,7 +25,7 @@ router.get('/:productId', function (req, res, next) {
 	res.json(req.product)
 })
 
-
+// @OB/ND no auth? haven't gotten here yet?
 router.post('/', function (req, res, next) {
 	if(req.user && req.user.accessibility === 'siteAdmin') {
     delete req.body._id;
