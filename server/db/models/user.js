@@ -30,7 +30,7 @@ var schema = new mongoose.Schema({
         select: false
     },
     google: {
-        id: String
+        id: String,
         select: false
     },
     firstName: {
