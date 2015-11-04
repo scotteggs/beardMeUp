@@ -9,7 +9,7 @@ require('../../../server/db/models');
 
 var Product = mongoose.model('Product');
 
-xdescribe('Product model', function () {
+describe('Product model', function () {
 
     var product;
 

@@ -61,7 +61,6 @@ describe('Product Route', function () {
 		beforeEach('Create loggedIn user agent and authenticate', function (done) {
 			loggedInAgent = supertest.agent(app);
 			done()
-			// loggedInAgent.post('/login').send(product).end(done);
 		});
 
 		it('should post with 201 response and with an object as the body', function (done) {
@@ -73,6 +72,32 @@ describe('Product Route', function () {
 			});
 		});
 
+		it('should put with a 200 when the product is modified', function (done) {
+			Product.create(productToCreate)
+			.then( function (product) {
+				var productId = product._id;
+				product.name = "new name"
+				loggedInAgent.put('/api/product/'+productId).send(product).expect(200).end(function (err, response) {
+				if (err) return done(err);
+				expect(response.body).to.be.an('object');
+				expect(response.body.name).to.equal('new name')
+				done();
+			})
+			}, done);
+		});
+		it('should delete with a 204 when a product is deleted', function (done) {
+			Product.create(productToCreate)
+			.then( function (product) {
+				var productId = product._id;
+				loggedInAgent.delete('/api/product/'+productId).expect(204).end(function (err, response) {
+					if (err) return done(err);
+					done();
+				})
+			}, done);
+		})
 	});
+
+
+
 
 });
