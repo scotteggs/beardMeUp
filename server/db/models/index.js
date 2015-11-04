@@ -5,4 +5,8 @@ require('./user');
 require('./review');
 require('./address');
 require('./product');
+<<<<<<< HEAD
 require('./order');
+=======
+require('./order')
+>>>>>>> master
