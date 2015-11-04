@@ -5,7 +5,7 @@ module.exports = router;
 //members router part of existing fsg
 router.use('/members', require('./members'));
 //points to /api/index.js which will point to all other routers
-router.use('/', require('./api'))
+router.use('/', require('./api'));
 
 // Make sure this is after all of
 // the registered routes!

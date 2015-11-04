@@ -16,7 +16,7 @@ var schema = new mongoose.Schema({
     },
     salt: {
         type: String,
-        select: false
+        select: false,
     },
     twitter: {
         id: String,
@@ -85,14 +85,11 @@ schema.pre('save', function(next){
 
 
 schema.pre('save', function (next) {
-
     if (this.isModified('password')) {
         this.salt = this.constructor.generateSalt();
         this.password = this.constructor.encryptPassword(this.password, this.salt);
     }
-
     next();
-
 });
 
 schema.statics.generateSalt = generateSalt;
