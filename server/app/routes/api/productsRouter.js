@@ -40,5 +40,5 @@ router.get('/:productId', function (req, res, next) {
 // 	.then(next, null)
 // })
 
-// module.exports = router;
+module.exports = router;
 
