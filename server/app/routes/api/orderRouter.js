@@ -5,12 +5,14 @@ var mongoose = require('mongoose')
 var Order = mongoose.model('Order')
 
 router.get('/', function (req, res, next) {
-  if(req.user.accessibility === 'siteAdmin'){
+  if(req.user.role === 'siteAdmin'){
   	Order.find()
   	.then(function(orders) {
   		res.json(orders)
   	})
   	.then(null,next)
+  } else {
+    res.status(403).end();
   }
 })
 
@@ -25,14 +27,17 @@ router.param('orderId', function(req, res, next, id) {
 })
 
 router.get('/:orderId', function (req, res, next) {
-	if(req.order.user._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+	if (hasAccess(req.order, req)) {
     res.json(req.order);
+  } else {
+    res.status(403).end();
   }
 })
 
 
+// @OB/ND set user to be req.user by default
 router.post('/', function (req, res, next) {
-	delete req.body._id;
+	delete req.body._id; // @OB/ND why?
 	Order.create(req.body)
 	.then(function(newOrder){
 		res.status(201).json(newOrder);
@@ -42,7 +47,7 @@ router.post('/', function (req, res, next) {
 
 
 router.put('/:orderId', function(req, res, next) {
-  if(req.order.user._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+  if (hasAccess(req.order, req)) {
     delete req.body._id;
     req.order.set(req.body)
     req.order.save()
@@ -50,19 +55,26 @@ router.put('/:orderId', function(req, res, next) {
         res.status(200).json(order)
       })
       .then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
 
 router.delete('/:orderId', function(req, res, next){
-  if(req.order.user._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+  if (hasAccess(req.order, req)) {
     req.order.remove()
     .then(function(){
       res.status(204).end()
     })
     .then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
 
+function hasAccess(order, req) {
+  return req.user.equals(order.user) || req.user.role === 'siteAdmin';
+}
 
 module.exports = router;
 

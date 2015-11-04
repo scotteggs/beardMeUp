@@ -23,8 +23,8 @@ var schema = new mongoose.Schema({
 	},
 	phone: {
 		type: String,
-		required: true
+		required: true // @OB/ND really?
 	}
 })
 
-mongoose.model('Address', schema);
+module.exports = schema;

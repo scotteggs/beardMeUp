@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
 var User = mongoose.model('User')
 
 router.get('/', function (req, res, next) {
-  if(req.user && req.user.accessibility === 'siteAdmin') {
+  if(req.user && req.user.role === 'siteAdmin') {
   	User.find()
   	.then(function(users) {
   		res.json(users)
@@ -27,14 +27,16 @@ router.param('userId', function(req, res, next, id) {
 })
 
 router.get('/:userId', function (req, res, next) {
-	if(req.foundUser._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+	if(hasAccess(req.foundUser, req)){
     res.json(req.foundUser)
+  } else {
+    res.status(403).end();
   }
 })
 
 
 router.post('/', function (req, res, next) {
-  if(req.user && req.user.accessibility === 'siteAdmin') {
+  if(req.user && req.user.role === 'siteAdmin') {
 	  delete req.body._id;
   	User.create(req.body)
   	.then(function(newUser){
@@ -48,7 +50,7 @@ router.post('/', function (req, res, next) {
 
 
 router.put('/:userId', function(req, res, next) {
-  if(req.foundUser._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+  if(hasAccess(req.foundUser, req)){
     delete req.body._id;
     req.foundUser.set(req.body)
     req.foundUser.save()
@@ -56,18 +58,26 @@ router.put('/:userId', function(req, res, next) {
         res.status(200).json(user)
       })
       .then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
 
 router.delete('/:userId', function(req, res, next){
-  if(req.foundUser._id === req.user._id || req.user.accessibility === 'siteAdmin'){
+  if(hasAccess(req.foundUser, req)){
     req.foundUser.remove()
     .then(function(){
       res.status(204).end()
     })
     .then(null, next)
+  } else {
+    res.status(403).end();
   }
 })
+
+function hasAccess(theUser, req){
+  return theUser.equals(req.user) || req.user.role === "siteAdmin"
+}
 
 
 
