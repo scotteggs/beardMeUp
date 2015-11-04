@@ -12,7 +12,7 @@ var Review = mongoose.model('Review');
 var User = mongoose.model('User');
 var Product = mongoose.model('Product');
 
-xdescribe('Review model', function () {
+describe('Review model', function () {
     var user;
     var product;
     var review;

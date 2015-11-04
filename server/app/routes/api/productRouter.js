@@ -6,8 +6,7 @@ var Product = mongoose.model('Product')
 router.get('/', function (req, res, next) {
 	Product.find()
 	.then(function(products) {
-		console.log(products)
-		res.json(products)
+ 		res.json(products)
 	})
 	.then(null,next)
 })
