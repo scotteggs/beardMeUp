@@ -1,0 +1,17 @@
+<section id="contact">
+	<div>
+		<div>
+			<h4>WE'RE ALL BEARDS</h4>
+			<h4>ER... EARS!</h4>
+		</div>
+		<div>
+			<form class="form-horizontal" name="contactFrm" ng-submit="submit()">
+				<input ng-model="name" required placeholder="Name"></input>
+				<input ng-model="email" required placeholder="E-mail"></input>
+				<input ng-model="message" required placeholder="Message"></input>
+				<button type="submit" ng-disabled="contactFrm.$invalid" class="btn btn-success">Submit</button>
+			</form>
+		</div>
+	</div>
+
+</section>

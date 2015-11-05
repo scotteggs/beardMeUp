@@ -29,6 +29,7 @@ var seedUsers = function () {
 
     var users = [
         {
+
             firstName: 'Testing',
             lastName: 'Sucks',
             email: 'testing@fsa.com',
@@ -159,7 +160,8 @@ var seedProducts = function () {
                 HSB: [0,1,1],
                 stock: 4
             }],
-            tags: ['fancy', 'beard']
+            tags: ['fancy', 'beard'],
+            imageUrl: 'http://www.fillmurray.com/200/200'
         },
         {
             name: 'casual beard',
@@ -176,7 +178,8 @@ var seedProducts = function () {
                 HSB: [0,1,1],
                 stock: 4
             }],
-            tags: ['casual', 'beard']
+            tags: ['casual', 'beard'],
+            imageUrl: 'http://www.fillmurray.com/201/201'
         },
         {
             name: 'pirate mustache',
@@ -193,7 +196,8 @@ var seedProducts = function () {
                 HSB: [0,1,0],
                 stock: 100
             }],
-            tags: ['pirate', 'parrot']
+            tags: ['pirate', 'parrot'],
+            imageUrl: 'http://www.fillmurray.com/202/202'
         },
         {
             name: 'sexy stubble',
@@ -210,7 +214,8 @@ var seedProducts = function () {
                 HSB: [0,1,0],
                 stock: 100
             }],
-            tags: ['sexy', 'stubble']
+            tags: ['sexy', 'stubble'],
+            imageUrl: 'http://www.fillmurray.com/199/199'
         }
     ];
 
