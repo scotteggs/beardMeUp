@@ -12,7 +12,9 @@ var schema =  new Schema({
 	type: {type: String, required: true, enum: ['Beard', 'Mustache']},
 	stock: Number,
 	// store: {type: Schema.Types.ObjectId, ref: 'Store', required: true},
-	image: {data: Buffer, contentType: String}, // @OB/ND consider url + S3 instead of storing image in DB
+	imageUrl: String, // @OB/ND consider url + S3 instead of storing image in DB
+	thumbnailUrl: String,
+	cutoutUrl: String,
 	active: {type: Boolean, default: false}, 
 	tags: [String] 
 })
