@@ -15,7 +15,7 @@ app.factory('OrdersFactory', function($http){
 		allOrders: function(){
 			return $http.get('/api/order')
 			.then(getData)
-		}
+		},
 		getOrdersByUser: function(userId) {
 			return $http.get('/api/order')
 			.then(getData)

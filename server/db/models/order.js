@@ -25,7 +25,6 @@ var getTotal = function(){
 	this.cart.forEach(function(cartItem){
 		total += cartItem.qty * cartItem.price
 	});
-	console.log("returning total", total);
 	return total;
 }
 
