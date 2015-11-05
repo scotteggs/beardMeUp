@@ -1,7 +1,6 @@
 app.controller('AllOrdersCtrl', function($scope, allOrders){
 	$scope.allOrders = allOrders;
 
-	//fulfilled, unfulfilled, all
 	$scope.orderFilter = "all";
 
 	$scope.correctOrder = function(order){
