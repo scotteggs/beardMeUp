@@ -34,7 +34,6 @@ router.get('/:userId', function (req, res, next) {
   }
 })
 
-
 router.post('/', function (req, res, next) {
   if(req.user && req.user.role === 'siteAdmin') {
 	  delete req.body._id;

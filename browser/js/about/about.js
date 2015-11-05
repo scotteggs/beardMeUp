@@ -6,12 +6,11 @@ app.config(function ($stateProvider) {
         controller: 'AboutController',
         templateUrl: 'js/about/about.html'
     });
-
 });
 
-app.controller('AboutController', function ($scope, FullstackPics) {
+app.controller('AboutController', function ($scope) {
 
-    // Images of beautiful Fullstack people.
-    $scope.images = _.shuffle(FullstackPics);
+    // // Images of beautiful Fullstack people.
+    // $scope.images = _.shuffle(FullstackPics);
 
 });
