@@ -33,12 +33,28 @@ var seedUsers = function () {
             firstName: 'Testing',
             lastName: 'Sucks',
             email: 'testing@fsa.com',
+            primaryAddress: [{
+                line1: '123 fullstack',
+                // line2: '',
+                city: 'New York',
+                state: 'NY',
+                zip: '42424',
+                phone: '555-555-5555'
+            }],
             password: 'password'
         },
         {
             firstName: 'Angular',
             lastName: 'is great',
             email: 'obama@gmail.com',
+            primaryAddress: [{
+                line1: '123 fullstack',
+                // line2: '',
+                city: 'New York',
+                state: 'NY',
+                zip: '42424',
+                phone: '555-555-5555'
+            }],
             password: 'potus'
         },
         {
@@ -46,6 +62,14 @@ var seedUsers = function () {
             lastName: 'Bernstein',
             email: 'admin@beardmeup.com',
             password: 'password',
+            primaryAddress: [{
+                line1: '123 fullstack',
+                // line2: '',
+                city: 'New York',
+                state: 'NY',
+                zip: '42424',
+                phone: '555-555-5555'
+            }],
             role: 'siteAdmin'
         }
     ];

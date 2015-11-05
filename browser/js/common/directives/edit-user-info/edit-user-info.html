@@ -1,0 +1,35 @@
+<form ng-submit="updateInfo(theUser)">
+	<!-- 
+	First Name
+	Last Name
+	E-mail
+	Password
+	Contact Info
+	-->
+	<div>
+		<p>First Name:</p>
+		<p contenteditable ng-model="theUser.firstName"></p>
+	</div>
+
+	<div>
+		<p>Last Name:</p>
+		<p contenteditable ng-model="theUser.lastName"></p>
+	</div>
+
+	<div>
+		<p>E-mail:</p>
+		<p contenteditable ng-model="theUser.email"></p>
+	</div>
+
+	<div>
+		<p>Contact Info:</p>
+		<p contenteditable ng-model="theUser.primaryAddress[0].line1"></p>
+		<p contenteditable ng-model="theUser.primaryAddress[0].line2"></p>
+		<p contenteditable ng-model="theUser.primaryAddress[0].city"></p>
+		<p contenteditable ng-model="theUser.primaryAddress[0].state"></p>
+		<p contenteditable ng-model="theUser.primaryAddress[0].zip"></p>
+		<p contenteditable ng-model="theUser.primaryAddress[0].phone"></p>
+	</div>
+	<button type="submit">Save All Changes</button>
+	<button ng-click="restore()">Cancel</button>
+</form>
