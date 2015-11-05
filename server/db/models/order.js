@@ -16,16 +16,20 @@ var schema = new mongoose.Schema({
 	cart: {type: [cartItem], validate: validators.isLength(1)},
 	//store: { type: Schema.Types.ObjectId, ref: 'Store', required: true},
 	datePlaced: {type: Date, default: Date.now},
+	status: {type: String, required: true, enum: ['unfulfilled', 'fulfilled', 'overdue']},
 	deliveryAddress: [addressSchema]
 });
 
-schema.methods.getTotal = function(){
+var getTotal = function(){
 	var total = 0;
 	this.cart.forEach(function(cartItem){
 		total += cartItem.qty * cartItem.price
 	});
+	console.log("returning total", total);
 	return total;
 }
+
+schema.virtual("orderTotal").get(getTotal);
 
 mongoose.model('Order', schema);
 module.exports = cartItem;
