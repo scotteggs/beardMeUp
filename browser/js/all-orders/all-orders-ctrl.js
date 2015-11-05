@@ -10,7 +10,6 @@ app.controller('AllOrdersCtrl', function($scope, allOrders){
 		if($scope.orderFilter === 'all') return true;
 		return false;
 	}
-	console.log("allOrders is ", $scope.allOrders)
 	$scope.pendingCount = allOrders.filter(function(order){
 		return order.status.toLowerCase() !== "fulfilled";
 	}).length;

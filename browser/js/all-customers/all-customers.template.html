@@ -1,0 +1,21 @@
+<div id = "all-customers">
+	<table class = "center">
+		<tr>
+				<th><a ng-click="sortType = 'index'; sortReverse=!sortReverse">NAME</a></th>
+				<th><a ng-click="sortType = 'email'; sortReverse=!sortReverse">EMAIL</a></th>
+				<th><a ng-click="sortType = 'location'; sortReverse=!sortReverse">LOCATION</a></th>
+				<th><a ng-click="sortType = 'numOrders'; sortReverse=!sortReverse"># ORDERS</a></th>
+				<th><a ng-click="sortType = 'orderTotal'; sortReverse=!sortReverse">TOTAL SPENT</a></th>
+				<th></th>
+		</tr>
+
+		<tr ng-repeat = "(index, customer) in allCustomers | orderBy:sortType:sortReverse">
+			<td class = "col-xs-3">{{customer.firstName + " " + customer.lastName}}</td>
+			<td class = "col-xs-2">{{customer.email}}</td>
+			<td class = "col-xs-2">{{customer.address.city || "New York, NY"}}</td>
+			<td class = "col-xs-2">{{numOrders[customer._id.toString()] || 0}}</td>
+			<td class = "col-xs-1">{{totalSpent[customer._id.toString()]/100 || 0 | currency}}</td>
+			<td class = "col-xs-2"><button>View Customer</button></td>
+		</tr>
+	</table>
+</div>
