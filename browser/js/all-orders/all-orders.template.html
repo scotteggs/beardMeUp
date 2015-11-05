@@ -1,0 +1,20 @@
+<table>
+	<tr>
+		<th>ORDER</th>
+		<th>DATE PLACED</th>
+		<th>CUSTOMER</th>
+		<th>STATUS</th>
+		<th>TOTAL</th>
+		<th>VIEW ORDER</th>
+
+	</tr>
+
+	<tr ng-repeat = "(index, order) in allOrders">
+		<td>1000{{index}}</td>
+		<td>{{order.datePlaced | date: 'mediumDate'}}</td>
+		<td>{{order.user.firstName}}</td>
+		<td>{{order.status | uppercase}}</td>
+		<td>{{order.getTotal()}}</td>
+		<td><button>View Order</button></td>
+	</tr>
+</table>

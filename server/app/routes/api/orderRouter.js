@@ -6,7 +6,7 @@ var Order = mongoose.model('Order')
 
 router.get('/', function (req, res, next) {
   if(req.user.role === 'siteAdmin'){
-  	Order.find()
+  	Order.find().populate('user').exec()
   	.then(function(orders) {
   		res.json(orders)
   	})

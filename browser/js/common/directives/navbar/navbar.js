@@ -13,11 +13,19 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                 { label: 'Members Only', state: 'membersOnly', auth: true }
             ];
 
+            scope.adminItems = [
+                { label: 'Orders', state: 'allOrders' }
+            ];
+
             scope.user = null;
 
             scope.isLoggedIn = function () {
                 return AuthService.isAuthenticated();
             };
+
+            scope.isSiteAdmin = function(){
+                return scope.user && scope.user.role === 'siteAdmin';
+            }
 
             scope.logout = function () {
                 AuthService.logout().then(function () {
