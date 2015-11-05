@@ -20,13 +20,16 @@ var schema = new mongoose.Schema({
 	deliveryAddress: [addressSchema]
 });
 
-schema.methods.getTotal = function(){
+var getTotal = function(){
 	var total = 0;
 	this.cart.forEach(function(cartItem){
 		total += cartItem.qty * cartItem.price
 	});
+	console.log("returning total", total);
 	return total;
 }
+
+schema.virtual("orderTotal").get(getTotal);
 
 mongoose.model('Order', schema);
 module.exports = cartItem;
