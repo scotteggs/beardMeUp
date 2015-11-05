@@ -23,19 +23,27 @@ var chalk = require('chalk');
 var connectToDb = require('./server/db');
 var User = Promise.promisifyAll(mongoose.model('User'));
 var Product = Promise.promisifyAll(mongoose.model('Product'));
+var Order = Promise.promisifyAll(mongoose.model('Order'));
 
 var seedUsers = function () {
 
     var users = [
         {
-            lastName: 'Ng',
+
+            firstName: 'Testing',
+            lastName: 'Sucks',
+            email: 'testing@fsa.com',
             password: 'password'
         },
         {
+            firstName: 'Angular',
+            lastName: 'is great',
             email: 'obama@gmail.com',
             password: 'potus'
         },
         {
+            firstName: 'Omri',
+            lastName: 'Bernstein',
             email: 'admin@beardmeup.com',
             password: 'password',
             role: 'siteAdmin'
@@ -43,6 +51,94 @@ var seedUsers = function () {
     ];
 
     return User.createAsync(users);
+
+};
+
+var seedOrders = function (users, products) {
+    var firstUser = users[0];
+    var firstProduct = products[0];
+
+    var secondUser = users[0];
+    var secondProduct = products[0];
+
+    var orders = [
+        {
+            user: firstUser._id,
+            cart: [
+                {
+                    qty: 3,
+                    product:firstProduct._id,
+                    color: 'green',
+                    price: 1000
+
+                },
+                {
+                    qty: 3,
+                    product:secondProduct._id,
+                    color: 'blue',
+                    price: 32
+                },
+                {
+                    qty: 3,
+                    product:secondProduct._id,
+                    color: 'green',
+                    price: 1000
+                }
+            ],
+            status: 'fulfilled'
+        },
+        {
+            user: secondUser._id,
+            cart: [
+                {
+                    qty: 3,
+                    product:firstProduct._id,
+                    color: 'blue',
+                    price: 32
+                },
+                {
+                    qty: 3,
+                    product:secondProduct._id,
+                    color: 'green',
+                    price: 1000
+                },
+                {
+                    qty: 2,
+                    product:secondProduct._id,
+                    color: 'yellow',
+                    price: 115
+                }
+            ],
+            status: 'unfulfilled'
+        },
+        {
+            user: secondUser._id,
+            cart: [
+                {
+                    qty: 3,
+                    product:firstProduct._id,
+                    color: 'blue',
+                    price: 32
+                },
+                {
+                    qty: 3,
+                    product:secondProduct._id,
+                    color: 'green',
+                    price: 1000
+                },
+                {
+                    qty: 2,
+                    product:secondProduct._id,
+                    color: 'yellow',
+                    price: 115
+                }
+            ],
+            status: 'overdue'
+        }
+
+    ];
+
+    return Order.createAsync(orders);
 
 };
 
@@ -129,10 +225,14 @@ var seedProducts = function () {
 
 connectToDb.then(function () {
     mongoose.connection.db.dropDatabase(function() {
-        Promise.all(seedUsers(), seedProducts())
+        Promise.all([seedUsers(),seedProducts()])
         .then(function (arr) {
+            var users = arr[0];
+            var products = arr[1];
+            return seedOrders(users, products)
+        }).then(function(){
             console.log(chalk.green('Seed successful!'));
-            process.kill(0);
+            process.kill(0);  
         }).catch(function (err) {
             console.error(err);
             process.kill(1);

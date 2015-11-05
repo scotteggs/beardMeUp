@@ -4,11 +4,19 @@
             <fullstack-logo></fullstack-logo>
         </div>
         <ul class="nav navbar-nav">
+            <!-- Non-admin -->
             <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
             </li>
+
+            <!-- Admin console -->
+            <li ng-repeat = "item in adminItems" ng-show = "isSiteAdmin()">
+                <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
+            </li> 
         </ul>
+
         <button ng-show="!user" ui-sref="login" class="btn login-button">User Login</button>
+
         <div ng-show="user" class="welcome">
             <span>Welcome, {{ user.firstName }}!</span>
             <a ng-click="logout()">Logout</a>

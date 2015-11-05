@@ -1,0 +1,34 @@
+#all-orders{
+	table{
+		margin:auto;
+		tr{
+			th{
+				text-align: center;
+				padding-bottom: 1em;
+				border-bottom: .2em solid black;
+			}
+			td{
+				border-bottom: .1em solid black;
+				padding-bottom:5px;
+				padding-top:5px;
+			}
+			.unfulfilled{
+				color:blue;
+				font-weight: bold;
+			}
+			.overdue{
+				color:red;
+				font-weight: bold;
+			}
+
+		}
+	}
+	text-align: center;
+
+	.order-head {
+		margin: auto;
+		text-align: center;
+		margin: 5em;
+	}
+}
+

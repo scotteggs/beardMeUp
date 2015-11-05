@@ -1,0 +1,27 @@
+
+
+<div id = "all-orders">
+	<div class="order-head">
+		<h1>{{pendingCount}} ORDERS</h1>
+		Need Your Attention
+	</div>
+	<table class = "center">
+		<tr>
+				<th>ORDER</th>
+				<th>DATE PLACED</th>
+				<th>CUSTOMER</th>
+				<th>STATUS</th>
+				<th>TOTAL</th>
+				<th>VIEW ORDER</th>
+		</tr>
+
+		<tr ng-repeat = "(index, order) in allOrders">
+			<td class = "col-xs-1" ng-click="sortType = 'index'">1000{{index}}</td>
+			<td class = "col-xs-2">{{order.datePlaced | date: 'mediumDate'}}</td>
+			<td class = "col-xs-3">{{order.user.firstName + ' ' + order.user.lastName}}</td>
+			<td class = "col-xs-2 {{order.status}}">{{order.status | uppercase}}</td>
+			<td class = "col-xs-1">{{order.orderTotal/100 | currency}}</td>
+			<td class = "col-xs-3"><button>View Order</button></td>
+		</tr>
+	</table>
+</div>

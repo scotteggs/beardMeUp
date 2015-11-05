@@ -6,9 +6,11 @@ var Order = mongoose.model('Order')
 
 router.get('/', function (req, res, next) {
   if(req.user.role === 'siteAdmin'){
-  	Order.find()
+  	Order.find().populate('user').exec()
   	.then(function(orders) {
-  		res.json(orders)
+      res.json(orders.map(function(order){
+        return order.toObject({virtuals: true});
+      }))
   	})
   	.then(null,next)
   } else {
@@ -28,7 +30,7 @@ router.param('orderId', function(req, res, next, id) {
 
 router.get('/:orderId', function (req, res, next) {
 	if (hasAccess(req.order, req)) {
-    res.json(req.order);
+    res.json(req.order.toObject({virtuals: true}));
   } else {
     res.status(403).end();
   }
