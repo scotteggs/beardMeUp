@@ -16,5 +16,14 @@ app.factory('OrdersFactory', function($http){
 			return $http.get('/api/order')
 			.then(getData)
 		}
+		getOrdersByUser: function(userId) {
+			return $http.get('/api/order')
+			.then(getData)
+			.then(function (orders) {
+				return orders.filter(function (order) {
+					return order.user === userIdgit
+				})
+			})
+		}
 	}
 })
