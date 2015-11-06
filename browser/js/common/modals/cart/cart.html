@@ -18,4 +18,11 @@
 			{{cartItem.price | currency}}
 		</div>
 	</div>
+
+	<div>
+		Subtotal: {{cartTotal()| currency}}
+	</div>
+
+
+	<button ng-click = "checkout()">Checkout</button>
 </div>

@@ -36,6 +36,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
                 });
             };
 
+
             scope.open = function() {
                 var modalInstance = $uibModal.open({
                   animation: true,
