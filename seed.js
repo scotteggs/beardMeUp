@@ -147,73 +147,41 @@ var seedProducts = function () {
     var products = [
         {
             name: 'fancy beard',
-            sku: 'fbsku',
-            desc: 'wear this beard to a fancy party. lorem ipsum blah blah blah, mike is really cool and this is long enough to be realistic now maybe? or maybe now. ok how about now. this is probably fine.',
+            description: 'wear this beard to a fancy party. lorem ipsum blah blah blah, mike is really cool and this is long enough to be realistic now maybe? or maybe now. ok how about now. this is probably fine.',
             price: 10000,
+            stock: 23,
             type: 'Beard',
-            colorOptions: [{
-                name: 'blue',
-                HSB: [240,1,1],
-                stock: 3
-            }, {
-                name: 'red',
-                HSB: [0,1,1],
-                stock: 4
-            }],
+            colors: ['brown', 'dark brown', 'red', 'green', 'blue', 'gray'],
             tags: ['fancy', 'beard'],
             imageUrl: 'http://www.fillmurray.com/200/200'
         },
         {
             name: 'casual beard',
-            sku: 'cbsku',
-            desc: 'wear this beard to a casual party. lorem ipsum blah blah blah, mike is really cool and this is long enough to be realistic now maybe? or maybe now. ok how about now. this is probably fine.',
+            description: 'wear this beard to a casual party. lorem ipsum blah blah blah, mike is really cool and this is long enough to be realistic now maybe? or maybe now. ok how about now. this is probably fine.',
             price: 1000,
             type: 'Beard',
-            colorOptions: [{
-                name: 'brown',
-                HSB: [100,0.5,1],
-                stock: 3
-            }, {
-                name: 'red',
-                HSB: [0,1,1],
-                stock: 4
-            }],
+            stock: 55,
+            colors: ['black', 'blond', 'brown', 'dark brown'],
             tags: ['casual', 'beard'],
             imageUrl: 'http://www.fillmurray.com/201/201'
         },
         {
             name: 'pirate mustache',
-            sku: 'pmsku',
-            desc: 'AAAAAARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR',
+            description: 'AAAAAARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR',
             price: 10000,
+            stock: 39,
+            colors: [ 'black', 'brown', 'dark brown', 'blue', 'gray'],
             type: 'Mustache',
-            colorOptions: [{
-                name: 'blue',
-                HSB: [240,1,1],
-                stock: 3
-            }, {
-                name: 'black',
-                HSB: [0,1,0],
-                stock: 100
-            }],
             tags: ['pirate', 'parrot'],
             imageUrl: 'http://www.fillmurray.com/202/202'
         },
         {
             name: 'sexy stubble',
-            sku: 'sssku',
-            desc: 'yeah you know you like it. is this long enough yet? HOW ABOUT NOW!?!?!?! i like pizza i like pizza i like pizza yeah yeah yeah heh yeh hey hey',
+            description: 'yeah you know you like it. is this long enough yet? HOW ABOUT NOW!?!?!?! i like pizza i like pizza i like pizza yeah yeah yeah heh yeh hey hey',
             price: 10000,
+            stock: 99,
+            colors: [ 'brown', 'dark brown', 'red'],
             type: 'Mustache',
-            colorOptions: [{
-                name: 'blonde',
-                HSB: [240,1,1],
-                stock: 0
-            }, {
-                name: 'black',
-                HSB: [0,1,0],
-                stock: 100
-            }],
             tags: ['sexy', 'stubble'],
             imageUrl: 'http://www.fillmurray.com/199/199'
         }

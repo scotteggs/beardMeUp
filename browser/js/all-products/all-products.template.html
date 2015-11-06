@@ -10,15 +10,23 @@
 				<th><a ng-click="sortType = 'sku'; sortReverse=!sortReverse">SKU</a></th>
 				<th><a ng-click="sortType = 'name'; sortReverse=!sortReverse">NAME</a></th>
 				<th><a ng-click="sortType = 'type'; sortReverse=!sortReverse">TYPE</a></th>
+				<th><a ng-click="sortType = 'stock'; sortReverse=!sortReverse">STOCK</a></th>
 				<th><a ng-click="sortType = 'colors'; sortReverse=!sortReverse">COLORS</a></th>
 				<th></th>
 		</tr>
 
 		<tr ng-repeat = "(index, product) in allProducts | orderBy:sortType:sortReverse" ng-show = "product.type.toLowerCase() === orderFilter || orderFilter === 'all'">
-			<td class = "col-xs-3"><button>{{product._id}}</button></td>
+			<td class = "col-xs-2"><button>{{product._id}}</button></td>
 			<td class = "col-xs-4">{{product.name}}</td>
 			<td class = "col-xs-2">{{product.type}}</td>
-			<td class = "col-xs-3">Red, Green, Blue</td>
+			<td class = "col-xs-1">{{product.stock}}</td>
+			<td class = "col-xs-3">{{ product.colors.join(', ') }}</td>
 		</tr>
 	</table>
+	<br>
+	<button ng-click="addProduct = true"> ADD A PRODUCT </button>
+	<br>
+	<br>
+	<add-product ng-show="addProduct"></add-product>
+	{{addProduct}}
 </div>
