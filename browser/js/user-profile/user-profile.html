@@ -1,9 +1,11 @@
 <section id="user-profile">
 	<div>
-		<h3>Hello {{user.firstName}} {{user.lastName}}</h3>
+		<h3>Hello, {{user.firstName}} {{user.lastName}}</h3>
 		<h4>Welcome to your user page.</h4>
 	</div>
-	<div>your orders</div>
-	<div>modify your info</div>
+	<button ng-click="toggleOrderView()">your orders</button>
+	<!-- <orders-view ng-show="showOrders">toggled</orders-view> -->
+	<button ng-click="toggleEditInfoView()">modify your info</button>
+	<edit-user-info the-user="user" ng-show="showEditInfo"></edit-user-info>
 
 </section>
