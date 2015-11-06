@@ -1,27 +1,34 @@
 
-
+<!-- {{totalSpent}} -->
 <div id = "all-orders">
 	<div class="order-head">
 		<h1>{{pendingCount}} ORDERS</h1>
 		Need Your Attention
 	</div>
+	<div class = "btn-group filter-buttons">
+		<button ng-click="orderFilter = 'all'" class="btn btn-primary">All</button>
+  		<button ng-click="orderFilter = 'unfulfilled'" type="button" class="btn btn-primary">Pending</button>
+		<button ng-click="orderFilter = 'fulfilled'" type="button" class="btn btn-primary">Finished</button>
+	</div>
+
 	<table class = "center">
 		<tr>
-				<th>ORDER</th>
-				<th>DATE PLACED</th>
-				<th>CUSTOMER</th>
-				<th>STATUS</th>
-				<th>TOTAL</th>
-				<th>VIEW ORDER</th>
+				<th><a ng-click="sortType = 'index'; sortReverse=!sortReverse">ORDER</a></th>
+				<th><a ng-click="sortType = 'datePlaced; sortReverse=!sortReverse'">DATE PLACED</a></th>
+				<th><a ng-click="sortType = 'name'; sortReverse=!sortReverse">CUSTOMER</a></th>
+				<th><a ng-click="sortType = 'status'; sortReverse=!sortReverse">STATUS</a></th>
+				<th><a ng-click="sortType = 'orderTotal'; sortReverse=!sortReverse">TOTAL</a></th>
+				<th></th>
 		</tr>
 
-		<tr ng-repeat = "(index, order) in allOrders">
-			<td class = "col-xs-1" ng-click="sortType = 'index'">1000{{index}}</td>
+		<tr ng-repeat = "(index, order) in allOrders | orderBy:sortType:sortReverse"
+		ng-show = "correctOrder(order)">
+			<td class = "col-xs-1">1000{{allOrders.indexOf(order)}}</td>
 			<td class = "col-xs-2">{{order.datePlaced | date: 'mediumDate'}}</td>
 			<td class = "col-xs-3">{{order.user.firstName + ' ' + order.user.lastName}}</td>
 			<td class = "col-xs-2 {{order.status}}">{{order.status | uppercase}}</td>
 			<td class = "col-xs-1">{{order.orderTotal/100 | currency}}</td>
-			<td class = "col-xs-3"><button>View Order</button></td>
+			<td class = "col-xs-3"><button class = "red-background">View Order</button></td>
 		</tr>
 	</table>
 </div>
