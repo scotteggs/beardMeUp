@@ -30,12 +30,13 @@ app.factory('ProductFactory', function ($http) {
 		}
 		newProduct.colors = colors;
 		delete newProduct.theColors;
-		console.log(newProduct)
+		newProduct.price = (newProduct.price)/100
+		newProduct.tags = newProduct.tags.split(", ")
 		return $http.post('/api/product', newProduct)
-		.then(function(response){
-			return res.status(201).json(response);
-		})
-
+		// .then(function(response){
+		// 	console.log("response****************", response)
+		// 	return res.json(response);
+		// })
 	}
 
 	return ProductFactory;

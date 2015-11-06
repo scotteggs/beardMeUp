@@ -1,15 +1,23 @@
 <form class="form-horizontal addProduct" novalidate name="newProductForm" ng-submit="addProduct()">
-  NAME <input type="text" ng-model="newProduct.name" required><br>
+  NAME <input type="text" name="name" ng-model="newProduct.name" required><br>
+    
+    <div ng-messages="newProductForm.name.$error" ng-hide="newProductForm.$pristine" role="alert">
+      <div ng-message="required" class="alert alert-warning">Please enter a name</div>
+    </div>
+  
+
+
+
   DESCRIPTION <input type="text" ng-model="newProduct.description" required><br>
   PRICE <input type="number" ng-model="newProduct.price" required>USD<br>
-  TYPE <input type="radio" ng-model="newProduct.type" value="Beard" required>beard <input type="radio" ng-model="newProduct.type" value="Moustache">moustache<br>
-  STOCK <input type="number"><br>
+  TYPE <input type="radio" ng-model="newProduct.type" value="Beard" required>beard <input type="radio" ng-model="newProduct.type" value="Mustache">mustache<br>
+  STOCK <input ng-model="newProduct.stock" type="number"><br>
   IMAGE URL <input type="text" ng-model="newProduct.imageUrl" required><br>
   THUMBNAIL URL <input type="text" ng-model="newProduct.thumbnailUrl"><br>
   CUTOUT URL <input type="text" ng-model="newProduct.cutoutUrl"><br>
   ACTIVE <input type="checkbox" ng-model="newProduct.active" value="true"><br>
   COLORS <span ng-repeat="color in colors"><input type="checkbox" ng-model="newProduct.theColors[color]" value="true">{{color}} </span><br>
-  TAGS <input type="text" ng-model="tags"><br>
+  TAGS <input type="text" ng-model="newProduct.tags"><br>
   <br><br>
-  <input type="submit"  value="Submit">
+  <button type="submit" ng-disabled="newProductForm.$invalid">Create Product</button>
 </form> 
