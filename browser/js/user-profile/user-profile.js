@@ -13,5 +13,15 @@ app.config(function ($stateProvider) {
 
 app.controller('UserProfile', function ($scope, theUser) {
 		$scope.user = theUser;
+		$scope.showOrders = false;
 
+		$scope.toggleOrderView = function() {
+			$scope.showOrders = !$scope.showOrders;
+		}
+
+		$scope.showEditInfo = false;
+
+		$scope.toggleEditInfoView = function() {
+			$scope.showEditInfo = !$scope.showEditInfo;
+		}
 })

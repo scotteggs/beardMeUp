@@ -21,12 +21,12 @@ app.factory('UserFactory', function ($http) {
 		})
 	}
 
-	UserFactory.fetchLoggedIn = function () {
-		return $http.get('/api/user/loggedin')
+	UserFactory.updateOne = function(id, params) {
+		return $http.put('/api/user/' + id, params)
 		.then(function (response) {
 			return response.data;
 		})
-		.catch(function (err) {
+		.catch(function(err) {
 			console.log(err);
 		})
 	}
