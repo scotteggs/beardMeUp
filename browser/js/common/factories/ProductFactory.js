@@ -30,6 +30,7 @@ app.factory('ProductFactory', function ($http) {
 		}
 		newProduct.colors = colors;
 		delete newProduct.theColors;
+		console.log(newProduct)
 		return $http.post('/api/product', newProduct)
 		.then(function(response){
 			return res.status(201).json(response);

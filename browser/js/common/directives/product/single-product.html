@@ -1,9 +1,8 @@
-{{colors}}
 <form class="form-horizontal addProduct" novalidate name="newProductForm" ng-submit="addProduct()">
   NAME <input type="text" ng-model="newProduct.name" required><br>
   DESCRIPTION <input type="text" ng-model="newProduct.description" required><br>
   PRICE <input type="number" ng-model="newProduct.price" required>USD<br>
-  TYPE <input type="radio" ng-model="newProduct.type" value="beard" required>beard <input type="radio" ng-model="newProduct.type" value="moustache">moustache<br>
+  TYPE <input type="radio" ng-model="newProduct.type" value="Beard" required>beard <input type="radio" ng-model="newProduct.type" value="Moustache">moustache<br>
   STOCK <input type="number"><br>
   IMAGE URL <input type="text" ng-model="newProduct.imageUrl" required><br>
   THUMBNAIL URL <input type="text" ng-model="newProduct.thumbnailUrl"><br>
