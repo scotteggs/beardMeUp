@@ -1,9 +1,68 @@
+$darkRed: #9e202b;
+$lightGrey: #eeeded;
+$mediumGrey: #a7a4a2;
+$darkGray: #424341;
+
+#beardMenu{
+
+  margin: auto;
+  width:100%;
+  text-align: center;
+  font-weight: 200;
+  img{
+    margin-top:30px;
+    height: 20rem;
+   -webkit-filter: drop-shadow(20px 5px 5px #222);
+   // filter:         drop-shadow(100px 5px 5px #222); 
+  }
+  ul{
+    padding-top: 2rem;
+    
+  }
+
+  background-color: $darkGray;
+  border-bottom: 1px solid black;
+  box-shadow: 1px 1px 14px -3px black;
+  background-image: url('https://s3.amazonaws.com/beardmeup/espressowood_export.jpg');
+  height: 300px;
+  margin: auto;
+
+  a {
+    color: white;;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 0 1rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    text-decoration: none;
+    &.active {
+      font-weight:bold;
+      color: $mediumGrey;
+    }
+    &:hover {
+      background: none;
+      color: #f31214;
+    }
+    &:focus {
+      background: none;
+    }
+  }
+
+
+
+}
+
 navbar {
 
   display: block;
-  background: white;
+  background-color: $darkGray;
   border-bottom: 1px solid black;
   box-shadow: 1px 1px 14px -3px black;
+  background-image: url('https://s3.amazonaws.com/beardmeup/espressowood_export.jpg');
+  height: 250px;
+  margin: auto;
+
+
 
   .container {
     width: 91%;
@@ -18,15 +77,24 @@ navbar {
   }
 
   a {
-    color: black;
-    font-size: 16px;
+    color: white;;
+    font-size: 1.5rem;
+    text-transform: uppercase;
   }
-
+  li{
+    display:inline;
+  }
+  .myNav{
+    li{
+      display: inline;
+    }
+  }
   .nav > li > a {
     cursor: pointer;
     transition: color 0.2s;
     &.active {
-      color: darken(#f31214, 10%);
+      font-weight:bold;
+      color: $mediumGrey;
     }
     &:hover {
       background: none;
@@ -37,26 +105,26 @@ navbar {
     }
   }
 
-  .login-button {
-    float: left;
-    border: 1px solid black;
-    margin-top: 10px;
-    background: none;
-    outline: none !important;
-  }
+  // .login-button {
+  //   float: left;
+  //   border: 1px solid black;
+  //   margin-top: 10px;
+  //   background: none;
+  //   outline: none !important;
+  // }
 
-  .welcome {
-    float: right;
-    margin-top: 12px;
-    span {
-      color: black;
-      font-size: 16px;
-      margin-right: 5px;
-    }
-    a {
-      color: #f30046;
-      cursor: pointer;
-    }
-  }
+  // .welcome {
+  //   float: right;
+  //   margin-top: 12px;
+  //   span {
+  //     color: black;
+  //     font-size: 16px;
+  //     margin-right: 5px;
+  //   }
+  //   a {
+  //     color: #f30046;
+  //     cursor: pointer;
+  //   }
+  // }
 
 }
