@@ -1,19 +1,16 @@
 {{colors}}
-<form class="form-horizontal addProduct" novalidate name="newProductForm" ng-submit="add-product()">
-  NAME <input type="text" ng-model="name" required><br>
-  DESCRIPTION <input type="text" ng-model="description" required><br>
-  PRICE <input type="number" ng-model="price" required>USD<br>
-  TYPE <input type="radio" ng-model="type" value="beard" required>beard <input type="radio" ng-model="type" value="moustache">moustache<br>
+<form class="form-horizontal addProduct" novalidate name="newProductForm" ng-submit="addProduct()">
+  NAME <input type="text" ng-model="newProduct.name" required><br>
+  DESCRIPTION <input type="text" ng-model="newProduct.description" required><br>
+  PRICE <input type="number" ng-model="newProduct.price" required>USD<br>
+  TYPE <input type="radio" ng-model="newProduct.type" value="beard" required>beard <input type="radio" ng-model="newProduct.type" value="moustache">moustache<br>
   STOCK <input type="number"><br>
-  IMAGE URL <input type="text" ng-model="imageUrl" required><br>
-  THUMBNAIL URL <input type="text" ng-model="thumbnailUrl"><br>
-  CUTOUT URL <input type="text" ng-model="cutoutUrl"><br>
-  ACTIVE <input type="checkbox" ng-model="active" value="true"><br>
-  COLORS <span ng-repeat="color in colors"><input type="checkbox" ng-model="theColors[color]" value="true">{{color}} </span><br>
+  IMAGE URL <input type="text" ng-model="newProduct.imageUrl" required><br>
+  THUMBNAIL URL <input type="text" ng-model="newProduct.thumbnailUrl"><br>
+  CUTOUT URL <input type="text" ng-model="newProduct.cutoutUrl"><br>
+  ACTIVE <input type="checkbox" ng-model="newProduct.active" value="true"><br>
+  COLORS <span ng-repeat="color in colors"><input type="checkbox" ng-model="newProduct.theColors[color]" value="true">{{color}} </span><br>
   TAGS <input type="text" ng-model="tags"><br>
-
-  HELLO! {{theColors}}
-
   <br><br>
-  <input type="submit" ng-disabled="newProductForm.$invalid" value="Submit">
+  <input type="submit"  value="Submit">
 </form> 

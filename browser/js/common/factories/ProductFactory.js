@@ -21,8 +21,16 @@ app.factory('ProductFactory', function ($http) {
 		})
 	}
 
-	ProductFactory.addProduct = function(data) {
-		return $http.post('/api/product', data)
+	ProductFactory.addProduct = function(newProduct) {
+		var colors = [];
+		for(var color in newProduct.theColors) {
+			if(newProduct.theColors[color]==true) {
+				colors.push(color)
+			}
+		}
+		newProduct.colors = colors;
+		delete newProduct.theColors;
+		return $http.post('/api/product', newProduct)
 		.then(function(response){
 			return res.status(201).json(response);
 		})

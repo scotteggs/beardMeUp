@@ -6,11 +6,10 @@ app.directive('addProduct', function(ProductFactory){
 		// 	colors: "=",
 		// },
 		link: function(scope){
-			scope.colors = ['black', 'blond', 'brown', 'dark brown', 'red', 'green', 'blue', 'gray'],
-			scope.theColors = {},
-			scope.addProduct = function(data){
-
-				ProductFactory.addProduct(data);
+			scope.colors = ['black', 'blond', 'brown', 'dark brown', 'red', 'green', 'blue', 'gray'];
+			scope.newProduct = {};
+			scope.addProduct = function(){
+				ProductFactory.addProduct(scope.newProduct);
 			}
 		}
 	}
