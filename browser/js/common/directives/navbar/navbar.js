@@ -48,6 +48,9 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
                       .then(function(user) {
                         return UserFactory.getCart(user._id);
                       })
+                    },
+                    theUser: function(AuthService){
+                        return AuthService.getLoggedInUser();
                     }
                   }
                 })
