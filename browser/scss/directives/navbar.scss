@@ -28,7 +28,7 @@ $darkGray: #424341;
   margin: auto;
 
   a {
-    color: white;;
+    color: white;
     font-size: 1.5rem;
     text-transform: uppercase;
     margin: 0 1rem;
@@ -47,6 +47,11 @@ $darkGray: #424341;
       background: none;
     }
   }
+  .glyphicon {
+      color: white;
+  }
+
+
 
 
 

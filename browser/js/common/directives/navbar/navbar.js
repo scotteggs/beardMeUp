@@ -1,4 +1,4 @@
-app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) {
+app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, $uibModal) {
 
     return {
         restrict: 'E',
@@ -12,7 +12,6 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                 { label: 'About', state: 'about' },
                 { label: 'Contact', state: 'contact' },
                 { label: 'My Profile', state: 'userProfile', auth: true }
-
             ];
 
             scope.adminItems = [
@@ -35,6 +34,23 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                 AuthService.logout().then(function () {
                    $state.go('home');
                 });
+            };
+
+            scope.open = function() {
+                var modalInstance = $uibModal.open({
+                  animation: true,
+                  templateUrl: '/js/common/modals/cart/cart.html',
+                  controller: 'CartCtrl',
+                  size: 'lg',
+                  resolve: {
+                    theCart: function (UserFactory, AuthService) {
+                      return AuthService.getLoggedInUser()
+                      .then(function(user) {
+                        return UserFactory.getCart(user._id);
+                      })
+                    }
+                  }
+                })
             };
 
             var setUser = function () {
