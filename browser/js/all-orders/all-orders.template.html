@@ -1,5 +1,5 @@
 
-
+<!-- {{totalSpent}} -->
 <div id = "all-orders">
 	<div class="order-head">
 		<h1>{{pendingCount}} ORDERS</h1>
@@ -28,7 +28,7 @@
 			<td class = "col-xs-3">{{order.user.firstName + ' ' + order.user.lastName}}</td>
 			<td class = "col-xs-2 {{order.status}}">{{order.status | uppercase}}</td>
 			<td class = "col-xs-1">{{order.orderTotal/100 | currency}}</td>
-			<td class = "col-xs-3"><button>View Order</button></td>
+			<td class = "col-xs-3"><button class = "red-background">View Order</button></td>
 		</tr>
 	</table>
 </div>
