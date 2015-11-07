@@ -1,24 +1,30 @@
 app.factory('ProductFactory', function ($http) {
 	var ProductFactory = {};
 
+	function getData(response){
+		return response.data;
+	}
+	function logError(err){
+		console.error(err);
+	}
+
+	ProductFactory.updateProduct = function(product){
+		return $http.put('/api/product/' + product._id)
+		.then(getData)
+		.catch(logError)
+	}
+
+
 	ProductFactory.fetchAll = function () {
 		return $http.get('/api/product/')
-		.then(function (response) {
-			return response.data;
-		})
-		.catch(function(err) {
-			console.log(err);
-		})
+		.then(getData)
+		.catch(logError)
 	}
 
 	ProductFactory.fetchOne = function(id) {
 		return $http.get('/api/product/' + id)
-		.then(function (response) {
-			return response.data;
-		})
-		.catch(function(err) {
-			console.log(err);
-		})
+		.then(getData)
+		.catch(logError)
 	}
 
 	ProductFactory.fetchReviews = function(id) {
@@ -52,10 +58,6 @@ app.factory('ProductFactory', function ($http) {
 		newProduct.price = (newProduct.price)*100
 		newProduct.tags = newProduct.tags.split(", ")
 		return $http.post('/api/product', newProduct)
-		// .then(function(response){
-		// 	console.log("response****************", response)
-		// 	return res.json(response);
-		// })
 	}
 
 	ProductFactory.editProduct = function(theProduct) {
