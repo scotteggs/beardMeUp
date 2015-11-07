@@ -138,9 +138,21 @@ $darkGray: #424341;
 
 .add-product-btn{
 	margin-top: 50px;
+	margin-bottom: 50px;
+	font-weight: bold;
+}
+
+.add-product-btn:hover{
+	cursor: pointer;
 }
 
 .filter-buttons{
 	padding: 5px 40px;
 	border: 1px solid white;
+}
+
+.homepage-img{
+	height: 650px;
+	margin-top: -10px;
+	margin-left: -300px;
 }
