@@ -1,13 +1,8 @@
 <form class="form-horizontal addProduct" novalidate name="newProductForm" ng-submit="addProduct()">
-  NAME <input type="text" name="name" ng-model="newProduct.name" required><br>
-    
+  NAME <input value="beard" type="text" name="name" ng-model="newProduct.name" required><br>
     <div ng-messages="newProductForm.name.$error" ng-hide="newProductForm.$pristine" role="alert">
       <div ng-message="required" class="alert alert-warning">Please enter a name</div>
     </div>
-  
-
-
-
   DESCRIPTION <input type="text" ng-model="newProduct.description" required><br>
   PRICE <input type="number" ng-model="newProduct.price" required>USD<br>
   TYPE <input type="radio" ng-model="newProduct.type" value="Beard" required>beard <input type="radio" ng-model="newProduct.type" value="Mustache">mustache<br>

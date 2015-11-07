@@ -16,7 +16,7 @@
 		</tr>
 
 		<tr ng-repeat = "(index, product) in allProducts | orderBy:sortType:sortReverse" ng-show = "product.type.toLowerCase() === orderFilter || orderFilter === 'all'">
-			<td class = "col-xs-2"><button>{{product._id}}</button></td>
+			<td class = "col-xs-2" ng-click="editProduct(product._id)"><button>{{product._id}}</button></td>
 			<td class = "col-xs-4">{{product.name}}</td>
 			<td class = "col-xs-2">{{product.type}}</td>
 			<td class = "col-xs-1">{{product.stock}}</td>
@@ -28,5 +28,10 @@
 	<br>
 	<br>
 	<add-product ng-show="addProduct"></add-product>
-	{{addProduct}}
 </div>
+
+<div>
+	<edit-product>
+</div>
+
+
