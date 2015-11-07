@@ -1,8 +1,10 @@
-<form style="display: block" class="form-horizontal add-product" novalidate name="newProductForm" ng-submit="addProduct()">
+<div class="clearfix modal-contents add-products">
+  <h1 style="margin-top: -20px">Add a Product</h1><br><br>
+  <form class="form-horizontal add-product" novalidate name="newProductForm" ng-submit="addProduct()">
 
     <div class="formitem"><span class="formtitle">NAME</span> <br>
       <input name="name" class="form-control" value="beard" type="text" name="name" ng-model="newProduct.name" required><br>
-      <div ng-messages="newProductForm.name.$error" ng-hide="newProductForm.name.$pristine" role="alert">
+      <div ng-messages="newProductForm.name.$error" ng-hide="!newProductForm.name.$dirty" role="alert">
         <div ng-message="required" class="alert alert-warning">Please enter a name.</div> 
       </div>
     </div>
@@ -47,7 +49,7 @@
     <div class="formitem"><span class="formtitle">COLORS</span><br> 
     <span class="color-checkbox"  ng-repeat="color in colors"><input type="checkbox" ng-model="newProduct.colors[color]" value="true">  {{color}}   </span></div><br>
     
-    <div class="formitem"><span class="formtitle">TAGS</span><input class="form-control tagform" type="text" ng-model="newProduct.tags"></div><br><br><br>
+    <div class="formitem"><span class="formtitle">TAGS </span><input class="form-control tagform" type="text" ng-model="newProduct.tags"></div><br><br><br>
     
     <button type="submit" class="btn bmu-bg-red" ng-disabled="newProductForm.$invalid">Add Product</button>
     <br>
@@ -55,3 +57,4 @@
     <br>
     <br>
   </form> 
+</div>
