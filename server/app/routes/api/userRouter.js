@@ -1,8 +1,11 @@
 'use strict';
 var router = require('express').Router();
 var mongoose = require('mongoose')
+var Promise = require('bluebird')
+var _ = require('lodash');
 
 var User = mongoose.model('User')
+var Product = mongoose.model('Product');
 
 router.get('/', function (req, res, next) {
   if(req.user && req.user.role === 'siteAdmin') {
@@ -24,6 +27,13 @@ router.param('userId', function(req, res, next, id) {
       next()
     })
     .then(null, next)
+})
+
+router.get('/:userId/cart', function (req, res, next) {
+  req.foundUser.populate('cart.product').execPopulate()
+  .then(function(user) {
+    res.send(user.cart)
+  })
 })
 
 router.get('/:userId', function (req, res, next) {
