@@ -28,6 +28,8 @@ app.factory('ProductFactory', function ($http) {
 				colors.push(color)
 			}
 		}
+		newProduct.type = newProduct.beardType; //.type causing error on Angular side, switching from beardType to type for back end
+		delete newProduct.beardType;
 		newProduct.colors = colors;
 		delete newProduct.theColors;
 		newProduct.price = (newProduct.price)/100

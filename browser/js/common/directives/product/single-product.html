@@ -1,16 +1,36 @@
 <form class="form-horizontal addProduct" novalidate name="newProductForm" ng-submit="addProduct()">
-  NAME <input type="text" name="name" ng-model="newProduct.name" required><br>
-    
-    <div ng-messages="newProductForm.name.$error" ng-hide="newProductForm.$pristine" role="alert">
-      <div ng-message="required" class="alert alert-warning">Please enter a name</div>
+  <div>
+    NAME 
+    <input type="text" name="name" ng-model="newProduct.name" required><br>
+    <div ng-messages="newProductForm.name.$error" ng-hide="newProductForm.name.$pristine" role="alert">
+      <div ng-message="required" class="alert alert-warning">
+        Please enter a name
+      </div>
     </div>
-  
-
-
-
-  DESCRIPTION <input type="text" ng-model="newProduct.description" required><br>
-  PRICE <input type="number" ng-model="newProduct.price" required>USD<br>
-  TYPE <input type="radio" ng-model="newProduct.type" value="Beard" required>beard <input type="radio" ng-model="newProduct.type" value="Mustache">mustache<br>
+  </div>
+  <div>
+    DESCRIPTION 
+    <input type="text" name="description" ng-model="newProduct.description" required><br>
+    <div ng-messages="newProductForm.description.$error" ng-hide="newProductForm.description.$pristine" role="alert">
+      <div ng-message="required" class="alert alert-warning">
+        Please enter a description
+      </div>
+    </div>
+  </div>
+  <div>
+    PRICE 
+    <input type="number" name="price" ng-model="newProduct.price" required>USD<br>
+    <div ng-messages="newProductForm.price.$error" ng-hide="newProductForm.price.$pristine" role="alert">
+      <div ng-message="required" class="alert alert-warning">
+        Please enter a price
+      </div>
+    </div>
+  </div>
+  <div >
+    TYPE 
+    <input type="radio" ng-model="newProduct.beardType" value="Beard" required checked />Beard 
+    <input type="radio" ng-model="newProduct.beardType" value="Mustache"/>Mustache<br>
+  </div>
   STOCK <input ng-model="newProduct.stock" type="number"><br>
   IMAGE URL <input type="text" ng-model="newProduct.imageUrl" required><br>
   THUMBNAIL URL <input type="text" ng-model="newProduct.thumbnailUrl"><br>
