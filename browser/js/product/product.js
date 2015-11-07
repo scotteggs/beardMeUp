@@ -35,6 +35,7 @@ app.controller('ProductController', function ($scope, theProduct, theReviews, Pr
             $scope.averageRating = ProductFactory.averageRating($scope.reviews);
             $scope.showReviewForm = false;
             $scope.areReviews = true;
+            $scope.alreadyReviewed = true;
         })
     }
 

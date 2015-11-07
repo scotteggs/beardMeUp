@@ -5,7 +5,10 @@
 	<div>
 		<p>{{product.name}}</p>
 		<p>{{product.price/100 | currency}}</p>
-		<p ng-show="areReviews">{{averageRating}} / 5</p>
+	<div ng-show="areReviews">
+		<p>{{averageRating}} / 5</p>
+		<mustaches num="averageRating"></mustaches>
+	</div>
 	</div>
 		<p>{{product.description}}</p>
 	<div>
