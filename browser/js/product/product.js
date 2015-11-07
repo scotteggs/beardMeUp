@@ -17,14 +17,25 @@ app.config(function ($stateProvider) {
 app.controller('ProductController', function ($scope, theProduct, theReviews, ProductFactory) {
 	$scope.product = theProduct;
     $scope.reviews = theReviews;
-    $scope.averageRating = ProductFactory.averageRating(theReviews);
+    $scope.areReviews = !!$scope.reviews.length;
+    $scope.averageRating = ProductFactory.averageRating($scope.reviews);
     $scope.showReviewForm = false;
+    $scope.alreadyReviewed = false;
     $scope.toggleReviewForm = function() {
         $scope.showReviewForm = !$scope.showReviewForm
     }
     $scope.color;
     $scope.addToCart = function() {
         // CartFactory.add()
+    }
+    $scope.submitReview = function() {
+        ProductFactory.addReview($scope.newReview, theProduct._id)
+        .then(function(review) {
+            $scope.reviews.push(review);
+            $scope.averageRating = ProductFactory.averageRating($scope.reviews);
+            $scope.showReviewForm = false;
+            $scope.areReviews = true;
+        })
     }
 
 })

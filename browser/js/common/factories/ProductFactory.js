@@ -21,7 +21,6 @@ app.factory('ProductFactory', function ($http) {
 		})
 	}
 
-<<<<<<< HEAD
 	ProductFactory.fetchReviews = function(id) {
 		return $http.get('/api/review')
 		.then(function(response) {
@@ -40,7 +39,8 @@ app.factory('ProductFactory', function ($http) {
 			total += reviews[i].rating;
 		}
 		return total/reviews.length;
-=======
+	}
+
 	ProductFactory.addProduct = function(newProduct) {
 		var colors = [];
 		for(var color in newProduct.theColors) {
@@ -59,7 +59,14 @@ app.factory('ProductFactory', function ($http) {
 		// 	console.log("response****************", response)
 		// 	return res.json(response);
 		// })
->>>>>>> master
+	}
+
+	ProductFactory.addReview = function(review, productId) {
+		review.product = productId;
+		return $http.post('/api/review', review)
+		.then(function(response) {
+			return response.data;
+		})
 	}
 
 	return ProductFactory;

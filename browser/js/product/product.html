@@ -5,7 +5,7 @@
 	<div>
 		<p>{{product.name}}</p>
 		<p>{{product.price/100 | currency}}</p>
-		<p>{{averageRating}} / 5</p>
+		<p ng-show="areReviews">{{averageRating}} / 5</p>
 	</div>
 		<p>{{product.description}}</p>
 	<div>
@@ -16,6 +16,7 @@
 		<button ng-click="addToCart()">Add To Cart</button>
 	</div>
 	<h4>Reviews</h4>
+	<p ng-hide="areReviews">There are no reviews... yet</p>
 	<div ng-repeat="review in reviews">
 		{{review.rating}} / 5
 		<p>{{review.content}}</p>
@@ -23,9 +24,16 @@
 		<hr>
 	</div>
 	<div>
-		<button ng-click="toggleReviewForm()">Leave a review</button>
-		<form ng-show="showReviewForm">
-			<input>
+		<button ng-hide="alreadyReviewed" ng-click="toggleReviewForm()">Leave a review</button>
+		<form ng-submit="submitReview()" ng-show="showReviewForm">
+			<div>
+				RATING (1-5)
+				<input type="text" name="rating" ng-model="newReview.rating"><br>
+			</div>
+			<div>
+				<input type="text" name="content" ng-model="newReview.content" placeholder="Review">
+			</div>
+			<button type="submit">Submit</button>
 		</form>
 	</div>
 </div>
