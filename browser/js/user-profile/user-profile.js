@@ -11,7 +11,7 @@ app.config(function ($stateProvider) {
 	});
 });
 
-app.controller('UserProfile', function ($scope, theUser, $uibModal, AuthService) {
+app.controller('UserProfile', function ($scope, theUser, $uibModal, AuthService, OrdersFactory) {
 		$scope.user = theUser;
 		$scope.showOrders = false;
 		$scope.showEditInfo = false;
@@ -25,22 +25,34 @@ app.controller('UserProfile', function ($scope, theUser, $uibModal, AuthService)
 		}
 
 		$scope.openUserInfo = function() {
-			var modalInstance = $uibModal.open({
+			$uibModal.open({
 				animation: true,
 			  templateUrl: '/js/common/modals/edit-user/edit-user.html',
 			  controller: 'EditUserCtrl',
 			  size: 'lg',
 			  resolve: {
-			  //   theCart: function (UserFactory, AuthService) {
-			  //     return AuthService.getLoggedInUser()
-			  //     .then(function(user) {
-			  //       return UserFactory.getCart(user._id);
-			  //     })
-			  //   },
 			    theUser: function(AuthService){
 			        return AuthService.getLoggedInUser();
 			    }
 			  }
 			})
+		};
+		$scope.openUserOrders = function() {
+			$uibModal.open({
+				animation: true,
+			  templateUrl: '/js/common/modals/user-orders/user-orders.html',
+			  controller: 'UserOrdersCtrl',
+			  size: 'lg',
+			  resolve: {
+			    theUser: function(AuthService){
+			      return AuthService.getLoggedInUser();
+			    },
+			    theOrders: function(OrdersFactory, AuthService){
+			    	return AuthService.getLoggedInUser().then( function (user) {
+			    		return OrdersFactory.getOrdersByUser(user.id);
+			    	})
+			    }
+			  }
+			});
 		}
 })
