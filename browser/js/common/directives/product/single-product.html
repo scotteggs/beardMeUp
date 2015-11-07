@@ -31,13 +31,46 @@
     <input type="radio" ng-model="newProduct.beardType" value="Beard" required checked />Beard 
     <input type="radio" ng-model="newProduct.beardType" value="Mustache"/>Mustache<br>
   </div>
-  STOCK <input ng-model="newProduct.stock" type="number"><br>
-  IMAGE URL <input type="text" ng-model="newProduct.imageUrl" required><br>
-  THUMBNAIL URL <input type="text" ng-model="newProduct.thumbnailUrl"><br>
-  CUTOUT URL <input type="text" ng-model="newProduct.cutoutUrl"><br>
-  ACTIVE <input type="checkbox" ng-model="newProduct.active" value="true"><br>
-  COLORS <span ng-repeat="color in colors"><input type="checkbox" ng-model="newProduct.theColors[color]" value="true">{{color}} </span><br>
-  TAGS <input type="text" ng-model="newProduct.tags"><br>
-  <br><br>
-  <button type="submit" ng-disabled="newProductForm.$invalid">Create Product</button>
+  <div>
+    STOCK QTY
+    <input ng-model="newProduct.stock" type="number"><br>
+    <div ng-messages="newProductForm.stock.$error" ng-hide="newProductForm.stock.$pristine" role="alert">
+      <div ng-message="required" class="alert alert-warning">
+        Please enter initial stock levels
+      </div>
+    </div>
+  </div>
+  <div>
+    IMAGE URL 
+    <input type="text" ng-model="newProduct.imageUrl" required><br>
+  </div>
+  <div>
+    THUMBNAIL URL 
+    <input type="text" ng-model="newProduct.thumbnailUrl"><br>
+  </div>
+  <div>
+    CUTOUT URL 
+    <input type="text" ng-model="newProduct.cutoutUrl"><br>
+  </div>
+  <div>
+    ACTIVE 
+    <input type="checkbox" ng-model="newProduct.active" value="true"><br>
+  </div>
+  <div>
+    COLORS 
+    <span ng-repeat="color in colors">
+      <input type="checkbox" ng-model="newProduct.theColors[color]" value="true">
+      {{color}} 
+    </span><br>
+  </div>
+  <div>
+    TAGS 
+    <input type="text" ng-model="newProduct.tags"><br>
+  </div>
+    <br><br>
+  <div>
+    <button type="submit" ng-disabled="newProductForm.$invalid">
+      Create Product
+    </button>
+  </div>
 </form> 
