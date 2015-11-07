@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
 var Review = mongoose.model('Review')
 
 router.get('/', function (req, res, next) {
-	Review.find()
+	Review.find().populate('reviewer')
 	.then(function(reviews) {
 		res.json(reviews)
 	})
@@ -29,6 +29,7 @@ router.get('/:reviewId', function (req, res, next) {
 // @OB/ND auth? also maybe set user to be req.user by default?
 router.post('/', function (req, res, next) {
 	delete req.body._id;
+  req.body.reviewer = req.user;
 	Review.create(req.body)
 	.then(function(newReview){
 		res.status(201).json(newReview);

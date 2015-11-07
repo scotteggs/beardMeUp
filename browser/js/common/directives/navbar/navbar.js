@@ -11,7 +11,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
                 { label: 'Products', state: 'products' },
                 { label: 'About', state: 'about' },
                 { label: 'Contact', state: 'contact' },
-                { label: 'My Profile', state: 'userProfile', auth: true }
+                { label: 'Profile', state: 'userProfile', auth: true }
             ];
 
             scope.adminItems = [

@@ -6,8 +6,8 @@ app.config(function ($stateProvider) {
 	});
 });
 
-app.controller('ContactController', function ($scope) {
-	$scope.submit = function () {
-		//submit function 
-	}
-})
+// app.controller('ContactController', function ($scope) {
+// 	$scope.submit = function () {
+// 		//submit function 
+// 	}
+// })

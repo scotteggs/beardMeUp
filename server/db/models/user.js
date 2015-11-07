@@ -70,6 +70,21 @@ schema.methods.hasRole = function(role){
     return this.role === role;
 }
 
+schema.methods.addToCart = function(cartItem) {
+    var shouldAdd = true;
+    var self = this;
+    this.cart.forEach(function(item, index) {
+        if(item.product.equals(cartItem.product) && item.color === cartItem.color) {
+            self.cart[index].qty++;
+            shouldAdd = false;
+        }
+    })
+    if(shouldAdd) { 
+        this.cart.push(cartItem);
+    }
+    return this.save();
+}
+
 
 schema.pre('save', function (next) {
 

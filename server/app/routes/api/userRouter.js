@@ -44,6 +44,17 @@ router.get('/:userId', function (req, res, next) {
   }
 })
 
+router.post('/:userId/cart', function (req, res, next) {
+  if(hasAccess(req.foundUser, req)) {
+    req.foundUser.addToCart(req.body)
+    .then(function(user) {
+      res.json(user);
+    })
+  } else {
+    res.status(403).end();
+  }
+})
+
 router.post('/', function (req, res, next) {
   if(req.user && req.user.role === 'siteAdmin') {
 	  delete req.body._id;
