@@ -29,7 +29,6 @@ $darkGray: #424341;
 				color:red;
 				font-weight: bold;
 			}
-
 		}
 	}
 	text-align: center;
@@ -45,7 +44,6 @@ $darkGray: #424341;
 	margin-bottom: 50px;
 }
 
-
 .addProduct input {
 	text-align: left !important;
 }
@@ -54,17 +52,38 @@ $darkGray: #424341;
 	top: 50%;
 }
 
-
 #cart{
 	vertical-align: middle;
-	// position:absolute;
-	padding:0 10%;
+	padding:0 15% 10px 15%;
 	text-align:center;
+	border:1px solid $mediumGrey;
+	.cartItems{
+		margin-bottom: 40px;
+	}
+	.cartItem{
+		border-bottom:1px solid $lightGrey;
+		margin-bottom:15px;
+	}
 	.quantity{
-		border: .183rem solid $darkGray;
+		border: .1rem solid $darkGray;
 		border-radius: 5px;
-		// box-sizing:content-box;
-		// padding-right:px;
+	}
+	.total{
+		text-align:right;
+		font-size:2rem;
+		#subtotal{
+			border-bottom:1px solid $lightGrey;
+		}
+	}
+}
+
+#checkout{
+	.billing-item{
+		padding-bottom:30px;
+	}
+	#place-order{
+		text-align:center;
+		margin-top:40px;
 	}
 }
 

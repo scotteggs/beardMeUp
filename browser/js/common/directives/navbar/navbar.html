@@ -20,7 +20,7 @@
             <a ng-show="!user" ui-sref="login">User Login</a>
         </li>
 
-        <li ng-click="open()"><span class="glyphicon glyphicon-shopping-cart"></span> </li>
+        <li ng-click="open()" ng-show = "user"><span class="glyphicon glyphicon-shopping-cart"></span> </li>
         <li ng-show="user" class="welcome">
             <a ng-click="logout()">Logout</a>
         </li>

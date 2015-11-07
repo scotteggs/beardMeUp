@@ -21,6 +21,26 @@ app.factory('ProductFactory', function ($http) {
 		})
 	}
 
+	ProductFactory.fetchReviews = function(id) {
+		return $http.get('/api/review')
+		.then(function(response) {
+			return response.data;
+		})
+		.then(function(reviews) {
+			return reviews.filter(function(review) {
+				return review.product === id;
+			})
+		})
+	}
+
+	ProductFactory.averageRating = function(reviews) {
+		var total = 0;
+		for(var i = 0; i < reviews.length; i++) {
+			total += reviews[i].rating;
+		}
+		return total/reviews.length;
+	}
+
 	ProductFactory.addProduct = function(newProduct) {
 		var colors = [];
 		for(var color in newProduct.colors) {
@@ -55,6 +75,15 @@ app.factory('ProductFactory', function ($http) {
 		// 	console.log("response****************", response)
 		// 	return res.json(response);
 		// })
+	}
+
+
+	ProductFactory.addReview = function(review, productId) {
+		review.product = productId;
+		return $http.post('/api/review', review)
+		.then(function(response) {
+			return response.data;
+		})
 	}
 
 	return ProductFactory;
