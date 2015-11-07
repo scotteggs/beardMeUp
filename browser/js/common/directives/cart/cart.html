@@ -1,0 +1,28 @@
+<div>
+	<h3>Your Cart</h3>
+	<hr>
+
+	<div ng-repeat="(idx, cartItem) in cart" class="row">
+		<div class="col-xs-3">
+			<span ng-click = "remove(cartItem)" class = "glyphicon glyphicon-remove"></span>
+			<img src="{{cartItem.product.thumbnailUrl}}">
+		</div>
+		<div class="col-xs-3">
+			{{cartItem.product.name}}
+		</div>
+		<div class="col-xs-3">
+			<div class = "btn-group quantity">
+				<button type = "button" ng-click = "changeQuantity(idx, -1)">-</button>
+				<span>{{cartItem.qty}}</span>
+				<button type = "button" ng-click = "changeQuantity(idx, 1)">+</button>
+			</div>
+		</div>
+		<div class="col-xs-3">
+			{{cartItem.price | currency}}
+		</div>
+	</div>
+
+	<div>
+		Subtotal: {{cartTotal()| currency}}
+	</div>
+</div>

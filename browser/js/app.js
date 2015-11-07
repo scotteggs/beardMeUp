@@ -1,11 +1,15 @@
 'use strict';
-window.app = angular.module('FullstackGeneratedApp', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngSanitize']);
+window.app = angular.module('FullstackGeneratedApp', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngSanitize','angularPayments']);
 
 app.config(function ($urlRouterProvider, $locationProvider) {
     // This turns off hashbang urls (/#about) and changes it to something normal (/about)
     $locationProvider.html5Mode(true);
     // If we go to a URL that ui-router doesn't have registered, go to the "/" url.
     $urlRouterProvider.otherwise('/');
+
+
+    //var stripeConfig = window.app.getValue('env').STRIPE;
+    // window.Stripe.setPublishableKey("pk_test_zQxIsxthzU7akYx6q0c6hZrC")
 });
 
 // This app.run is for controlling access to specific states.
