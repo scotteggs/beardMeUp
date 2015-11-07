@@ -1,5 +1,7 @@
-<form ng-submit = "placeOrder()" class = "col-xs-6">
+<form ng-submit = "placeOrder()">
+<div id = "checkout">
   <div class = "page-header"><h2>Checkout</h2></div>
+<div class = "col-xs-6">
   <div ng-show = "false">
     <h3>Contact Info</h3>
     <div class = "form-group">
@@ -12,17 +14,41 @@
 
   <div>
     <h3>Billing Address</h3>
-    <div class = "form-group">
-      <label>Address</label><input type = "text" ng-model = "billing.line1" placeholder = "Address Line 1">
+
+    <div class = "form-group billing-item">
+      <div class = "col-xs-2"><label>Address</label></div>
+
+      <div class = "col-xs-10">
+        <input class ="form-control" type = "text" ng-model = "billing.line1" placeholder = "Address Line 1">
+      </div>
     </div>
-    <div class = "form-group">
-      <label>City</label><input type = "text" ng-model = "billing.city" placeholder = "City">
+
+    <div class = "form-group billing-item">
+      <div class = "col-xs-2">
+        <label>City</label>
+      </div>
+
+      <div class = "col-xs-10">
+        <input type = "text" ng-model = "billing.city" placeholder = "City" class = "form-control">
+      </div>
     </div>
-    <div class = "form-group">
-      <label>State</label><input type = "text" ng-model = "billing.state" placeholder = "State">
+
+    <div class = "form-group billing-item">
+      <div class = "col-xs-2">
+        <label>State</label>
+      </div>
+      <div class = "col-xs-10">
+        <input class = "form-control" type = "text" ng-model = "billing.state" placeholder = "State">
+      </div>
     </div>
-    <div class = "form-group">
-      <label>Zip Code</label><input type = "text" ng-model = "billing.zip" placeholder = "Zip Code">
+
+    <div class = "form-group billing-item">
+      <div class = "col-xs-2">
+        <label>Zip Code</label>
+      </div>
+      <div class = "col-xs-10">
+        <input class = "form-control" type = "text" ng-model = "billing.zip" placeholder = "Zip Code">
+      </div>
     </div>
   </div>
 
@@ -30,51 +56,63 @@
     <h3>Shipping Address</h3>
   </div>
 
-  <div>
+  <div class = "clearfix">
     <h3>Credit Card Info</h3>
-    <div class = "form-group">
-      <label>Card Number</label><input ng-model = "card.number" placeholder = "Card Number"/>
+    <div class = "form-group clearfix">
+      <div class = "col-xs-2"><label>Card Number</label></div>
+      <div class = "col-xs-10">
+        <input ng-model = "card.number" placeholder = "Card Number"/>
+      </div>
     </div>
-    <div class = "form-group">
-      <label>Expiration</label>
-      <select ng-model = "card.expiration.month">
-        <option value=''>Month</option>
-        <option value='01'>Janaury</option>
-        <option value='02'>February</option>
-        <option value='03'>March</option>
-        <option value='04'>April</option>
-        <option value='05'>May</option>
-        <option value='06'>June</option>
-        <option value='07'>July</option>
-        <option value='08'>August</option>
-        <option value='09'>September</option>
-        <option value='10'>October</option>
-        <option value='11'>November</option>
-        <option value='12'>December</option>
-    </select> 
-    <select ng-model = "card.expiration.year">
-        <option value=''>Year</option>
-        <option value='15'>2015</option>
-        <option value='16'>2016</option>
-        <option value='17'>2017</option>
-        <option value='18'>2018</option>
-        <option value='19'>2019</option>
-        <option value='20'>2020</option>
-    </select> 
 
-    </div>
-    <div class = "form-group">
-      <label>CVC</label><input ng-model = "card.cvc" placeholder = "CVC"/>
+    <div class = "form-group clearfix">
+      <div class = "col-xs-2"><label>Expiration</label></div>
+      <div class = "col-xs-10">
+        <select ng-model = "card.expiration.month">
+          <option value=''>Month</option>
+          <option value='01'>Janaury</option>
+          <option value='02'>February</option>
+          <option value='03'>March</option>
+          <option value='04'>April</option>
+          <option value='05'>May</option>
+          <option value='06'>June</option>
+          <option value='07'>July</option>
+          <option value='08'>August</option>
+          <option value='09'>September</option>
+          <option value='10'>October</option>
+          <option value='11'>November</option>
+          <option value='12'>December</option>
+      </select> 
+      <select ng-model = "card.expiration.year">
+          <option value=''>Year</option>
+          <option value='15'>2015</option>
+          <option value='16'>2016</option>
+          <option value='17'>2017</option>
+          <option value='18'>2018</option>
+          <option value='19'>2019</option>
+          <option value='20'>2020</option>
+      </select> 
     </div>
   </div>
 
-  <button type = "submit">Checkout</button>
-</form>
+    <div class = "form-group clearfix">
+      <div class = "col-xs-2"><label>CVC</label>
+      </div>
+      <div class = "col-xs-10">
+        <input ng-model = "card.cvc" placeholder = "CVC"/>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class = "col-xs-6">
-  <h2>Cart</h2>
+  <h3>Cart</h3>
   <cart cart = "cart" user = "user"></cart>
+  <div id = "place-order">
+    <button type = "submit" id = "submit" class = "btn">Place Order</button>
+  </div>
 
 
 </div>
+</form>
 
