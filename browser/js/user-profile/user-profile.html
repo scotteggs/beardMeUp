@@ -4,8 +4,13 @@
 		<h4>Welcome to your user page.</h4>
 	</div>
 	<button ng-click="toggleOrderView()">your orders</button>
-	<!-- <orders-view ng-show="showOrders">toggled</orders-view> -->
+		<orders-view ng-show="showOrders">
+		toggled
+		</orders-view>
 	<button ng-click="toggleEditInfoView()">modify your info</button>
-	<edit-user-info the-user="user" ng-show="showEditInfo"></edit-user-info>
+		<edit-user-info the-user="user" ng-show="showEditInfo">
+		toggled
+		</edit-user-info>
+	<button ng-click="openUserInfo()">user info modal</button>
 
 </section>
