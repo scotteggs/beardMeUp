@@ -1,0 +1,32 @@
+<div id = "cart" class = "clearfix">
+	<h4>Your Cart</h4>
+	<hr>
+	<div class = "cartItems">
+		<div ng-repeat="(idx, cartItem) in cart" class="row cartItem">
+			<div class="col-xs-3">
+				<span ng-click = "remove(cartItem)" class = "glyphicon glyphicon-remove"></span>
+				<!--src="{{cartItem.product.thumbnailUrl}}"-->
+				<img src = "https://placeimg.com/50/35/any">
+			</div>
+			<div class="col-xs-3">
+				{{cartItem.product.name || "A great beard"}}
+			</div>
+			<div class="col-xs-3">
+				<div class = "btn-group quantity">
+					<button type = "button" ng-click = "changeQuantity(idx, -1)">-</button>
+					<span>{{cartItem.qty}}</span>
+					<button type = "button" ng-click = "changeQuantity(idx, 1)">+</button>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				{{cartItem.price | currency}}
+			</div>
+		</div>
+	</div>
+
+	<div class = "total clearfix">
+		<div id = "subtotal" class = "clearfix"><span class = "col-xs-6">Subtotal:</span><span class = "col-xs-6">{{cartTotal()| currency}}</span></div>
+
+		<div id = "total"><span class = "col-xs-6">Total:</span><span class = "col-xs-6">{{cartTotal() + 30| currency}}</span></div>
+	</div>
+</div>
