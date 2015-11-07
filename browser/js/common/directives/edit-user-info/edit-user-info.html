@@ -1,35 +1,83 @@
-<form ng-submit="updateInfo(theUser)">
-	<!-- 
-	First Name
-	Last Name
-	E-mail
-	Password
-	Contact Info
-	-->
+<form class="form-horizontal" novalidate name="editUserForm" ng-submit="updateInfo(theUser)">
 	<div>
-		<p>First Name:</p>
-		<p contenteditable ng-model="theUser.firstName"></p>
+		FIRST NAME
+		<input type="text" name="firstName" ng-model="theUser.firstName" required><br>
+    <div ng-messages="editUserForm.firstName.$error" ng-hide="editUserForm.firstName.$pristine" role="alert">
+      <div ng-message="required" class="alert alert-warning">
+        Please enter a firstName
+      </div>
+    </div>
+  </div>
+  <div>
+		LAST NAME
+		<input type="text" name="lastName" ng-model="theUser.lastName" required><br>
+    <div ng-messages="editUserForm.lastName.$error" ng-hide="editUserForm.lastName.$pristine" role="alert">
+      <div ng-message="required" class="alert alert-warning">
+        Please enter a lastName
+      </div>
+    </div>
 	</div>
-
 	<div>
-		<p>Last Name:</p>
-		<p contenteditable ng-model="theUser.lastName"></p>
+		E-MAIL
+		<input type="text" name="email" ng-model="theUser.email" required><br>
+    <div ng-messages="editUserForm.email.$error" ng-hide="editUserForm.email.$pristine" role="alert">
+      <div ng-message="required" class="alert alert-warning">
+        Please enter an email
+      </div>
+    </div>
 	</div>
-
 	<div>
-		<p>E-mail:</p>
-		<p contenteditable ng-model="theUser.email"></p>
-	</div>
-
-	<div>
-		<p>Contact Info:</p>
-		<p contenteditable ng-model="theUser.primaryAddress[0].line1"></p>
-		<p contenteditable ng-model="theUser.primaryAddress[0].line2"></p>
-		<p contenteditable ng-model="theUser.primaryAddress[0].city"></p>
-		<p contenteditable ng-model="theUser.primaryAddress[0].state"></p>
-		<p contenteditable ng-model="theUser.primaryAddress[0].zip"></p>
-		<p contenteditable ng-model="theUser.primaryAddress[0].phone"></p>
+		CONTACT INFO<br>
+		<div>
+			ADDRESS LINE 1
+			<input type="text" name="line1" ng-model="theUser.primaryAddress[0].line1" required><br>
+    	<div ng-messages="editUserForm.line1.$error" ng-hide="editUserForm.line1.$pristine" role="alert">
+      	<div ng-message="required" class="alert alert-warning">
+        	Please enter an address
+      	</div>
+    	</div>
+    <div>
+		<div>
+			ADDRESS LINE 2
+			<input type="text" name="address2" ng-model="theUser.primaryAddress[0].line2" ><br>
+    </div>
+		<div>
+			CITY
+			<input type="text" name="city" ng-model="theUser.primaryAddress[0].city" required><br>
+    	<div ng-messages="editUserForm.city.$error" ng-hide="editUserForm.city.$pristine" role="alert">
+      	<div ng-message="required" class="alert alert-warning">
+        	Please enter a city
+      	</div>
+    	</div>
+    </div>
+		<div>
+			STATE
+			<input type="text" name="state" ng-model="theUser.primaryAddress[0].state" required><br>
+    	<div ng-messages="editUserForm.state.$error" ng-hide="editUserForm.state.$pristine" role="alert">
+      	<div ng-message="required" class="alert alert-warning">
+        	Please enter a state
+      	</div>
+    	</div>
+    </div>
+    <div>
+			ZIP
+			<input type="text" name="zip" ng-model="theUser.primaryAddress[0].zip" required><br>
+    	<div ng-messages="editUserForm.zip.$error" ng-hide="editUserForm.zip.$pristine" role="alert">
+      	<div ng-message="required" class="alert alert-warning">
+        	Please enter a zip
+      	</div>
+    	</div>
+    </div>
+    <div>
+			PHONE
+			<input type="text" name="phone" ng-model="theUser.primaryAddress[0].phone" required><br>
+    	<div ng-messages="editUserForm.phone.$error" ng-hide="editUserForm.phone.$pristine" role="alert">
+      	<div ng-message="required" class="alert alert-warning">
+        	Please enter a phone number
+      	</div>
+    	</div>
+    </div>
 	</div>
 	<button type="submit">Save All Changes</button>
-	<button ng-click="restore()">Cancel</button>
+	<button ng-click="restore()">Undo Changes</button>
 </form>
