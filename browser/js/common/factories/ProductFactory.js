@@ -21,5 +21,25 @@ app.factory('ProductFactory', function ($http) {
 		})
 	}
 
+	ProductFactory.fetchReviews = function(id) {
+		return $http.get('/api/review')
+		.then(function(response) {
+			return response.data;
+		})
+		.then(function(reviews) {
+			return reviews.filter(function(review) {
+				return review.product === id;
+			})
+		})
+	}
+
+	ProductFactory.averageRating = function(reviews) {
+		var total = 0;
+		for(var i = 0; i < reviews.length; i++) {
+			total += reviews[i].rating;
+		}
+		return total/reviews.length;
+	}
+
 	return ProductFactory;
 })

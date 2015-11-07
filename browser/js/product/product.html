@@ -4,7 +4,8 @@
 <div>
 	<div>
 		<p>{{product.name}}</p>
-		<p>{{product.price/100}}</p>
+		<p>{{product.price/100 | currency}}</p>
+		<p>{{averageRating}} / 5</p>
 	</div>
 		<p>{{product.description}}</p>
 	<div>
@@ -13,5 +14,18 @@
 	</div>
 	<div>
 		<button ng-click="addToCart()">Add To Cart</button>
+	</div>
+	<h4>Reviews</h4>
+	<div ng-repeat="review in reviews">
+		{{review.rating}} / 5
+		<p>{{review.content}}</p>
+		- {{review.reviewer.firstName}} {{review.reviewer.lastName}}
+		<hr>
+	</div>
+	<div>
+		<button ng-click="toggleReviewForm()">Leave a review</button>
+		<form ng-show="showReviewForm">
+			<input>
+		</form>
 	</div>
 </div>

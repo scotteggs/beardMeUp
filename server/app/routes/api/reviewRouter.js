@@ -5,7 +5,7 @@ var mongoose = require('mongoose')
 var Review = mongoose.model('Review')
 
 router.get('/', function (req, res, next) {
-	Review.find()
+	Review.find().populate('reviewer')
 	.then(function(reviews) {
 		res.json(reviews)
 	})

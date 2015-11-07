@@ -24,6 +24,7 @@ var connectToDb = require('./server/db');
 var User = Promise.promisifyAll(mongoose.model('User'));
 var Product = Promise.promisifyAll(mongoose.model('Product'));
 var Order = Promise.promisifyAll(mongoose.model('Order'));
+var Review = Promise.promisifyAll(mongoose.model('Review'));
 
 var seedUsers = function (products) {
 
@@ -178,13 +179,44 @@ var seedOrders = function (users, products) {
 
 };
 
+var seedReviews = function(users, products) {
+    var prod0 = products[0]._id;
+    var prod1 = products[1]._id;
+    var user0 = users[0]._id;
+    var user1 = users[1]._id;
+
+    var reviews = [{
+        product: prod0,
+        rating: 4,
+        content: "This beard was pretty damn beardy",
+        reviewer: user0
+    }, {
+        product: prod0,
+        rating: 3,
+        content: "I'd say this beard was of average beard quality",
+        reviewer: user1
+    }, {
+        product: prod1,
+        rating: 2,
+        content: "I wasn't a huge beard of this beard",
+        reviewer: user0
+    }, {
+        product: prod1,
+        rating: 5,
+        content: "OMG this beard was beardtastic",
+        reviewer: user1
+    }]
+
+    return Review.createAsync(reviews);
+}
+
 var seedProducts = function () {
 
     var products = [
         {
             name: 'fancy beard',
             sku: 'fbsku',
-            desc: 'wear this beard to a fancy party. lorem ipsum blah blah blah, mike is really cool and this is long enough to be realistic now maybe? or maybe now. ok how about now. this is probably fine.',
+            description: 'wear this beard to a fancy party. lorem ipsum blah blah blah, mike is really cool and this is long enough to be realistic now maybe? or maybe now. ok how about now. this is probably fine.',
             price: 10000,
             type: 'Beard',
             colorOptions: [{
@@ -202,7 +234,7 @@ var seedProducts = function () {
         {
             name: 'casual beard',
             sku: 'cbsku',
-            desc: 'wear this beard to a casual party. lorem ipsum blah blah blah, mike is really cool and this is long enough to be realistic now maybe? or maybe now. ok how about now. this is probably fine.',
+            description: 'wear this beard to a casual party. lorem ipsum blah blah blah, mike is really cool and this is long enough to be realistic now maybe? or maybe now. ok how about now. this is probably fine.',
             price: 1000,
             type: 'Beard',
             colorOptions: [{
@@ -220,7 +252,7 @@ var seedProducts = function () {
         {
             name: 'pirate mustache',
             sku: 'pmsku',
-            desc: 'AAAAAARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR',
+            description: 'AAAAAARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR',
             price: 10000,
             type: 'Mustache',
             colorOptions: [{
@@ -238,7 +270,7 @@ var seedProducts = function () {
         {
             name: 'sexy stubble',
             sku: 'sssku',
-            desc: 'yeah you know you like it. is this long enough yet? HOW ABOUT NOW!?!?!?! i like pizza i like pizza i like pizza yeah yeah yeah heh yeh hey hey',
+            description: 'yeah you know you like it. is this long enough yet? HOW ABOUT NOW!?!?!?! i like pizza i like pizza i like pizza yeah yeah yeah heh yeh hey hey',
             price: 10000,
             type: 'Mustache',
             colorOptions: [{
@@ -262,13 +294,17 @@ var seedProducts = function () {
 connectToDb.then(function () {
     mongoose.connection.db.dropDatabase(function() {
         var products;
+        var users;
         seedProducts()
-        .then(function (prods) {
-            products = prods;
-            return seedUsers(prods)
+        .then(function (_products) {
+            products = _products;
+            return seedUsers(products)
         })
-        .then(function(users) {
+        .then(function(_users) {
+            users = _users;
             return seedOrders(users, products)
+        }).then(function() {
+            return seedReviews(users, products)
         }).then(function(){
             console.log(chalk.green('Seed successful!'));
             process.kill(0);  
