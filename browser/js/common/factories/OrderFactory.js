@@ -3,14 +3,6 @@ app.factory('OrdersFactory', function($http){
 		return response.data;
 	}
 
-	// function Order(){
-
-	// }
-
-	// Order.prototype.getTotal = function(){
-		
-	// }
-
 	return {
 		allOrders: function(){
 			return $http.get('/api/order')
@@ -24,6 +16,10 @@ app.factory('OrdersFactory', function($http){
 					return order.user === userIdgit
 				})
 			})
+		},
+		checkout: function(order){
+			return $http.post('/api/checkout', order)
+			.then(getData)
 		}
 	}
 })

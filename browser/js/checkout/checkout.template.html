@@ -53,7 +53,43 @@
   </div>
 
   <div>
-    <h4>Shipping Address</h4>
+    <h4>Delivery Address</h4>
+
+    <div class = "form-group delivery-item">
+      <div class = "col-xs-2"><label>Address</label></div>
+
+      <div class = "col-xs-10">
+        <input class ="form-control" type = "text" ng-model = "delivery.line1" placeholder = "Address Line 1">
+      </div>
+    </div>
+
+    <div class = "form-group delivery-item">
+      <div class = "col-xs-2">
+        <label>City</label>
+      </div>
+
+      <div class = "col-xs-10">
+        <input type = "text" ng-model = "delivery.city" placeholder = "City" class = "form-control">
+      </div>
+    </div>
+
+    <div class = "form-group delivery-item">
+      <div class = "col-xs-2">
+        <label>State</label>
+      </div>
+      <div class = "col-xs-10">
+        <input class = "form-control" type = "text" ng-model = "delivery.state" placeholder = "State">
+      </div>
+    </div>
+
+    <div class = "form-group delivery-item">
+      <div class = "col-xs-2">
+        <label>Zip Code</label>
+      </div>
+      <div class = "col-xs-10">
+        <input class = "form-control" type = "text" ng-model = "delivery.zip" placeholder = "Zip Code">
+      </div>
+    </div>
   </div>
 
   <div class = "clearfix">
@@ -109,7 +145,7 @@
   <h3>Cart</h3>
   <cart cart = "cart" user = "user"></cart>
   <div id = "place-order">
-    <button type = "submit" id = "submit" class = "btn">Place Order</button>
+    <button type = "submit" id = "submit" class = "btn" ng-disabled = "!cart.length">Place Order</button>
   </div>
 
 

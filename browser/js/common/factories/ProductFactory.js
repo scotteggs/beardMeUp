@@ -8,6 +8,12 @@ app.factory('ProductFactory', function ($http) {
 		console.error(err);
 	}
 
+	ProductFactory.updateProduct = function(product){
+		return $http.put('/api/product/' + product._id)
+		.then(getData)
+		.catch(logError)
+	}
+
 
 	ProductFactory.fetchAll = function () {
 		return $http.get('/api/product/')
