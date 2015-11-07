@@ -45,3 +45,21 @@ $darkGray: #424341;
 	margin-bottom: 50px;
 }
 
+.modal-dialog{
+	top: 50%;
+}
+
+
+#cart{
+	vertical-align: middle;
+	// position:absolute;
+	padding:0 10%;
+	text-align:center;
+	.quantity{
+		border: .183rem solid $darkGray;
+		border-radius: 5px;
+		// box-sizing:content-box;
+		// padding-right:px;
+	}
+
+}

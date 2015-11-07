@@ -7,7 +7,7 @@ app.factory('UserFactory', function ($http) {
 			return response.data;
 		})
 		.catch(function(err) {
-			console.log(err);
+			console.error(err);
 		})
 	}
 
@@ -17,7 +17,7 @@ app.factory('UserFactory', function ($http) {
 			return response.data;
 		})
 		.catch(function(err) {
-			console.log(err);
+			console.error(err);
 		})
 	}
 
@@ -27,9 +27,21 @@ app.factory('UserFactory', function ($http) {
 			return response.data;
 		})
 		.catch(function(err) {
-			console.log(err);
+			console.error(err);
 		})
 	}
+
+	UserFactory.getCart = function(userId) {
+		return $http.get('/api/user/' + userId + '/cart')
+		.then(function (response) {
+			return response.data;
+		})
+		.catch(function(err) {
+			console.error(err);
+		})
+	}
+
+	
 
 	return UserFactory;
 })
