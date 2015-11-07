@@ -1,13 +1,8 @@
 app.controller('checkoutCtrl', function($scope, theUser, $state, OrdersFactory, ProductFactory, $uibModal){
+	console.log("in checkout control theUser is ", theUser)
 	$scope.user = theUser;
 	$scope.cart= $scope.user.cart;
 	$scope.billing = theUser.primaryAddress[0]||{};
-
-
-	function sendOrderEmail(user){
-
-	}
-
 
 	$scope.placeOrder = function(){
 		var order = {};
@@ -19,8 +14,8 @@ app.controller('checkoutCtrl', function($scope, theUser, $state, OrdersFactory, 
 
 		OrdersFactory.checkout(order)
 		.then(function(order){
-			console.log("the order is ", order)
-			console.log("about to open our modal")
+			$scope.cart = [];
+			$scope.billing = [];
 			$state.go('home');
 			$uibModal.open({
 				animation: true,

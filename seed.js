@@ -83,6 +83,33 @@ var seedUsers = function (products) {
                 color: 'black',
                 price: products[1].price
             }]
+        },
+        {
+            firstName: 'Omri',
+            lastName: 'Bernstein',
+            email: 'somekh.daniel@gmail.com',
+            password: 'password',
+            primaryAddress: [{
+                line1: '123 fullstack',
+                // line2: '',
+                city: 'New York',
+                state: 'NY',
+                zip: '42424',
+                phone: '555-555-5555'
+            }],
+            role: 'siteAdmin',
+            cart: [{
+                qty: 2,
+                product: products[0].id,
+                color: 'blue',
+                price: products[0].price
+            },
+            {
+                qty: 3,
+                product: products[1].id,
+                color: 'black',
+                price: products[1].price
+            }]
         }
     ];
 
