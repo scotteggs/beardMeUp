@@ -7,9 +7,9 @@
   PRICE <input type="number" ng-model="newProduct.price" required>USD<br>
   TYPE <input type="radio" ng-model="newProduct.type" value="Beard" required>beard <input type="radio" ng-model="newProduct.type" value="Mustache">mustache<br>
   STOCK <input ng-model="newProduct.stock" type="number"><br>
-  IMAGE URL <input type="text" ng-model="newProduct.imageUrl" required><br>
-  THUMBNAIL URL <input type="text" ng-model="newProduct.thumbnailUrl"><br>
-  CUTOUT URL <input type="text" ng-model="newProduct.cutoutUrl"><br>
+  IMAGE URL <input class="imgUrl" type="text" ng-model="newProduct.imageUrl" required><br>
+  THUMBNAIL URL <input class="imgUrl" type="text" ng-model="newProduct.thumbnailUrl"><br>
+  CUTOUT URL <input class="imgUrl" type="text" ng-model="newProduct.cutoutUrl"><br>
   ACTIVE <input type="checkbox" ng-model="newProduct.active" value="true"><br>
   COLORS <span ng-repeat="color in colors"><input type="checkbox" ng-model="newProduct.theColors[color]" value="true">{{color}} </span><br>
   TAGS <input type="text" ng-model="newProduct.tags"><br>

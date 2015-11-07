@@ -30,9 +30,28 @@ app.factory('ProductFactory', function ($http) {
 		}
 		newProduct.colors = colors;
 		delete newProduct.theColors;
-		newProduct.price = (newProduct.price)/100
+		newProduct.price = (newProduct.price)*100
 		newProduct.tags = newProduct.tags.split(", ")
 		return $http.post('/api/product', newProduct)
+		// .then(function(response){
+		// 	console.log("response****************", response)
+		// 	return res.json(response);
+		// })
+	}
+
+	ProductFactory.editProduct = function(theProduct) {
+		var colors = [];
+		var edited = {};
+		angular.copy(theProduct, edited);
+		for(var color in edited.colors) {
+			if(edited.colors[color]==true) {
+				colors.push(color)
+			}
+		}
+		edited.colors = colors;
+		edited.price = edited.price*100
+		edited.tags = edited.tags.split(", ")
+		return $http.put('/api/product/' + edited._id, edited)
 		// .then(function(response){
 		// 	console.log("response****************", response)
 		// 	return res.json(response);

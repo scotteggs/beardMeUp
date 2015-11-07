@@ -45,10 +45,6 @@ $darkGray: #424341;
 	margin-bottom: 50px;
 }
 
-
-
-.addProduct input {
-	text-align: left !important;
 .modal-dialog{
 	top: 50%;
 }
@@ -65,4 +61,27 @@ $darkGray: #424341;
 		// box-sizing:content-box;
 		// padding-right:px;
 	}
+}
+
+.whitebg{
+	background-color: white;
+}
+
+.formitem{
+	margin-top:10px;
+}
+
+.imgUrl{
+	width: 400px;
+}
+
+.priceform{
+	width: 80px;
+}
+
+.stockform{
+	width:50px;
+}
+.tagform{
+	width:400px;
 }
