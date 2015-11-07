@@ -25,7 +25,7 @@ var User = Promise.promisifyAll(mongoose.model('User'));
 var Product = Promise.promisifyAll(mongoose.model('Product'));
 var Order = Promise.promisifyAll(mongoose.model('Order'));
 
-var seedUsers = function () {
+var seedUsers = function (products) {
 
     var users = [
         {
@@ -70,7 +70,19 @@ var seedUsers = function () {
                 zip: '42424',
                 phone: '555-555-5555'
             }],
-            role: 'siteAdmin'
+            role: 'siteAdmin',
+            cart: [{
+                qty: 2,
+                product: products[0].id,
+                color: 'blue',
+                price: products[0].price
+            },
+            {
+                qty: 3,
+                product: products[1].id,
+                color: 'black',
+                price: products[1].price
+            }]
         }
     ];
 
@@ -93,20 +105,20 @@ var seedOrders = function (users, products) {
                     qty: 3,
                     product:firstProduct._id,
                     color: 'green',
-                    price: 1000
+                    price: firstProduct.price
 
                 },
                 {
                     qty: 3,
                     product:secondProduct._id,
                     color: 'blue',
-                    price: 32
+                    price: secondProduct.price
                 },
                 {
                     qty: 3,
                     product:secondProduct._id,
                     color: 'green',
-                    price: 1000
+                    price: secondProduct.price
                 }
             ],
             status: 'fulfilled'
@@ -118,19 +130,19 @@ var seedOrders = function (users, products) {
                     qty: 3,
                     product:firstProduct._id,
                     color: 'blue',
-                    price: 32
+                    price: firstProduct.price
                 },
                 {
                     qty: 3,
                     product:secondProduct._id,
                     color: 'green',
-                    price: 1000
+                    price: secondProduct.price
                 },
                 {
                     qty: 2,
                     product:secondProduct._id,
                     color: 'yellow',
-                    price: 115
+                    price: secondProduct.price
                 }
             ],
             status: 'unfulfilled'
@@ -142,19 +154,19 @@ var seedOrders = function (users, products) {
                     qty: 3,
                     product:firstProduct._id,
                     color: 'blue',
-                    price: 32
+                    price: firstProduct.price
                 },
                 {
                     qty: 3,
                     product:secondProduct._id,
                     color: 'green',
-                    price: 1000
+                    price: secondProduct.price
                 },
                 {
                     qty: 2,
                     product:secondProduct._id,
                     color: 'yellow',
-                    price: 115
+                    price: secondProduct.price
                 }
             ],
             status: 'overdue'
@@ -217,10 +229,13 @@ var seedProducts = function () {
 
 connectToDb.then(function () {
     mongoose.connection.db.dropDatabase(function() {
-        Promise.all([seedUsers(),seedProducts()])
-        .then(function (arr) {
-            var users = arr[0];
-            var products = arr[1];
+        var products;
+        seedProducts()
+        .then(function (prods) {
+            products = prods;
+            return seedUsers(prods)
+        })
+        .then(function(users) {
             return seedOrders(users, products)
         }).then(function(){
             console.log(chalk.green('Seed successful!'));
