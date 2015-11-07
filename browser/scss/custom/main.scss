@@ -45,6 +45,11 @@ $darkGray: #424341;
 	margin-bottom: 50px;
 }
 
+
+.addProduct input {
+	text-align: left !important;
+}
+
 .modal-dialog{
 	top: 50%;
 }
@@ -71,17 +76,71 @@ $darkGray: #424341;
 	margin-top:10px;
 }
 
+.formtitle{
+	font-weight:bold;
+}
+
 .imgUrl{
 	width: 400px;
 }
 
 .priceform{
-	width: 80px;
+	width: 120px;
 }
 
 .stockform{
-	width:50px;
+	width:80px;
 }
-.tagform{
-	width:400px;
+
+//.btn-default, btn-success, btn-primary, btn-info, btn-warning, btn-danger{
+//	border-radius: 0px !important;
+//}
+
+.bmu-bg-red{
+	background-color: #9e202b;
+	color: white;
+}
+
+.bmu-bg-red:hover {
+	background-color: #c82b3c !important;
+	color: white;
+}
+
+.bmu-bg-red:active, .bmu-bg-red:focus, .bmu-bg-red2 {
+	background-color: #c82b3c !important;
+	color: white;
+}
+
+//.form-control, input{
+//	border-radius: 0px !important;
+//}
+
+.color-checkbox {
+	padding-left: 30px;
+}
+
+.modal-contents{
+	padding-top: 30px !important;
+}
+
+.add-products{
+	margin: 60px;
+}
+
+.btn-wide{
+	width: 300px;
+}
+
+.order-filter-subhead{
+	margin-top: -40px; 
+	margin-bottom: 50px;
+}
+
+.add-product-btn{
+	margin-top: 50px;
+}
+
+.filter-buttons{
+	padding: 5px 40px;
+	border: 1px solid white;
 }

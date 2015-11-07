@@ -23,13 +23,12 @@ app.factory('ProductFactory', function ($http) {
 
 	ProductFactory.addProduct = function(newProduct) {
 		var colors = [];
-		for(var color in newProduct.theColors) {
-			if(newProduct.theColors[color]==true) {
+		for(var color in newProduct.colors) {
+			if(newProduct.colors[color]==true) {
 				colors.push(color)
 			}
 		}
 		newProduct.colors = colors;
-		delete newProduct.theColors;
 		newProduct.price = (newProduct.price)*100
 		newProduct.tags = newProduct.tags.split(", ")
 		return $http.post('/api/product', newProduct)

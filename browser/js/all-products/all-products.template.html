@@ -1,11 +1,12 @@
+<h1 class='text-center'>All Products</h1> <br><br>
 <div id = "all-products">
 	<table class = "center">
-
-		<div class = "btn-group filter-buttons">
-			<button ng-click="orderFilter = 'all'" class="btn btn-primary">All</button>
-	  		<button ng-click="orderFilter = 'beard'" type="button" class="btn btn-primary">Beards</button>
-			<button ng-click="orderFilter = 'mustache'" type="button" class="btn btn-primary">Mustaches</button>
+		
+		<div class = "btn-group">
+			<button ng-repeat="aType in types" ng-class="{'btn':true, 'bmu-bg-red': true, 'bmu-bg-red2': orderFilter===aType.toLowerCase(), 'filter-buttons': true}" ng-click="changeFilter(aType.toLowerCase())" >{{aType}}</button>
 		</div>
+		<p class="text-center order-filter-subhead">Filter Options</p>
+
 		<tr>
 				<th><a ng-click="sortType = 'sku'; sortReverse=!sortReverse">SKU</a></th>
 				<th><a ng-click="sortType = 'name'; sortReverse=!sortReverse">NAME</a></th>
@@ -15,19 +16,18 @@
 				<th></th>
 		</tr>
 
-		<tr ng-repeat = "(index, product) in allProducts | orderBy:sortType:sortReverse" ng-show = "product.type.toLowerCase() === orderFilter || orderFilter === 'all'">
-			<td class = "col-xs-2" ng-click="editProduct(product._id)"><button>{{product._id}}</button></td>
+		<tr ng-repeat = "(index, product) in allProducts | orderBy:sortType:sortReverse" ng-show="product.type.toLowerCase() === orderFilter || orderFilter === 'all'">
+			<td class = "col-xs-2" ng-click="editProduct(product._id)"><button class="btn btn-default">{{product._id}}</button></td>
 			<td class = "col-xs-4">{{product.name}}</td>
 			<td class = "col-xs-2">{{product.type}}</td>
 			<td class = "col-xs-1">{{product.stock}}</td>
-			<td class = "col-xs-3">{{ product.colors.join(', ') }}</td>
+			<td class = "col-xs-3">{{product.colors.join(', ') }}</td>
 		</tr>
 	</table>
 	<br>
-	<button ng-click="addProduct = true"> ADD A PRODUCT </button>
+	<button class="btn bmu-bg-red btn-wide add-product-btn" ng-click="addProduct()">Add Product</button>
 	<br>
 	<br>
-	<add-product ng-show="addProduct"></add-product>
 </div>
 
 <div>
