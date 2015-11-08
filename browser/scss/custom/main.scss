@@ -1,7 +1,8 @@
 $darkRed: #9e202b;
-$lightGrey: #eeeded;
-$mediumGrey: #a7a4a2;
+$lightGray: #eeeded;
+$mediumGray: #a7a4a2;
 $darkGray: #424341;
+$openSans: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 #all-orders, #all-customers, #all-products{
 	table{
@@ -116,7 +117,7 @@ $darkGray: #424341;
 //}
 
 .bmu-bg-red{
-	background-color: #9e202b;
+	background-color: $darkRed;
 	color: white;
 }
 
@@ -127,7 +128,11 @@ $darkGray: #424341;
 
 .bmu-bg-red:active, .bmu-bg-red:focus, .bmu-bg-red2 {
 	background-color: #c82b3c !important;
-	color: white;
+	color: white !important;
+}
+
+.btn:focus, .btn:active{
+	outline: 5px auto $darkRed !important;
 }
 
 //.form-control, input{
@@ -156,7 +161,6 @@ $darkGray: #424341;
 }
 
 .add-product-btn{
-	margin-top: 50px;
 	margin-bottom: 50px;
 	font-weight: bold;
 }
@@ -166,12 +170,99 @@ $darkGray: #424341;
 }
 
 .filter-buttons{
+	background-color: white;
+	color: $darkGray;
 	padding: 5px 40px;
-	border: 1px solid white;
+	border: 1px solid $darkRed;
 }
 
-.homepage-img{
-	height: 650px;
+#home-header{
+	position: absolute;
+	left: 0;
+	display: block;
 	margin-top: -10px;
-	margin-left: -300px;
+	width: 100vw;
+	height: 400px;
+	overflow: hidden;
+	background: $darkGray url(https://s3.amazonaws.com/beardmeup/homepage2.jpg) center no-repeat;
+	background-size: 1700px auto;
+	border-bottom: 10px solid $darkGray;
 }
+
+#home-spacer{
+	height:400px;
+}
+
+
+body{
+	font-family: 'Playfair Display', serif;
+	font-weight: 300;
+}
+
+button{
+	font-style: italic;
+	border-radius: 0px !important;
+	cursor: pointer;
+}
+
+table{
+	font-family: $openSans;
+	font-weight: 400;
+	margin-bottom: 50px !important;
+	margin-top: 50px !important;
+}
+
+#cart-icon {
+	position: absolute;
+	right: 120px;
+	margin-left: 50px !important;
+}
+
+.gray-divider{
+	position: absolute;
+	margin-left: -120px;
+	margin-top: -10px;
+	height: 200px;
+	background-color: $lightGray;
+	width: 100%;
+	text-align: center;
+	h1{
+		font-family: $openSans;
+		font-weight: 300;
+		font-size: 5rem;
+		text-transform: uppercase;
+		margin: 100px 0 30px 0;
+	}
+	border-bottom: 10px solid $darkGray;
+	p{
+		margin-top: -20px;
+		font-size: 2rem;
+		font-weight: bold;
+	}
+}
+
+.gray-divider-spacer{
+	height: 200px;
+}
+
+#all-customers{
+	margin-top: -50px;
+}
+
+h1{
+	text-align: center;
+	font-family: $openSans;
+	font-weight: 300;
+	font-size: 7rems;
+}
+
+#submit-btn{
+	padding: 10px 30px;
+	margin-bottom: 50px;
+}
+
+#contact-title{
+	font-size: 5rem;
+}
+
+

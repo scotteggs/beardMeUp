@@ -1,8 +1,9 @@
 <h3>
     this is the products page
 </h3>
-
-<div ng-repeat="product in products">
-	<!-- <p>{{product.name}}</p> -->
-	<product-box the-product=product></product-box>
+<div class="clearfix">
+	<div ng-repeat="product in products" class="col-md-4">
+		<!-- <p>{{product.name}}</p> -->
+		<product-box the-product=product></product-box>
+	</div>
 </div>
