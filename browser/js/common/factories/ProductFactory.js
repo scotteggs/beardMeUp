@@ -1,24 +1,50 @@
 app.factory('ProductFactory', function ($http) {
 	var ProductFactory = {};
 
+	function getData(response){
+		return response.data;
+	}
+	function logError(err){
+		console.error(err);
+	}
+
+	ProductFactory.updateProduct = function(product){
+		return $http.put('/api/product/' + product._id)
+		.then(getData)
+		.catch(logError)
+	}
+
+
 	ProductFactory.fetchAll = function () {
 		return $http.get('/api/product/')
-		.then(function (response) {
-			return response.data;
-		})
-		.catch(function(err) {
-			console.log(err);
-		})
+		.then(getData)
+		.catch(logError)
 	}
 
 	ProductFactory.fetchOne = function(id) {
 		return $http.get('/api/product/' + id)
-		.then(function (response) {
+		.then(getData)
+		.catch(logError)
+	}
+
+	ProductFactory.fetchReviews = function(id) {
+		return $http.get('/api/review')
+		.then(function(response) {
 			return response.data;
 		})
-		.catch(function(err) {
-			console.log(err);
+		.then(function(reviews) {
+			return reviews.filter(function(review) {
+				return review.product === id;
+			})
 		})
+	}
+
+	ProductFactory.averageRating = function(reviews) {
+		var total = 0;
+		for(var i = 0; i < reviews.length; i++) {
+			total += reviews[i].rating;
+		}
+		return total/reviews.length;
 	}
 
 	ProductFactory.addProduct = function(newProduct) {
@@ -32,10 +58,6 @@ app.factory('ProductFactory', function ($http) {
 		newProduct.price = (newProduct.price)*100
 		newProduct.tags = newProduct.tags.split(", ")
 		return $http.post('/api/product', newProduct)
-		// .then(function(response){
-		// 	console.log("response****************", response)
-		// 	return res.json(response);
-		// })
 	}
 
 	ProductFactory.editProduct = function(theProduct) {
@@ -55,6 +77,15 @@ app.factory('ProductFactory', function ($http) {
 		// 	console.log("response****************", response)
 		// 	return res.json(response);
 		// })
+	}
+
+
+	ProductFactory.addReview = function(review, productId) {
+		review.product = productId;
+		return $http.post('/api/review', review)
+		.then(function(response) {
+			return response.data;
+		})
 	}
 
 	return ProductFactory;

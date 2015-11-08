@@ -24,6 +24,7 @@ var connectToDb = require('./server/db');
 var User = Promise.promisifyAll(mongoose.model('User'));
 var Product = Promise.promisifyAll(mongoose.model('Product'));
 var Order = Promise.promisifyAll(mongoose.model('Order'));
+var Review = Promise.promisifyAll(mongoose.model('Review'));
 
 var seedUsers = function (products) {
 
@@ -61,6 +62,33 @@ var seedUsers = function (products) {
             firstName: 'Omri',
             lastName: 'Bernstein',
             email: 'admin@beardmeup.com',
+            password: 'password',
+            primaryAddress: [{
+                line1: '123 fullstack',
+                // line2: '',
+                city: 'New York',
+                state: 'NY',
+                zip: '42424',
+                phone: '555-555-5555'
+            }],
+            role: 'siteAdmin',
+            cart: [{
+                qty: 2,
+                product: products[0].id,
+                color: 'blue',
+                price: products[0].price
+            },
+            {
+                qty: 3,
+                product: products[1].id,
+                color: 'black',
+                price: products[1].price
+            }]
+        },
+        {
+            firstName: 'Omri',
+            lastName: 'Bernstein',
+            email: 'somekh.daniel@gmail.com',
             password: 'password',
             primaryAddress: [{
                 line1: '123 fullstack',
@@ -178,6 +206,37 @@ var seedOrders = function (users, products) {
 
 };
 
+var seedReviews = function(users, products) {
+    var prod0 = products[0]._id;
+    var prod1 = products[1]._id;
+    var user0 = users[0]._id;
+    var user1 = users[1]._id;
+
+    var reviews = [{
+        product: prod0,
+        rating: 4,
+        content: "This beard was pretty damn beardy",
+        reviewer: user0
+    }, {
+        product: prod0,
+        rating: 3,
+        content: "I'd say this beard was of average beard quality",
+        reviewer: user1
+    }, {
+        product: prod1,
+        rating: 2,
+        content: "I wasn't a huge beard of this beard",
+        reviewer: user0
+    }, {
+        product: prod1,
+        rating: 5,
+        content: "OMG this beard was beardtastic",
+        reviewer: user1
+    }]
+
+    return Review.createAsync(reviews);
+}
+
 var seedProducts = function () {
 
     var products = [
@@ -230,13 +289,17 @@ var seedProducts = function () {
 connectToDb.then(function () {
     mongoose.connection.db.dropDatabase(function() {
         var products;
+        var users;
         seedProducts()
-        .then(function (prods) {
-            products = prods;
-            return seedUsers(prods)
+        .then(function (_products) {
+            products = _products;
+            return seedUsers(products)
         })
-        .then(function(users) {
+        .then(function(_users) {
+            users = _users;
             return seedOrders(users, products)
+        }).then(function() {
+            return seedReviews(users, products)
         }).then(function(){
             console.log(chalk.green('Seed successful!'));
             process.kill(0);  

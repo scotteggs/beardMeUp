@@ -62,7 +62,7 @@
         this.isAuthenticated = function () {
             return !!Session.user;
         };
-
+        var pendingUserRequest; 
         this.getLoggedInUser = function (fromServer) {
 
             // If an authenticated session exists, we
@@ -76,13 +76,20 @@
             if (this.isAuthenticated() && fromServer !== true) {
                 return $q.when(Session.user);
             }
-
             // Make request GET /session.
             // If it returns a user, call onSuccessfulLogin with the response.
             // If it returns a 401 response, we catch it and instead resolve to null.
-            return $http.get('/session').then(onSuccessfulLogin).catch(function () {
-                return null;
-            });
+            if(!pendingUserRequest) {
+                pendingUserRequest = $http.get('/session')
+                .then(onSuccessfulLogin).catch(function () {
+                    return null;
+                })
+                .then(function (theuser) {
+                    pendingUserRequest = undefined;
+                    return theuser;
+                })
+            }
+            return pendingUserRequest;
 
         };
 

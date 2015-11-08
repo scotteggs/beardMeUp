@@ -3,27 +3,23 @@ app.factory('OrdersFactory', function($http){
 		return response.data;
 	}
 
-	// function Order(){
-
-	// }
-
-	// Order.prototype.getTotal = function(){
-		
-	// }
-
 	return {
 		allOrders: function(){
 			return $http.get('/api/order')
-			.then(getData)
+			.then(getData)	
 		},
 		getOrdersByUser: function(userId) {
 			return $http.get('/api/order')
 			.then(getData)
 			.then(function (orders) {
 				return orders.filter(function (order) {
-					return order.user === userIdgit
+					return order.user === userId
 				})
 			})
+		},
+		checkout: function(order){
+			return $http.post('/api/checkout', order)
+			.then(getData)
 		}
 	}
 })
