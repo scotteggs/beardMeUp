@@ -1,9 +1,9 @@
 app.controller('AllProductsCtrl', function ($scope, allProducts, ProductFactory, $uibModal){
 	$scope.allProducts = allProducts;
 	$scope.types = ['All', 'Beard', 'Mustache'];
-	$scope.orderFilter = "all";
+	$scope.productFilter = "all";
 	$scope.changeFilter = function(newFilter){
-		$scope.orderFilter = newFilter;
+		$scope.productFilter = newFilter;
 	};
 	$scope.editProduct = function(id){
 		var modalInstance = $uibModal.open({

@@ -3,7 +3,7 @@
 	<table class = "center">
 		
 		<div class = "btn-group">
-			<button ng-repeat="aType in types" ng-class="{'btn':true, 'bmu-bg-red': true, 'bmu-bg-red2': orderFilter===aType.toLowerCase(), 'filter-buttons': true}" ng-click="changeFilter(aType.toLowerCase())" >{{aType}}</button>
+			<button ng-repeat="aType in types" ng-class="{'btn':true, 'bmu-bg-red': true, 'bmu-bg-red2': productFilter===aType.toLowerCase(), 'filter-buttons': true}" ng-click="changeFilter(aType.toLowerCase())" >{{aType}}</button>
 		</div>
 
 		<tr>
@@ -15,7 +15,7 @@
 				<th></th>
 		</tr>
 
-		<tr ng-repeat = "(index, product) in allProducts | orderBy:sortType:sortReverse" ng-show="product.type.toLowerCase() === orderFilter || orderFilter === 'all'">
+		<tr ng-repeat = "(index, product) in allProducts | orderBy:sortType:sortReverse" ng-show="product.type.toLowerCase() === productFilter || productFilter === 'all'">
 			<td class = "col-xs-2" ng-click="editProduct(product._id)"><button class="btn btn-default">{{product._id}}</button></td>
 			<td class = "col-xs-4">{{product.name}}</td>
 			<td class = "col-xs-2">{{product.type}}</td>
@@ -23,8 +23,7 @@
 			<td class = "col-xs-3">{{product.colors.join(', ') }}</td> 
 		</tr>
 	</table>
-	<br>
-	<button class="btn bmu-bg-red btn-wide add-product-btn" ng-click="addProduct()">+ PRODUCT</button>
+	<button class="btn bmu-bg-red btn-wide add-product-btn" ng-click="addProduct()">+ Product</button>
 	<br>
 	<br>
 </div>

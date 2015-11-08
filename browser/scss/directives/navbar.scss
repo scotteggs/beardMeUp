@@ -26,8 +26,9 @@ $darkGray: #424341;
   background-image: url('https://s3.amazonaws.com/beardmeup/espressowood_export.jpg');
   height: 300px;
   margin: auto;
-
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   a {
+    font-weight: 300;
     color: white;
     font-size: 1.5rem;
     text-transform: uppercase;
@@ -36,12 +37,12 @@ $darkGray: #424341;
     transition: color 0.2s;
     text-decoration: none;
     &.active {
-      font-weight:bold;
-      color: $mediumGrey;
+      font-weight: 800;
+      color: $darkRed;
     }
     &:hover {
       background: none;
-      color: #f31214;
+      color: $darkRed;
     }
     &:focus {
       background: none;
@@ -57,7 +58,6 @@ $darkGray: #424341;
   background-image: url('https://s3.amazonaws.com/beardmeup/espressowood_export.jpg');
   height: 50px;
   background-color: $darkGray;
-  border-bottom: 1px solid black;
 //  box-shadow: -1px -1px 5px black;
 }
 
