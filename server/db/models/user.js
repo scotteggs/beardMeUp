@@ -45,7 +45,7 @@ var schema = new mongoose.Schema({
     cart: [cartSchema],
     role: { // @OB/ND 'role'?
         type: String,
-        enum: ['customer', 'storeAdmin', 'storeMgr', 'siteAdmin'],
+        enum: ['customer', 'storeOwner', 'siteAdmin'],
         default: 'customer'
     } 
 });

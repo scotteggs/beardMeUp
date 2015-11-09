@@ -1,4 +1,4 @@
-app.controller('AllProductsCtrl', function ($scope, allProducts, ProductFactory, $uibModal){
+app.controller('AllProductsCtrl', function ($scope, allProducts, ProductFactory, $uibModal, UserFactory){
 	$scope.allProducts = allProducts;
 	$scope.types = ['All', 'Beard', 'Mustache'];
 	$scope.productFilter = "all";
@@ -14,6 +14,9 @@ app.controller('AllProductsCtrl', function ($scope, allProducts, ProductFactory,
 			resolve: {
 				theProduct: function(){
 					return ProductFactory.fetchOne(id);
+				},
+				theOwners: function(){
+					return UserFactory.getStoreOwners()
 				}
 			}
 		})
@@ -23,7 +26,12 @@ app.controller('AllProductsCtrl', function ($scope, allProducts, ProductFactory,
 			animation: true,
 			templateUrl: '/js/common/modals/products/add-product.html',
 			controller: 'addProductCtrl',
-			size: 'lg'
+			size: 'lg',
+			resolve: {
+				theOwners: function(){
+					return UserFactory.getStoreOwners()
+				}
+			}
 		}) 
 	}
 })

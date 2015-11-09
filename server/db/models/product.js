@@ -28,9 +28,3 @@ schema.methods.getReviews = function(){
 
 mongoose.model('Product', schema);
 
-function getAdmin(){
-	return mongoose.model('User').findOne({role: 'siteAdmin'})
-	.then(function(user){
-		return user;
-	})
-}

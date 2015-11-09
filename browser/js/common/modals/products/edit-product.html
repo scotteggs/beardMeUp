@@ -28,6 +28,12 @@
       </div>
     </div>
 
+    <div>
+      <select ng-model = "theProduct.user">
+        <option ng-repeat = "owner in owners" ng-model = "theProduct.user" value = "{{owner._id}}">{{owner.firstName + " " + owner.lastName}}</option>
+      </select>
+    </div>
+
     <div class="formitem"><span class="formtitle">TYPE</span><br>
       <input type="radio" ng-model="theProduct.type" value="Beard" required> beard <input style="margin-left: 10px;" type="radio" ng-model="theProduct.type" value="Mustache"> mustache
     </div><br>
