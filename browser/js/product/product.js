@@ -29,7 +29,6 @@ app.controller('ProductController', function ($scope, AuthService, theProduct, t
     $scope.toggleReviewForm = function() {
         $scope.showReviewForm = !$scope.showReviewForm
     }
-    $scope.color = 'blue'; //until color selection
     $scope.addToCart = function() {
         CartFactory.add(theProduct, $scope.color);
     }
@@ -42,6 +41,11 @@ app.controller('ProductController', function ($scope, AuthService, theProduct, t
             $scope.areReviews = true;
             $scope.alreadyReviewed = true;
         })
+    }
+    $scope.imageUrl = function() {
+        if ($scope.color) {
+            return $scope.product.imageUrl.slice(0,-4) + '-' + $scope.color + '.jpg';
+        } else return $scope.product.imageUrl;
     }
 
 })
