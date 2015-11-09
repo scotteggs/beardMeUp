@@ -1,39 +1,39 @@
 <div class="clearfix single-product-view">
-	<div class="col-md-6">
-		<img src={{product.imageUrl}}>
+	<div class="row">
+		<div class="col-md-6">
+			<img src={{product.imageUrl}}>
+		</div>
+		<div class="col-md-6 text-center">
+			<h5>{{product.name}}</h5>
+			<p class="price">{{product.price/100 | currency }}</p><br>
+			<mustaches ng-show="areReviews" num-staches="averageRating"></mustaches>
+			<h5 ng-show="areReviews" class='rating'>{{averageRating}} / 5</h5>
+			<p class="product-description">{{product.description}}</p>
+			<p>Select Color</p>
+			<button class="btn bmu-bg-red add-to-cart" ng-click="addToCart()">Add To Cart</button>
+		</div>
 	</div>
-	<div class="col-md-6 text-center">
-		<h5>{{product.name}}</h5>
-		<p class="price">{{product.price/100 | currency}}</p><br>
-		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/one_beard.gif">
-		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/one_beard.gif">
-		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/one_beard.gif">
-		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/one_beard.gif">
-		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/half-beard.gif"> 
-		<h5 ng-show="areReviews" class='rating'>{{averageRating}} / 5</h5>
-		<p class="product-description">{{product.description}}</p>
-		<p>Select Color</p>
-		<button class="btn bmu-bg-red add-to-cart" ng-click="addToCart()">Add To Cart</button>
-	</div>
+	<br>
 	<h4>Reviews</h4>
+	<hr>
 	<p ng-hide="areReviews">There are no reviews... yet</p>
 	<div ng-repeat="review in reviews">
-		{{review.rating}} / 5
+		<mustaches num-staches="review.rating"></mustaches>
 		<p>{{review.content}}</p>
 		- {{review.reviewer.firstName}} {{review.reviewer.lastName}}
 		<hr>
 	</div>
-	<div>
+	<div ng-show="loggedIn">
 		<button ng-hide="alreadyReviewed" ng-click="toggleReviewForm()">Leave a review</button>
-		<form ng-submit="submitReview()" ng-show="showReviewForm">
+		<br>
+		<form name="reviewForm" ng-submit="submitReview()" ng-show="showReviewForm">
 			<div>
-				RATING (1-5)
-				<input type="text" name="rating" ng-model="newReview.rating"><br>
+				<mustaches-hover required ng-model="newReview.rating"></mustaches-hover>
 			</div>
 			<div>
-				<input type="text" name="content" ng-model="newReview.content" placeholder="Review">
+				<input size="50" type="text" name="content" required ng-minlength="5" ng-model="newReview.content" placeholder="Review">
 			</div>
-			<button type="submit">Submit</button>
+			<button ng-disabled="reviewForm.$invalid" type="submit" >Submit</button>
 		</form>
 	</div>
 </div>

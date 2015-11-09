@@ -44,7 +44,8 @@ app.factory('ProductFactory', function ($http) {
 		for(var i = 0; i < reviews.length; i++) {
 			total += reviews[i].rating;
 		}
-		return total/reviews.length;
+		var average = total/reviews.length;
+		return Math.round(average*2)/2;
 	}
 
 	ProductFactory.addProduct = function(newProduct) {
