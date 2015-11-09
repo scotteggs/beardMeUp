@@ -33,6 +33,7 @@ app.factory('ProductFactory', function ($http) {
 			return response.data;
 		})
 		.then(function(reviews) {
+			// @OB/ND ideally this should be done on backend
 			return reviews.filter(function(review) {
 				return review.product === id;
 			})
@@ -58,12 +59,14 @@ app.factory('ProductFactory', function ($http) {
 		newProduct.price = (newProduct.price)*100
 		newProduct.tags = newProduct.tags.split(", ")
 		return $http.post('/api/product', newProduct)
+		.then(getData)
 	}
 
 	ProductFactory.editProduct = function(theProduct) {
 		var colors = [];
 		var edited = {};
 		angular.copy(theProduct, edited);
+		// @OB/ND below is repeated, should be function
 		for(var color in edited.colors) {
 			if(edited.colors[color]==true) {
 				colors.push(color)
@@ -73,6 +76,7 @@ app.factory('ProductFactory', function ($http) {
 		edited.price = edited.price*100
 		edited.tags = edited.tags.split(", ")
 		return $http.put('/api/product/' + edited._id, edited)
+		.then(getData)
 		// .then(function(response){
 		// 	console.log("response****************", response)
 		// 	return res.json(response);
