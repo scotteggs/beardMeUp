@@ -1,15 +1,19 @@
 <section id="contact">
 	<div>
 		<div>
-			<h4>WE'RE ALL BEARDS</h4>
-			<h4>ER... EARS!</h4>
+			<h1 id="contact-title">WE'RE ALL BEARDS<br>
+			ER... EARS!</h1>
+			<br>
 		</div>
 		<div>
-			<form class="form-horizontal" name="contactFrm" ng-submit="submit()">
-				<input ng-model="name" required placeholder="Name"></input>
-				<input ng-model="email" required placeholder="E-mail"></input>
-				<input ng-model="message" required placeholder="Message"></input>
-				<button type="submit" ng-disabled="contactFrm.$invalid" class="btn btn-success">Submit</button>
+			<form class="form-horizontal text-center" name="contactFrm" ng-submit="submit()">
+				<input ng-model="name" class="form-control" required placeholder="Name"></input>
+				<br>
+				<input ng-model="email" class="form-control"required placeholder="E-mail"></input>
+				<br>
+				<textarea rows="15" ng-model="message" class="form-control" required placeholder="Message"></textarea>
+				<br>
+				<button type="submit" id="submit-btn" class="btn bmu-bg-red" ng-disabled="contactFrm.$invalid">Submit</button>
 			</form>
 		</div>
 	</div>

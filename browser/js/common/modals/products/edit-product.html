@@ -1,0 +1,62 @@
+<div class="clearfix modal-contents"> 
+  <h1>{{theProduct.name | uppercase}}</h1><br><br>
+  <div class="col-md-6" style="padding-left: 30px;">
+  	<img src={{theProduct.imageUrl}}>
+  </div>
+  <form style="display: block" class="form-horizontal addProduct col-md-6" novalidate name="editProductForm" ng-submit="submitEdit()">
+    <div class="formitem"><span class="formtitle">NAME</span><br>
+      <input name="name" class="form-control" value="beard" type="text" name="name" ng-model="theProduct.name" required><br>
+      <div ng-messages="editProductForm.name.$error" ng-hide="theForm.$pristine" role="alert">
+        <div ng-message="required" class="alert alert-warning">Please enter a name.</div>
+      </div>
+    </div>
+
+    <div class="formitem"><span class="formtitle">DESCRIPTION</span><br>
+      <textarea name="description" class="form-control" cols="80", rows="4" type="text" ng-model="theProduct.description" required></textarea><br>
+        <div ng-messages="editProductForm.description.$error" ng-hide="editProductForm.description.$pristine" role="alert">
+        <div ng-message="required" class="alert alert-warning">
+          Please enter a description.
+        </div>
+      </div>
+    </div>
+    
+    <div class="formitem"><span class="formtitle">PRICE</span><input class="form-control priceform" type="number" name="price" ng-model="theProduct.price" required><br>
+      <div ng-messages="editProductForm.price.$error" ng-hide="editProductForm.price.$pristine" role="alert">
+        <div ng-message="required" class="alert alert-warning">
+          Please enter a price.
+        </div>
+      </div>
+    </div>
+
+    <div class="formitem"><span class="formtitle">TYPE</span><br>
+      <input type="radio" ng-model="theProduct.type" value="Beard" required> beard <input style="margin-left: 10px;" type="radio" ng-model="theProduct.type" value="Mustache"> mustache
+    </div><br>
+    
+    <div class="formitem"><span class="formtitle">STOCK</span> <input name="stock" class="form-control stockform" ng-model="theProduct.stock" type="number" required>
+      <div ng-messages="editProductForm.stock.$error" ng-hide="editProductForm.stock.$pristine" role="alert">
+        <div ng-message="required" class="alert alert-warning">
+          Please enter initial stock levels.
+        </div>
+      </div>
+    </div><br>
+    
+    <div class="formitem"><span class="formtitle addtoptitle">IMAGE URL</span><input class="form-control imgUrl" type="text" ng-model="theProduct.imageUrl" required></div><br>
+    
+    <div class="formitem"><span class="formtitle">THUMBNAIL URL</span> <input class="form-control imgUrl" type="text" ng-model="theProduct.thumbnailUrl"><br></div>
+    
+    <div class="formitem"><span class="formtitle">CUTOUT URL</span> <input class="form-control imgUrl" type="text" ng-model="theProduct.cutoutUrl"><br></div>
+    
+    <div class="formitem"><input type="checkbox" ng-model="theProduct.active" value="true"> <span class="formtitle">ACTIVE</div><br>
+    
+    <div class="formitem"><span class="formtitle">COLORS</span><br> 
+    <span class="color-checkbox"  ng-repeat="color in beardColors"><input type="checkbox" ng-model="theProduct.colors[color]" value="true">  {{color}}   </span></div><br>
+    
+    <div class="formitem"><span class="formtitle">TAGS</span><input class="form-control tagform" type="text" ng-model="theProduct.tags"></div><br><br><br>
+    
+    <button type="submit" class="btn btn-default bmu-bg-red" ng-disabled="editProductForm.$invalid">Update Product</button>
+    <br>
+    {{updateStatus}}
+    <br>
+    <br>
+  </form> 
+</div>

@@ -84,6 +84,33 @@ var seedUsers = function (products) {
                 color: 'black',
                 price: products[1].price
             }]
+        },
+        {
+            firstName: 'Omri',
+            lastName: 'Bernstein',
+            email: 'somekh.daniel@gmail.com',
+            password: 'password',
+            primaryAddress: [{
+                line1: '123 fullstack',
+                // line2: '',
+                city: 'New York',
+                state: 'NY',
+                zip: '42424',
+                phone: '555-555-5555'
+            }],
+            role: 'siteAdmin',
+            cart: [{
+                qty: 2,
+                product: products[0].id,
+                color: 'blue',
+                price: products[0].price
+            },
+            {
+                qty: 3,
+                product: products[1].id,
+                color: 'black',
+                price: products[1].price
+            }]
         }
     ];
 
@@ -221,7 +248,7 @@ var seedProducts = function () {
             type: 'Beard',
             colors: ['brown', 'dark brown', 'red', 'green', 'blue', 'gray'],
             tags: ['fancy', 'beard'],
-            imageUrl: 'http://www.fillmurray.com/200/200'
+            imageUrl: 'https://s3.amazonaws.com/beardmeup/test.jpg'
         },
         {
             name: 'casual beard',
@@ -231,7 +258,7 @@ var seedProducts = function () {
             stock: 55,
             colors: ['black', 'blond', 'brown', 'dark brown'],
             tags: ['casual', 'beard'],
-            imageUrl: 'http://www.fillmurray.com/201/201'
+            imageUrl: 'https://s3.amazonaws.com/beardmeup/test.jpg'
         },
         {
             name: 'pirate mustache',
@@ -241,7 +268,7 @@ var seedProducts = function () {
             colors: [ 'black', 'brown', 'dark brown', 'blue', 'gray'],
             type: 'Mustache',
             tags: ['pirate', 'parrot'],
-            imageUrl: 'http://www.fillmurray.com/202/202'
+            imageUrl: 'https://s3.amazonaws.com/beardmeup/test.jpg'
         },
         {
             name: 'sexy stubble',
@@ -251,7 +278,7 @@ var seedProducts = function () {
             colors: [ 'brown', 'dark brown', 'red'],
             type: 'Mustache',
             tags: ['sexy', 'stubble'],
-            imageUrl: 'http://www.fillmurray.com/199/199'
+            imageUrl: 'https://s3.amazonaws.com/beardmeup/test.jpg'
         }
     ];
 

@@ -1,3 +1,4 @@
+<h1 class='text-center'>All Customers</h1> <br><br>
 <div id = "all-customers">
 	<table class = "center">
 		<tr>
@@ -15,7 +16,7 @@
 			<td class = "col-xs-2">{{customer.address.city || "New York, NY"}}</td>
 			<td class = "col-xs-2">{{numOrders[customer._id.toString()] || 0}}</td>
 			<td class = "col-xs-1">{{totalSpent[customer._id.toString()]/100 || 0 | currency}}</td>
-			<td class = "col-xs-2"><button>View Customer</button></td>
+			<td class = "col-xs-2" ng-click="editCustomer(customer._id)"><button>View Customer</button></td>
 		</tr>
 	</table>
 </div>

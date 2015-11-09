@@ -14,7 +14,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('ProductController', function ($scope, theProduct, theReviews, ProductFactory) {
+app.controller('ProductController', function ($scope, theProduct, theReviews, ProductFactory, CartFactory) {
 	$scope.product = theProduct;
     $scope.reviews = theReviews;
     $scope.areReviews = !!$scope.reviews.length;
@@ -24,9 +24,9 @@ app.controller('ProductController', function ($scope, theProduct, theReviews, Pr
     $scope.toggleReviewForm = function() {
         $scope.showReviewForm = !$scope.showReviewForm
     }
-    $scope.color;
+    $scope.color = 'blue'; //until color selection
     $scope.addToCart = function() {
-        // CartFactory.add()
+        CartFactory.add(theProduct, $scope.color);
     }
     $scope.submitReview = function() {
         ProductFactory.addReview($scope.newReview, theProduct._id)

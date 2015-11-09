@@ -21,13 +21,14 @@ $darkGray: #424341;
   }
 
   background-color: $darkGray;
-  border-bottom: 1px solid black;
-  box-shadow: 1px 1px 14px -3px black;
+  border-bottom: 10px solid $darkGray;
+  //box-shadow: 1px 1px 14px -3px black;
   background-image: url('https://s3.amazonaws.com/beardmeup/espressowood_export.jpg');
   height: 300px;
   margin: auto;
-
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
   a {
+    font-weight: 300;
     color: white;
     font-size: 1.5rem;
     text-transform: uppercase;
@@ -36,12 +37,12 @@ $darkGray: #424341;
     transition: color 0.2s;
     text-decoration: none;
     &.active {
-      font-weight:bold;
-      color: $mediumGrey;
+      font-weight: 800;
+      color: $darkRed;
     }
     &:hover {
       background: none;
-      color: #f31214;
+      color: $darkRed;
     }
     &:focus {
       background: none;
@@ -50,11 +51,19 @@ $darkGray: #424341;
   .glyphicon {
       color: white;
   }
+}
 
-
-
-
-
+#beard-footer{
+  border-top: 10px solid $darkGray;
+  background-image: url('https://s3.amazonaws.com/beardmeup/espressowood_export.jpg');
+  height: 90px;
+  background-color: $darkGray;
+  text-align: center;
+//  box-shadow: -1px -1px 5px black;
+  h5{
+    color: white;
+    font-weight: 300;
+  }
 }
 
 navbar {
@@ -62,7 +71,7 @@ navbar {
   display: block;
   background-color: $darkGray;
   border-bottom: 1px solid black;
-  box-shadow: 1px 1px 14px -3px black;
+  box-shadow: 1px 1px 5px -3px black;
   background-image: url('https://s3.amazonaws.com/beardmeup/espressowood_export.jpg');
   height: 250px;
   margin: auto;
@@ -132,4 +141,8 @@ navbar {
   //   }
   // }
 
+}
+
+.social-icons{
+  height: 20px;
 }

@@ -1,14 +1,13 @@
 
 <!-- {{totalSpent}} -->
 <div id = "all-orders">
-	<div class="order-head">
-		<h1>{{pendingCount}} ORDERS</h1>
-		Need Your Attention
+	<div class="gray-divider">
+		<h1 style="margin-top: 50px">{{pendingCount}} ORDERS</h1>
+		<p>Need Your Attention</p>
 	</div>
-	<div class = "btn-group filter-buttons">
-		<button ng-click="orderFilter = 'all'" class="btn btn-primary">All</button>
-  		<button ng-click="orderFilter = 'unfulfilled'" type="button" class="btn btn-primary">Pending</button>
-		<button ng-click="orderFilter = 'fulfilled'" type="button" class="btn btn-primary">Finished</button>
+	<div class="gray-divider-spacer"> </div> 
+	<div class = "btn-group" style="margin-top: 40px;">
+		<button ng-repeat="aFilter in filters" ng-class="{'btn':true, 'bmu-bg-red': true, 'bmu-bg-red2': orderFilter===aFilter.toLowerCase(), 'filter-buttons': true}" ng-click="changeFilter(aFilter.toLowerCase())" >{{aFilter}}</button>
 	</div>
 
 	<table class = "center">
