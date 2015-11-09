@@ -370,6 +370,31 @@ a{
 	
 }
 
+#single-order{
+	padding:10px 45px;
+	address{
+		margin:5px 0;
+	};
+	table{
+		th{
+			padding-right:30px;
+		}
+		text-align: left;
+		td{
+			margin-right:5px;
+			padding:0 40px 0 0;
+		}
+		margin:30px 0 30px 0 !important;
+	}
+	.order-status{
+		margin-bottom:15px;
+	}
+	button{
+		display: block;
+	}
+}
+
 .mustache {
 	margin-left: 0;
 }
+

@@ -30,7 +30,10 @@ router.param('orderId', function(req, res, next, id) {
 
 router.get('/:orderId', function (req, res, next) {
 	if (hasAccess(req.order, req)) {
-    res.json(req.order.toObject({virtuals: true}));
+    req.order.populate('user cart.product').execPopulate()
+    .then(function(order){
+      res.json(order.toObject({virtuals: true}))
+    })
   } else {
     res.status(403).end();
   }
