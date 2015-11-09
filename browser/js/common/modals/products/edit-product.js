@@ -13,7 +13,5 @@ app.controller('editProductCtrl', function (theProduct, $scope, ProductFactory, 
 		ProductFactory.editProduct($scope.theProduct)
 		.then(function(edited){
 		})
-		.catch(err)
-		
 	}
 })

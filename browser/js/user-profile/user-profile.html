@@ -1,11 +1,12 @@
 <section id="user-profile">
-	<div>
+	<div class='text-center user-profile'>
 		<h3>Hello, {{user.firstName}} {{user.lastName}}</h3>
-		<h4>Welcome to your user page.</h4>
+		<h4>Welcome to your user page.</h4><br>
+		<img class="barber-pole" src='https://s3.amazonaws.com/beardmeup/barberpole.gif'><br>
+		<button class="btn bmu-bg-red" ng-click="toggleOrderView()">your orders</button>
+		<!-- <orders-view ng-show="showOrders">toggled</orders-view> -->
+		<button class="btn bmu-bg-red" ng-click="toggleEditInfoView()">modify your info</button>
+		<edit-user-info the-user="user" ng-show="showEditInfo"></edit-user-info>
 	</div>
-	<button ng-click="toggleOrderView()">your orders</button>
-	<!-- <orders-view ng-show="showOrders">toggled</orders-view> -->
-	<button ng-click="toggleEditInfoView()">modify your info</button>
-	<edit-user-info the-user="user" ng-show="showEditInfo"></edit-user-info>
 
 </section>

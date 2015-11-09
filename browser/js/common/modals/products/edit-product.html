@@ -1,13 +1,10 @@
-<div class="clearfix modal-contents">
-  <div class="col-md-4" style="padding-left: 30px;"><h1>{{theProduct.name}}</h1>
-  	<img src={{theProduct.imageUrl}} >
-  	<br><br><br><br><br><br><br><br><br>
-  	<br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="clearfix modal-contents"> 
+  <h1>{{theProduct.name | uppercase}}</h1><br><br>
+  <div class="col-md-6" style="padding-left: 30px;">
+  	<img src={{theProduct.imageUrl}}>
   </div>
-  <br><br><br>
-  <form style="display: block" class="form-horizontal addProduct col-md-8" novalidate name="editProductForm" ng-submit="submitEdit()">
-
-    <div class="formitem"><span class="formtitle">NAME</span> <br>
+  <form style="display: block" class="form-horizontal addProduct col-md-6" novalidate name="editProductForm" ng-submit="submitEdit()">
+    <div class="formitem"><span class="formtitle">NAME</span><br>
       <input name="name" class="form-control" value="beard" type="text" name="name" ng-model="theProduct.name" required><br>
       <div ng-messages="editProductForm.name.$error" ng-hide="theForm.$pristine" role="alert">
         <div ng-message="required" class="alert alert-warning">Please enter a name.</div>

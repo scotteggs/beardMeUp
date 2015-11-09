@@ -56,9 +56,14 @@ $darkGray: #424341;
 #beard-footer{
   border-top: 10px solid $darkGray;
   background-image: url('https://s3.amazonaws.com/beardmeup/espressowood_export.jpg');
-  height: 50px;
+  height: 90px;
   background-color: $darkGray;
+  text-align: center;
 //  box-shadow: -1px -1px 5px black;
+  h5{
+    color: white;
+    font-weight: 300;
+  }
 }
 
 navbar {
@@ -136,4 +141,8 @@ navbar {
   //   }
   // }
 
+}
+
+.social-icons{
+  height: 20px;
 }
