@@ -4,6 +4,7 @@
   	<img src={{theProduct.imageUrl}}>
   </div>
   <form style="display: block" class="form-horizontal addProduct col-md-6" novalidate name="editProductForm" ng-submit="submitEdit()">
+    
     <div class="formitem"><span class="formtitle">NAME</span><br>
       <input name="name" class="form-control" value="beard" type="text" name="name" ng-model="theProduct.name" required><br>
       <div ng-messages="editProductForm.name.$error" ng-hide="theForm.$pristine" role="alert">

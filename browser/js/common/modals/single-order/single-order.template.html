@@ -1,48 +1,50 @@
 <div id = "single-order">
-	<h3>Order</h3>
-	<div>
-		<label>Order Number</label>
-		Order {{order._id}}
-	</div>
+	<h1>ORDER</h1>
+	<form ng-submit = "updateOrder()" name = "singleOrder">
+		<div class = "formitem">
+			<span class = "formtitle">Order Number</span>
+			Order {{order._id}}
+		</div>
 
-	<div> 
-		<label>Order Date</label> 
-		{{order.datePlaced}}
-	</div>
+		<div class = "formitem"> 
+			<span class = "formtitle">Order Date</span> 
+			{{order.datePlaced}}
+		</div>
 
-	<div> 
-		<label>User</label> 
-		{{order.user.firstName + " " + order.user.lastName}}
-	</div>
+		<div class = "formitem"> 
+			<span class = "formtitle">User</span> 
+			{{order.user.firstName + " " + order.user.lastName}}
+		</div>
 
-	<div> 
-		<label>Email</label> 
-		{{order.user.email}}
-	</div>
+		<div class = "formitem"> 
+			<span class = "formtitle">Email</span> 
+			{{order.user.email}}
+		</div>
+		<address address = "order.deliveryAddress[0]" form-name = "singleOrder"></address>
 
-	<address address = "order.deliveryAddress[0]"></address>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>QUANTITY</th>
+				<th>PRICE</th>
+			</tr>
+			<tr ng-repeat = "item in order.cart">
+				<td>{{item.product._id}}</td> 
+				<td>{{item.qty}}</td> 
+				<td>{{item.product.price}}</td>
+			</tr>
+		</table>
 
-	<table>
-		<tr>
-			<th>ID</th>
-			<th>QUANTITY</th>
-			<th>PRICE</th>
-		</tr>
-		<tr ng-repeat = "item in order.cart">
-			<td>{{item.product._id}}</td> 
-			<td>{{item.qty}}</td> 
-			<td>{{item.product.price}}</td>
-		</tr>
-	</table>
+		<div class = "order-status">
+			<label>Order Status</label>
+			<select ng-model = "order.status">
+				<option value = "fulfilled">Fulfilled</option>
+				<option value = "unfulfilled">Unfulfilled</option>
+				<option value = "overdue">Overdue </option>
+			</select>
+		</div>
 
-	<div class = "order-status">
-		<label>Order Status</label>
-		<select ng-model = "order.status">
-			<option value = "fulfilled">Fulfilled</option>
-			<option value = "unfulfilled">Unfulfilled</option>
-			<option value = "overdue">Overdue </option>
-		</select>
-	</div>
+		<button>Update Order</button>
+	</form>
 
-	<button ng-click = "updateOrder()">Update Order</button>
 </div>
