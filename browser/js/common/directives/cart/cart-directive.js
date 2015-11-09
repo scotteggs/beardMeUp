@@ -7,7 +7,6 @@ app.directive('cart', function(UserFactory){
 		},
 		templateUrl: '/js/common/directives/cart/cart.html',
 		link: function($scope){
-			console.log("cart is ", $scope.cart)
 			$scope.remove = function(item){
 				$scope.cart = $scope.cart.filter(function(cartItem){
 					return item._id !== cartItem._id
