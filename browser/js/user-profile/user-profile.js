@@ -44,14 +44,15 @@ app.controller('UserProfile', function ($scope, theUser, $uibModal, AuthService,
 			  controller: 'UserOrdersCtrl',
 			  size: 'lg',
 			  resolve: {
-			    theUser: function(AuthService){
+			    theOrders: function(OrdersFactory, AuthService){
+			    	return AuthService.getLoggedInUser()
+			    	.then(function (user) {
+			    		return OrdersFactory.getOrdersByUser(user);
+			    	})
+			    }, 
+			   	theUser: function(AuthService){
 			      return AuthService.getLoggedInUser();
 			    },
-			    theOrders: function(OrdersFactory, AuthService){
-			    	return AuthService.getLoggedInUser().then( function (user) {
-			    		return OrdersFactory.getOrdersByUser(user.id);
-			    	})
-			    }
 			  }
 			});
 		}
