@@ -265,7 +265,7 @@ var seedProducts = function () {
             description: 'Ryan Thomas Gosling (born November 12, 1980) is a Canadian actor, film director, screenwriter, musician and businessman. He began his career as a child star on the Disney Channel.',
             price: 10299,
             stock: 39,
-            colors: [ 'black', 'brown', 'dark brown', 'blue', 'gray'],
+            colors: ['brown', 'dark brown'],
             type: 'Beard',
             tags: ['gosling', 'sexy', 'celebrity'],
             imageUrl: 'https://s3.amazonaws.com/beardmeup/beards/3-gosling.jpg'
