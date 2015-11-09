@@ -14,13 +14,18 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('ProductController', function ($scope, theProduct, theReviews, ProductFactory, CartFactory) {
+app.controller('ProductController', function ($scope, AuthService, theProduct, theReviews, ProductFactory, CartFactory) {
 	$scope.product = theProduct;
     $scope.reviews = theReviews;
     $scope.areReviews = !!$scope.reviews.length;
     $scope.averageRating = ProductFactory.averageRating($scope.reviews);
     $scope.showReviewForm = false;
     $scope.alreadyReviewed = false;
+    $scope.loggedIn = false;
+    AuthService.getLoggedInUser()
+    .then(function(user) {
+        if (user) $scope.loggedIn = true;
+    });
     $scope.toggleReviewForm = function() {
         $scope.showReviewForm = !$scope.showReviewForm
     }
@@ -35,6 +40,7 @@ app.controller('ProductController', function ($scope, theProduct, theReviews, Pr
             $scope.averageRating = ProductFactory.averageRating($scope.reviews);
             $scope.showReviewForm = false;
             $scope.areReviews = true;
+            $scope.alreadyReviewed = true;
         })
     }
 
