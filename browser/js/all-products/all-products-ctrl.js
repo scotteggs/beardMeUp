@@ -1,4 +1,4 @@
-app.controller('AllProductsCtrl', function ($scope, allProducts, ProductFactory, $uibModal){
+app.controller('AllProductsCtrl', function ($scope, allProducts, ProductFactory, $uibModal, addProduct, EditProductModal){
 	$scope.allProducts = allProducts;
 	$scope.types = ['All', 'Beard', 'Mustache'];
 	$scope.productFilter = "all";
@@ -6,24 +6,16 @@ app.controller('AllProductsCtrl', function ($scope, allProducts, ProductFactory,
 		$scope.productFilter = newFilter;
 	};
 	$scope.editProduct = function(id){
-		var modalInstance = $uibModal.open({
-			animation: true,
-			templateUrl: '/js/common/modals/products/edit-product.html',
-			controller: 'editProductCtrl',
-			size: 'lg',
-			resolve: {
-				theProduct: function(){
-					return ProductFactory.fetchOne(id);
-				}
-			}
-		})
+		var modalInstance = $uibModal.open(EditProductModal(id))
 	}
 	$scope.addProduct = function(){
-		var modalInstance = $uibModal.open({
-			animation: true,
-			templateUrl: '/js/common/modals/products/add-product.html',
-			controller: 'addProductCtrl',
-			size: 'lg'
-		}) 
+		var modalInstance = $uibModal.open(addProduct) 
 	}
+})
+
+app.value('addProduct', {
+	animation: true,
+	templateUrl: '/js/common/modals/products/add-product.html',
+	controller: 'addProductCtrl',
+	size: 'lg'
 })
