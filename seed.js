@@ -122,8 +122,8 @@ var seedOrders = function (users, products) {
     var firstUser = users[0];
     var firstProduct = products[0];
 
-    var secondUser = users[0];
-    var secondProduct = products[0];
+    var secondUser = users[1];
+    var secondProduct = products[1];
 
     var orders = [
         {
