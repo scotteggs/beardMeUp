@@ -5,7 +5,10 @@ app.config(function($stateProvider){
 		url: '/checkout',
 		resolve: {
 			theUser: function(AuthService){
-				return AuthService.getLoggedInUser();
+				return AuthService.getLoggedInUser(true);
+			},
+			theCart: function(UserFactory, theUser){
+				return UserFactory.getCart(theUser._id);
 			}
 		}
 	})

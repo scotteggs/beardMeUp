@@ -22,8 +22,7 @@ var schema = new mongoose.Schema({
 		required: true
 	},
 	phone: {
-		type: String,
-		required: true // @OB/ND really?
+		type: String
 	}
 })
 

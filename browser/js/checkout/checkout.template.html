@@ -19,7 +19,7 @@
       <div class = "col-xs-2"><label>Address</label></div>
 
       <div class = "col-xs-10">
-        <input class ="form-control" type = "text" ng-model = "billing.line1" placeholder = "Address Line 1">
+        <input class ="form-control" type = "text" ng-model = "billing.line1" placeholder = "Address Line 1" required>
       </div>
     </div>
 
@@ -29,7 +29,7 @@
       </div>
 
       <div class = "col-xs-10">
-        <input type = "text" ng-model = "billing.city" placeholder = "City" class = "form-control">
+        <input type = "text" ng-model = "billing.city" placeholder = "City" class = "form-control" required>
       </div>
     </div>
 
@@ -38,7 +38,7 @@
         <label>State</label>
       </div>
       <div class = "col-xs-10">
-        <input class = "form-control" type = "text" ng-model = "billing.state" placeholder = "State">
+        <input class = "form-control" type = "text" ng-model = "billing.state" placeholder = "State" required>
       </div>
     </div>
 
@@ -47,7 +47,7 @@
         <label>Zip Code</label>
       </div>
       <div class = "col-xs-10">
-        <input class = "form-control" type = "text" ng-model = "billing.zip" placeholder = "Zip Code">
+        <input class = "form-control" type = "text" ng-model = "billing.zip" placeholder = "Zip Code" required>
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@
       <div class = "col-xs-2"><label>Address</label></div>
 
       <div class = "col-xs-10">
-        <input class ="form-control" type = "text" ng-model = "delivery.line1" placeholder = "Address Line 1">
+        <input class ="form-control" type = "text" ng-model = "delivery.line1" placeholder = "Address Line 1" required>
       </div>
     </div>
 
@@ -69,7 +69,7 @@
       </div>
 
       <div class = "col-xs-10">
-        <input type = "text" ng-model = "delivery.city" placeholder = "City" class = "form-control">
+        <input type = "text" ng-model = "delivery.city" placeholder = "City" class = "form-control" required>
       </div>
     </div>
 
@@ -78,7 +78,7 @@
         <label>State</label>
       </div>
       <div class = "col-xs-10">
-        <input class = "form-control" type = "text" ng-model = "delivery.state" placeholder = "State">
+        <input class = "form-control" type = "text" ng-model = "delivery.state" placeholder = "State" required>
       </div>
     </div>
 
@@ -87,7 +87,7 @@
         <label>Zip Code</label>
       </div>
       <div class = "col-xs-10">
-        <input class = "form-control" type = "text" ng-model = "delivery.zip" placeholder = "Zip Code">
+        <input class = "form-control" type = "text" ng-model = "delivery.zip" placeholder = "Zip Code"required>
       </div>
     </div>
   </div>
@@ -104,7 +104,7 @@
     <div class = "form-group clearfix">
       <div class = "col-xs-3"><label>Expiration</label></div>
       <div class = "col-xs-9">
-        <select ng-model = "card.expiration.month">
+        <select ng-model = "card.expiration.month" required>
           <option value=''>Month</option>
           <option value='01'>Janaury</option>
           <option value='02'>February</option>
@@ -119,7 +119,7 @@
           <option value='11'>November</option>
           <option value='12'>December</option>
       </select> 
-      <select ng-model = "card.expiration.year">
+      <select ng-model = "card.expiration.year" required>
           <option value=''>Year</option>
           <option value='15'>2015</option>
           <option value='16'>2016</option>
@@ -135,7 +135,7 @@
       <div class = "col-xs-3"><label>CVC</label>
       </div>
       <div class = "col-xs-9">
-        <input ng-model = "card.cvc" placeholder = "CVC"/>
+        <input ng-model = "card.cvc" placeholder = "CVC" required>
       </div>
     </div>
   </div>

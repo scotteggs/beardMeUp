@@ -1,7 +1,6 @@
-app.controller('checkoutCtrl', function($scope, theUser, $state, OrdersFactory, ProductFactory, $uibModal){
-	console.log("in checkout control theUser is ", theUser)
+app.controller('checkoutCtrl', function($scope, theUser, theCart, $state, OrdersFactory, ProductFactory, $uibModal){
 	$scope.user = theUser;
-	$scope.cart= $scope.user.cart;
+	$scope.cart= theCart;
 	$scope.billing = theUser.primaryAddress[0]||{};
 
 	$scope.placeOrder = function(){
