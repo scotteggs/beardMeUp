@@ -11,86 +11,10 @@
       <label>Email</label><input type = "text" placeholder = "ex. beardmeup@beard.com">
     </div>
   </div>
+  
+  <address address = "billing"></address>
 
-  <div>
-    <h4>Billing Address</h4>
-
-    <div class = "form-group billing-item">
-      <div class = "col-xs-2"><label>Address</label></div>
-
-      <div class = "col-xs-10">
-        <input class ="form-control" type = "text" ng-model = "billing.line1" placeholder = "Address Line 1" required>
-      </div>
-    </div>
-
-    <div class = "form-group billing-item">
-      <div class = "col-xs-2">
-        <label>City</label>
-      </div>
-
-      <div class = "col-xs-10">
-        <input type = "text" ng-model = "billing.city" placeholder = "City" class = "form-control" required>
-      </div>
-    </div>
-
-    <div class = "form-group billing-item">
-      <div class = "col-xs-2">
-        <label>State</label>
-      </div>
-      <div class = "col-xs-10">
-        <input class = "form-control" type = "text" ng-model = "billing.state" placeholder = "State" required>
-      </div>
-    </div>
-
-    <div class = "form-group billing-item">
-      <div class = "col-xs-2">
-        <label>Zip Code</label>
-      </div>
-      <div class = "col-xs-10">
-        <input class = "form-control" type = "text" ng-model = "billing.zip" placeholder = "Zip Code" required>
-      </div>
-    </div>
-  </div>
-
-  <div>
-    <h4>Delivery Address</h4>
-
-    <div class = "form-group delivery-item">
-      <div class = "col-xs-2"><label>Address</label></div>
-
-      <div class = "col-xs-10">
-        <input class ="form-control" type = "text" ng-model = "delivery.line1" placeholder = "Address Line 1" required>
-      </div>
-    </div>
-
-    <div class = "form-group delivery-item">
-      <div class = "col-xs-2">
-        <label>City</label>
-      </div>
-
-      <div class = "col-xs-10">
-        <input type = "text" ng-model = "delivery.city" placeholder = "City" class = "form-control" required>
-      </div>
-    </div>
-
-    <div class = "form-group delivery-item">
-      <div class = "col-xs-2">
-        <label>State</label>
-      </div>
-      <div class = "col-xs-10">
-        <input class = "form-control" type = "text" ng-model = "delivery.state" placeholder = "State" required>
-      </div>
-    </div>
-
-    <div class = "form-group delivery-item">
-      <div class = "col-xs-2">
-        <label>Zip Code</label>
-      </div>
-      <div class = "col-xs-10">
-        <input class = "form-control" type = "text" ng-model = "delivery.zip" placeholder = "Zip Code"required>
-      </div>
-    </div>
-  </div>
+  <address address = "delivery"></address>
 
   <div class = "clearfix">
     <h4>Credit Card Info</h4>

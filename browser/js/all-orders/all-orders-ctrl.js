@@ -1,4 +1,4 @@
-app.controller('AllOrdersCtrl', function($scope, allOrders){
+app.controller('AllOrdersCtrl', function($scope, allOrders, singleOrderModal, $uibModal){
 	$scope.allOrders = allOrders;
 	$scope.filters = ['All', 'Pending', 'Finished'];
 	$scope.changeFilter = function(newFilter){
@@ -16,4 +16,8 @@ app.controller('AllOrdersCtrl', function($scope, allOrders){
 	$scope.pendingCount = allOrders.filter(function(order){
 		return order.status.toLowerCase() !== "fulfilled";
 	}).length;
+
+	$scope.viewOrder = function(orderId){
+		$uibModal.open(singleOrderModal(orderId))
+	}
 })

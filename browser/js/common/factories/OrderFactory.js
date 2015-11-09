@@ -20,6 +20,14 @@ app.factory('OrdersFactory', function($http){
 		checkout: function(order){
 			return $http.post('/api/checkout', order)
 			.then(getData)
+		},
+		getOrderById: function(orderId){
+			return $http.get('api/order/' + orderId)
+			.then(getData)
+		},
+		updateOrder: function(orderId, update){
+			return $http.put('/api/order/' + orderId, update)
+			.then(getData)
 		}
 	}
 })
