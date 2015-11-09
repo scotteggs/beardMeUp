@@ -234,12 +234,14 @@ table{
 }
 
 .gray-divider{
+	overflow: hidden;
+	left: 0;
+	display: block;
 	position: absolute;
-	margin-left: -120px;
 	margin-top: -10px;
 	height: 300px;
 	background-color: $lightGray;
-	width: 100%;
+	width: 100vw;
 	text-align: center;
 	h1{
 		font-family: $openSans;
