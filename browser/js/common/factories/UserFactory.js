@@ -6,6 +6,7 @@ app.factory('UserFactory', function ($http) {
 	}
 	function logError(err){
 		console.error(err);
+		throw err; // @OB/ND don't forget to bubble the error onwards!
 	}
 
 	UserFactory.fetchAll = function () {

@@ -1,4 +1,4 @@
-app.controller('checkoutCtrl', function($scope, theUser, theCart, $state, OrdersFactory, ProductFactory, $uibModal){
+app.controller('checkoutCtrl', function($scope, theUser, theCart, $state, OrdersFactory, ProductFactory, $uibModal, OrderSuccessModal){
 	$scope.user = theUser;
 	$scope.cart= theCart;
 	$scope.billing = theUser.primaryAddress[0]||{};
@@ -16,18 +16,7 @@ app.controller('checkoutCtrl', function($scope, theUser, theCart, $state, Orders
 			$scope.cart = [];
 			$scope.billing = [];
 			$state.go('home');
-			$uibModal.open({
-				animation: true,
-				templateUrl: '/js/common/modals/order-success/order-success.html',
-				controller: 'OrderSuccessCtrl',
-				size: 'lg',
-				resolve: {
-					order: function(){
-						return order;
-					}
-				}
-
-			})
+			$uibModal.open(OrderSuccessModal);
 		})
 		.catch(function(err){
 			console.error(err)

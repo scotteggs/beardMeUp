@@ -17,7 +17,7 @@ var schema = new mongoose.Schema({
 	//store: { type: Schema.Types.ObjectId, ref: 'Store', required: true},
 	datePlaced: {type: Date, default: Date.now},
 	status: {type: String, required: true, enum: ['unfulfilled', 'fulfilled', 'overdue'], default: 'unfulfilled'},
-	deliveryAddress: [addressSchema]
+	deliveryAddress: [addressSchema] // @OB/ND if you upgrade mongoose you can drop the []
 });
 
 var getTotal = function(){
