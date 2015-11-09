@@ -12,8 +12,7 @@ app.controller('editProductCtrl', function (theProduct, $scope, ProductFactory, 
 	$scope.submitEdit = function(){
 		ProductFactory.editProduct($scope.theProduct)
 		.then(function(edited){
+			$scope.updateStatus = 'Update Successful';
 		})
-		.catch(err)
-		
 	}
 })

@@ -1,19 +1,19 @@
-<div>
-	<img src={{product.imageUrl}}>
-</div>
-<div>
-	<div>
-		<p>{{product.name}}</p>
-		<p>{{product.price/100 | currency}}</p>
-		<p ng-show="areReviews">{{averageRating}} / 5</p>
+<div class="clearfix single-product-view">
+	<div class="col-md-6">
+		<img src={{product.imageUrl}}>
 	</div>
-		<p>{{product.description}}</p>
-	<div>
+	<div class="col-md-6 text-center">
+		<h5>{{product.name}}</h5>
+		<p class="price">{{product.price/100 | currency}}</p><br>
+		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/one_beard.gif">
+		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/one_beard.gif">
+		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/one_beard.gif">
+		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/one_beard.gif">
+		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/half-beard.gif"> 
+		<h5 ng-show="areReviews" class='rating'>{{averageRating}} / 5</h5>
+		<p class="product-description">{{product.description}}</p>
 		<p>Select Color</p>
-		<!-- color selector here -->
-	</div>
-	<div>
-		<button ng-click="addToCart()">Add To Cart</button>
+		<button class="btn bmu-bg-red add-to-cart" ng-click="addToCart()">Add To Cart</button>
 	</div>
 	<h4>Reviews</h4>
 	<p ng-hide="areReviews">There are no reviews... yet</p>
