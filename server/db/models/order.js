@@ -16,7 +16,7 @@ var schema = new mongoose.Schema({
 	cart: {type: [cartItem], validate: validators.isLength(1)},
 	//store: { type: Schema.Types.ObjectId, ref: 'Store', required: true},
 	datePlaced: {type: Date, default: Date.now},
-	status: {type: String, required: true, enum: ['unfulfilled', 'fulfilled', 'overdue']},
+	status: {type: String, required: true, enum: ['unfulfilled', 'fulfilled', 'overdue'], default: 'unfulfilled'},
 	deliveryAddress: [addressSchema]
 });
 

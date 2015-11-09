@@ -4,15 +4,36 @@
 	</div>
 	<div class="col-md-6 text-center">
 		<h5>{{product.name}}</h5>
-		<p class="price">${{product.price/100}}</p><br>
+		<p class="price">{{product.price/100 | currency}}</p><br>
 		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/one_beard.gif">
 		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/one_beard.gif">
 		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/one_beard.gif">
 		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/one_beard.gif">
 		<img class="beard-rating" src="https://s3.amazonaws.com/beardmeup/half-beard.gif"> 
-		<h5 class='rating'>4.5 / 5</h5>
+		<h5 ng-show="areReviews" class='rating'>{{averageRating}} / 5</h5>
 		<p class="product-description">{{product.description}}</p>
 		<p>Select Color</p>
 		<button class="btn bmu-bg-red add-to-cart" ng-click="addToCart()">Add To Cart</button>
+	</div>
+	<h4>Reviews</h4>
+	<p ng-hide="areReviews">There are no reviews... yet</p>
+	<div ng-repeat="review in reviews">
+		{{review.rating}} / 5
+		<p>{{review.content}}</p>
+		- {{review.reviewer.firstName}} {{review.reviewer.lastName}}
+		<hr>
+	</div>
+	<div>
+		<button ng-hide="alreadyReviewed" ng-click="toggleReviewForm()">Leave a review</button>
+		<form ng-submit="submitReview()" ng-show="showReviewForm">
+			<div>
+				RATING (1-5)
+				<input type="text" name="rating" ng-model="newReview.rating"><br>
+			</div>
+			<div>
+				<input type="text" name="content" ng-model="newReview.content" placeholder="Review">
+			</div>
+			<button type="submit">Submit</button>
+		</form>
 	</div>
 </div>

@@ -8,5 +8,10 @@
 		<button class="btn bmu-bg-red" ng-click="toggleEditInfoView()">modify your info</button>
 		<edit-user-info the-user="user" ng-show="showEditInfo"></edit-user-info>
 	</div>
-
+	<button ng-click="toggleOrderView()">your orders</button>
+		<orders-view ng-show="showOrders">
+		toggled
+		</orders-view>
+	<button ng-click="openUserOrders()">View Orders</button>
+	<button ng-click="openUserInfo()">Update Profile</button>
 </section>
