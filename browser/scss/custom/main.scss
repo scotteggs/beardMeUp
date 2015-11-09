@@ -57,7 +57,6 @@ $openSans: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 	vertical-align: middle;
 	padding:0 15% 10px 15%;
 	text-align:center;
-	border:1px solid $mediumGrey;
 	.cartItems{
 		margin-bottom: 40px;
 	}
@@ -368,4 +367,50 @@ a{
 	display: block;
 	margin: auto;
 	
+}
+
+textarea, input{
+	&:focus{
+		outline: 5px auto $darkRed !important;
+	}
+}
+
+.checkout-btn {
+	margin-top: 35px;
+	margin-left: 0px;
+	color: white;
+	width: 100%;
+	background-color: $darkRed;
+}
+
+.cart{
+	overflow: hidden;	
+}
+.cart-qty{
+	padding: 0 10px;
+}
+
+.cart-row{
+	vertical-align: middle;
+	padding: 20px 0;
+}
+
+.note{
+	font-size: 1rem;
+}
+
+.qty-btn{
+	border: 1px solid $darkGray;
+	color: $darkGray;
+	background-color: white;
+	padding: 0 5px;
+}
+
+.cart-thumb{
+	width: 35px;
+	height: 35px;
+}
+
+.checkout-container{
+	padding: 30px;
 }
