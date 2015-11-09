@@ -38,7 +38,6 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
 
 
             scope.open = function() {
-                console.log("in open")
                 var modalInstance = $uibModal.open({
                   animation: true,
                   templateUrl: '/js/common/modals/cart/cart.html',
