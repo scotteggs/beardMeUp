@@ -1,0 +1,22 @@
+<div id="view-user-orders">
+	hello {{user.firstName}}
+	<div ng-repeat="order in orders" class="row">
+		<div class="col-xs-3">
+			{{order._id}}
+		</div>
+		<div class="col-xs-2">
+			{{order.status}}
+		</div>
+		<div class="col-xs-2">
+			{{order.datePlaced}}
+		</div>
+		<div class="col-xs-5">
+			<div ng-repeat="item in order.cart">
+				{{item.product.name}}
+				{{item.qty}}
+				{{item.color}}
+				{{item.price}}
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,35 @@
+<h1 class='text-center'>All Products</h1> <br><br>
+<div id = "all-products">
+	<table class = "center">
+		
+		<div class = "btn-group">
+			<button ng-repeat="aType in types" ng-class="{'btn':true, 'bmu-bg-red': true, 'bmu-bg-red2': productFilter===aType.toLowerCase(), 'filter-buttons': true}" ng-click="changeFilter(aType.toLowerCase())" >{{aType}}</button>
+		</div>
+
+		<tr>
+				<th><a ng-click="sortType = 'sku'; sortReverse=!sortReverse">SKU</a></th>
+				<th><a ng-click="sortType = 'name'; sortReverse=!sortReverse">NAME</a></th>
+				<th><a ng-click="sortType = 'type'; sortReverse=!sortReverse">TYPE</a></th>
+				<th><a ng-click="sortType = 'stock'; sortReverse=!sortReverse">STOCK</a></th>
+				<th><a ng-click="sortType = 'colors'; sortReverse=!sortReverse">COLORS</a></th>
+				<th></th>
+		</tr>
+
+		<tr ng-repeat = "(index, product) in allProducts | orderBy:sortType:sortReverse" ng-show="product.type.toLowerCase() === productFilter || productFilter === 'all'">
+			<td class = "col-xs-2" ng-click="editProduct(product._id)"><button class="btn btn-default">{{product._id}}</button></td>
+			<td class = "col-xs-4">{{product.name}}</td>
+			<td class = "col-xs-2">{{product.type}}</td>
+			<td class = "col-xs-1">{{product.stock}}</td>
+			<td class = "col-xs-3">{{product.colors.join(', ') }}</td> 
+		</tr>
+	</table>
+	<button class="btn bmu-bg-red btn-wide add-product-btn" ng-click="addProduct()">+ Product</button>
+	<br>
+	<br>
+</div>
+
+<div>
+	<edit-product>
+</div>
+
+

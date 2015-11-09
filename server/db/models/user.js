@@ -2,13 +2,14 @@
 var crypto = require('crypto');
 var mongoose = require('mongoose');
 var validators = require('mongoose-validators');
+var addressSchema = require('./address');
+var cartSchema = require('./order');
 
 var schema = new mongoose.Schema({
     email: {
         type: String,
         unique: true,
-        validate: validators.isEmail(),
-        select: false
+        validate: validators.isEmail()
     },
     password: {
         type: String,
@@ -16,7 +17,7 @@ var schema = new mongoose.Schema({
     },
     salt: {
         type: String,
-        select: false,
+        select: false
     },
     twitter: {
         id: String,
@@ -39,30 +40,17 @@ var schema = new mongoose.Schema({
     lastName: {
         type: String
     },
-    primaryAddress: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Address'
-    },
-    addresses: {
-        type: [mongoose.Schema.Types.ObjectId],
-        ref: 'Address'
-    },
-    cart: {
-        type: [{
-            product: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Product'
-            },
-            quantity: Number
-        }]
-    },
-    accessibility: {
+    primaryAddress: [addressSchema],
+    addresses: [addressSchema],
+    cart: [cartSchema],
+    role: { // @OB/ND 'role'?
         type: String,
         enum: ['customer', 'storeAdmin', 'storeMgr', 'siteAdmin'],
-        default: 'customer',
-        select: false
+        default: 'customer'
     } 
 });
+
+
 
 // generateSalt, encryptPassword and the pre 'save' and 'correctPassword' operations
 // are all used for local authentication security.
@@ -78,18 +66,35 @@ var encryptPassword = function (plainText, salt) {
 };
 
 
-//validate email address
-schema.pre('save', function(next){
-    next();
-})
+schema.methods.hasRole = function(role){
+    return this.role === role;
+}
+
+schema.methods.addToCart = function(cartItem) {
+    var shouldAdd = true;
+    var self = this;
+    this.cart.forEach(function(item, index) {
+        if(item.product.equals(cartItem.product) && item.color === cartItem.color) {
+            self.cart[index].qty++;
+            shouldAdd = false;
+        }
+    })
+    if(shouldAdd) { 
+        this.cart.push(cartItem);
+    }
+    return this.save();
+}
 
 
 schema.pre('save', function (next) {
+
     if (this.isModified('password')) {
         this.salt = this.constructor.generateSalt();
         this.password = this.constructor.encryptPassword(this.password, this.salt);
     }
+
     next();
+
 });
 
 schema.statics.generateSalt = generateSalt;

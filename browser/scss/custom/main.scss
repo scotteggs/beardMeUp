@@ -1,0 +1,444 @@
+$darkRed: #9e202b;
+$lightGray: #eeeded;
+$mediumGray: #a7a4a2;
+$darkGray: #424341;
+$openSans: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+#all-orders, #all-customers, #all-products{
+	table{
+		margin:auto;
+		tr{
+			th{
+				text-align: center;
+				padding-bottom: 1em;
+				border-bottom: .2em solid black;
+				a:hover{
+					cursor: pointer;
+					text-decoration: none;
+				}
+			}
+			td{
+				border-bottom: .1em solid black;
+				padding-bottom:5px;
+				padding-top:5px;
+			}
+			.unfulfilled{
+				color:blue;
+				font-weight: bold;
+			}
+			.overdue{
+				color:red;
+				font-weight: bold;
+			}
+		}
+	}
+	text-align: center;
+
+	.order-head {
+		margin: auto;
+		text-align: center;
+		margin: 5em;
+	}
+}
+
+.filter-buttons {
+	margin-bottom: 50px;
+}
+
+.addProduct input {
+	text-align: left !important;
+}
+
+.modal-dialog{
+	top: 50%;
+}
+
+#cart{
+	vertical-align: middle;
+	padding:0 15% 10px 15%;
+	text-align:center;
+	.cartItems{
+		margin-bottom: 40px;
+	}
+	.cartItem{
+		border-bottom:1px solid $lightGrey;
+		margin-bottom:15px;
+	}
+	.quantity{
+		border: .1rem solid $darkGray;
+		border-radius: 5px;
+	}
+	.total{
+		text-align:right;
+		font-size:2rem;
+		#subtotal{
+			border-bottom:1px solid $lightGrey;
+		}
+	}
+}
+
+#checkout{
+	.billing-item{
+		padding-bottom:30px;
+	}
+	#place-order{
+		text-align:center;
+		margin-top:40px;
+	}
+}
+
+.whitebg{
+	background-color: white;
+}
+
+.formitem{
+	margin-top:10px;
+}
+
+.formtitle{
+	font-weight: bold;
+	font-family: $openSans;
+}
+
+.imgUrl{
+	width: 400px;
+}
+
+.priceform{
+	width: 120px;
+}
+
+.stockform{
+	width:80px;
+}
+
+//.btn-default, btn-success, btn-primary, btn-info, btn-warning, btn-danger{
+//	border-radius: 0px !important;
+//}
+
+.bmu-bg-red{
+	background-color: $darkRed;
+	color: white;
+}
+
+.bmu-bg-red:hover {
+	background-color: #c82b3c !important;
+	color: white;
+}
+
+.bmu-bg-red:active, .bmu-bg-red:focus, .bmu-bg-red2 {
+	background-color: #c82b3c !important;
+	color: white !important;
+}
+
+.btn:focus, .btn:active{
+	outline: 5px auto $darkRed !important;
+}
+
+//.form-control, input{
+//	border-radius: 0px !important;
+//}
+
+.color-checkbox {
+	padding-left: 30px;
+}
+
+.modal-contents{
+	padding-top: 30px !important;
+}
+
+.add-products{
+	margin: 60px;
+}
+
+.btn-wide{
+	width: 300px;
+}
+
+.order-filter-subhead{
+	margin-top: -40px; 
+	margin-bottom: 50px;
+}
+
+.add-product-btn{
+	margin-bottom: 50px;
+	font-weight: bold;
+}
+
+.filter-buttons{
+	background-color: white;
+	color: $darkGray;
+	padding: 5px 40px;
+	border: 1px solid $darkRed;
+}
+
+#home-header{
+	position: absolute;
+	left: 0;
+	display: block;
+	margin-top: -10px;
+	width: 100vw;
+	height: 400px;
+	overflow: hidden;
+	background: $darkGray url(https://s3.amazonaws.com/beardmeup/homepage2.jpg) center no-repeat;
+	background-size: 1700px auto;
+	border-bottom: 10px solid $darkGray;
+}
+
+#about-header{
+	position: absolute;
+	left: 0;
+	display: block;
+	margin-top: 30px;
+	width: 100vw;
+	height: 400px;
+	overflow: hidden;
+	background: $darkGray url(https://s3.amazonaws.com/beardmeup/about.jpg) center no-repeat;
+	background-size: 1700px auto;
+	border-bottom: 10px solid $darkGray;
+	border-top: 10px solid $darkGray;
+}
+
+#home-spacer{
+	height:400px;
+}
+
+#about-spacer{
+	height:500px;
+}
+
+
+body{
+	font-family: 'Playfair Display', serif;
+	font-weight: 300;
+}
+
+button{
+	font-style: italic;
+	border-radius: 0px !important;
+	cursor: pointer;
+}
+
+table{
+	font-family: $openSans;
+	font-weight: 400;
+	margin-bottom: 50px !important;
+	margin-top: 50px !important;
+}
+
+#cart-icon {
+	position: absolute;
+	right: 120px;
+	margin-left: 50px !important;
+}
+
+.gray-divider{
+	overflow: hidden;
+	left: 0;
+	display: block;
+	position: absolute;
+	margin-top: -10px;
+	height: 300px;
+	background-color: $lightGray;
+	width: 100vw;
+	text-align: center;
+	h1{
+		font-family: $openSans;
+		font-weight: 300;
+		font-size: 5rem;
+		text-transform: uppercase;
+		margin: 70px 0 30px 0 !important;
+	}
+	border-bottom: 10px solid $darkGray;
+	p{
+		margin-top: -20px;
+		font-size: 2rem;
+		font-weight: bold;
+	}
+	.btn{
+		padding: 20px 40px;
+	}
+}
+
+.gray-divider-spacer{
+	height: 300px;
+}
+
+#all-customers{
+	margin-top: -50px;
+}
+
+h1{
+	text-align: center;
+	font-family: $openSans;
+	font-weight: 300;
+	font-size: 7rem !important;
+}
+
+h2{
+	text-align: center;
+	font-family: $openSans;
+	font-weight: 500;
+	font-size: 5rem !important;
+}
+
+h5{
+	font-family:$openSans;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+.med-tb-space{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+#submit-btn{
+	padding: 10px 30px;
+	margin-bottom: 50px;
+}
+
+#contact-title{
+	font-size: 5rem;
+}
+
+.col-md-4{
+	text-align: center;
+}
+
+#beard-expert{
+	margin: auto;
+	width: 300px;
+	&:hover{
+		-webkit-filter: drop-shadow(3px 3px 0px $darkRed);
+	}
+}
+
+#about{
+	h1{
+		margin-top: 50px;
+	}
+}
+
+.beard-item{
+	margin-bottom: 30px;
+}
+
+.product-price{
+	margin-top: -10px;
+	font-style: italic;
+}
+
+.user-profile{
+	margin-bottom: 30px;
+}
+
+.single-product-view{
+	margin: 50px 200px;
+	h5{
+		font-size: 2rem;
+		margin-bottom: 0px;
+	}
+	.price{
+		font-style: italic;
+	}
+	.beard-rating{
+		height: 10px
+	}
+	.rating{
+		font-size: 1.5rem;
+		font-weight: 800;
+		margin-bottom: 20px;
+	}
+	.description{
+
+	}
+	.add-to-cart{
+		margin-top: 20px;
+	}
+}
+
+a{
+	color: $darkRed;
+}
+
+.barber-pole{
+	height: 300px;
+	display: block;
+	margin: auto;
+	
+}
+
+textarea, input{
+	&:focus{
+		outline: 5px auto $darkRed !important;
+	}
+}
+
+.checkout-btn {
+	margin-top: 35px;
+	margin-left: 0px;
+	color: white;
+	width: 100%;
+	background-color: $darkRed;
+}
+
+.cart{
+	overflow: hidden;	
+}
+.cart-qty{
+	padding: 0 10px;
+}
+
+.cart-row{
+	vertical-align: middle;
+	padding: 20px 0;
+}
+
+.note{
+	font-size: 1rem;
+}
+
+.qty-btn{
+	border: 1px solid $darkGray;
+	color: $darkGray;
+	background-color: white;
+	padding: 0 5px;
+}
+
+.cart-thumb{
+	width: 35px;
+	height: 35px;
+}
+
+.checkout-container{
+	padding: 30px;
+}
+
+#single-order{
+	padding:10px 45px;
+	address{
+		margin:5px 0;
+	};
+	table{
+		th{
+			padding-right:30px;
+		}
+		text-align: left;
+		td{
+			margin-right:5px;
+			padding:0 40px 0 0;
+		}
+		margin:30px 0 30px 0 !important;
+	}
+	.order-status{
+		margin-bottom:15px;
+	}
+	button{
+		display: block;
+	}
+}
+
+.mustache {
+	margin-left: 0;
+}

@@ -1,4 +1,4 @@
-app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) {
+app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, $uibModal, cartModal) {
 
     return {
         restrict: 'E',
@@ -10,7 +10,14 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                 { label: 'Home', state: 'home' },
                 { label: 'Products', state: 'products' },
                 { label: 'About', state: 'about' },
-                { label: 'Members Only', state: 'membersOnly', auth: true }
+                { label: 'Contact', state: 'contact' },
+                { label: 'Profile', state: 'userProfile', auth: true }
+            ];
+
+            scope.adminItems = [
+                { label: 'Orders', state: 'allOrders' },
+                { label: 'Customers', state: 'allCustomers' },
+                { label: 'Stockroom', state: 'allProducts' }
             ];
 
             scope.user = null;
@@ -19,10 +26,20 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
                 return AuthService.isAuthenticated();
             };
 
+            scope.isSiteAdmin = function(){
+                return scope.user && scope.user.role === 'siteAdmin';
+            }
+
             scope.logout = function () {
                 AuthService.logout().then(function () {
                    $state.go('home');
                 });
+            };
+
+
+            scope.open = function() {
+                console.log('cartModal is ', cartModal);
+                var modalInstance = $uibModal.open(cartModal)
             };
 
             var setUser = function () {

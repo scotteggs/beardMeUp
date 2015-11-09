@@ -4,9 +4,8 @@ app.config(function ($stateProvider) {
         controller: 'ProductsController',
         templateUrl: 'js/products/products.html',
         resolve: {
-        	allProducts: function (ProductsFactory) {
-        		return ProductsFactory.fetchAll();
-        		// return ['product1', 'product2', 'product3']
+        	allProducts: function (ProductFactory) {
+        		return ProductFactory.fetchAll();
         	}
         }
     });
