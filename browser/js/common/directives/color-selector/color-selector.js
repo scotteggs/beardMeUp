@@ -18,7 +18,7 @@ app.directive('colorSelector', function() {
 				'red': '#ce1111',
 				'green': '#64bf40',
 				'blue': '#3399FF',
-				'gray': '#444444'
+				'gray': '#cccccc'
 			}
 		}
 	}
