@@ -17,7 +17,8 @@ var schema =  new Schema({
 	cutoutUrl: String,
 	active: {type: Boolean, default: false},
 	colors: [{type: String, enum: ['black', 'blond', 'brown', 'dark brown', 'red', 'green', 'blue', 'gray']}],
-	tags: [String] 
+	tags: [String],
+	user: {ref: 'User', type: Schema.Types.ObjectId}
 })
 
 
@@ -25,5 +26,11 @@ schema.methods.getReviews = function(){
 	return Review.find({product: this._id})
 }
 
-
 mongoose.model('Product', schema);
+
+function getAdmin(){
+	return mongoose.model('User').findOne({role: 'siteAdmin'})
+	.then(function(user){
+		return user;
+	})
+}
