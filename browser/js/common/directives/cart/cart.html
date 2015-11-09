@@ -5,11 +5,13 @@
 		<div ng-repeat="(idx, cartItem) in cart" class="row cartItem">
 			<div class="col-xs-3">
 				<span ng-click = "remove(cartItem)" class = "glyphicon glyphicon-remove"></span>
-				<!--src="{{cartItem.product.thumbnailUrl}}"-->
-				<img src = "https://placeimg.com/50/35/any">
+				<img style="width: 50%" src = "{{imageUrl(cartItem)}}" >
 			</div>
-			<div class="col-xs-3">
+			<div class="col-xs-2">
 				{{cartItem.product.name || "A great beard"}}
+			</div>
+			<div class="col-xs-2">
+				{{cartItem.color}}
 			</div>
 			<div class="col-xs-3">
 				<div class = "btn-group quantity">
@@ -18,7 +20,7 @@
 					<button type = "button" ng-click = "changeQuantity(idx, 1)">+</button>
 				</div>
 			</div>
-			<div class="col-xs-3">
+			<div class="col-xs-2">
 				{{cartItem.price/100 | currency}}
 			</div>
 		</div>

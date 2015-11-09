@@ -1,7 +1,7 @@
 <div class="clearfix single-product-view">
 	<div class="row">
 		<div class="col-md-6">
-			<img src={{product.imageUrl}}>
+			<img src={{imageUrl()}}>
 		</div>
 		<div class="col-md-6 text-center">
 			<h5>{{product.name}}</h5>
@@ -9,7 +9,7 @@
 			<mustaches ng-show="areReviews" num-staches="averageRating"></mustaches>
 			<h5 ng-show="areReviews" class='rating'>{{averageRating}} / 5</h5>
 			<p class="product-description">{{product.description}}</p>
-			<p>Select Color</p>
+			<color-selector the-colors="product.colors" ng-model="color"></color-selector>
 			<button class="btn bmu-bg-red add-to-cart" ng-click="addToCart()">Add To Cart</button>
 		</div>
 	</div>

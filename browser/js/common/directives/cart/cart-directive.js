@@ -28,6 +28,12 @@ app.directive('cart', function(UserFactory){
 				})
 				return total;
 			}
+
+			$scope.imageUrl = function(cartItem) {
+		        if (cartItem.color) {
+		            return cartItem.product.imageUrl.slice(0,-4) + '-' + cartItem.color + '.jpg';
+		        } else return cartItem.product.imageUrl;
+		    }
 		}
 	}
 })
