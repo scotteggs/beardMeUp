@@ -13,7 +13,9 @@
 			<button class="btn bmu-bg-red add-to-cart" ng-click="addToCart()">Add To Cart</button>
 		</div>
 	</div>
+	<br>
 	<h4>Reviews</h4>
+	<hr>
 	<p ng-hide="areReviews">There are no reviews... yet</p>
 	<div ng-repeat="review in reviews">
 		<mustaches num-staches="review.rating"></mustaches>
@@ -23,6 +25,7 @@
 	</div>
 	<div ng-show="loggedIn">
 		<button ng-hide="alreadyReviewed" ng-click="toggleReviewForm()">Leave a review</button>
+		<br>
 		<form name="reviewForm" ng-submit="submitReview()" ng-show="showReviewForm">
 			<div>
 				<mustaches-hover required ng-model="newReview.rating"></mustaches-hover>
