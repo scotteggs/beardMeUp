@@ -1,8 +1,11 @@
 'use strict';
 var router = require('express').Router();
 var mongoose = require('mongoose')
-
 var Review = mongoose.model('Review')
+
+function hasAccess(review, req) {
+  return review.reviewer.equals(req.user) || req.user.role === 'siteAdmin'
+}
 
 router.get('/', function (req, res, next) {
 	Review.find().populate('reviewer')
@@ -24,6 +27,7 @@ router.param('reviewId', function(req, res, next, id) {
 
 router.get('/:reviewId', function (req, res, next) {
 	res.json(req.review)
+  .then(null, next)
 })
 
 // @OB/ND auth? also maybe set user to be req.user by default?
@@ -63,10 +67,5 @@ router.delete('/:reviewId', function(req, res, next){
     res.status(403).end();
   }
 })
-
-function hasAccess(review, req) {
-  return review.reviewer.equals(req.user) || req.user.role === 'siteAdmin'
-}
-
 
 module.exports = router;

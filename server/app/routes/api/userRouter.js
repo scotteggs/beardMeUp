@@ -1,12 +1,14 @@
 'use strict';
 var router = require('express').Router();
 var mongoose = require('mongoose')
-var Promise = require('bluebird')
-var _ = require('lodash');
 
 var User = mongoose.model('User')
 var Product = mongoose.model('Product');
 var stripe = require('stripe')('sk_test_cF41RQVpkFeQRg2DRxcJD4cY')
+
+function hasAccess(theUser, req){
+  return theUser.equals(req.user) || req.user.role === "siteAdmin"
+}
 
 router.get('/', function (req, res, next) {
   if(req.user && req.user.role === 'siteAdmin') {
@@ -37,6 +39,7 @@ router.get('/:userId/products', function(req, res, next){
     .then(function(products){
       res.json(products)
     })
+    .then(null, next)
 })
 
 router.post('/:userId/payment', function(req, res, next){
@@ -52,7 +55,7 @@ router.post('/:userId/payment', function(req, res, next){
       currency: "usd",
       customer: customer.id
     })
-  }, function(err){
+  }, function(){
     res.sendStatus(400)
   })
   .then(function(charge){
@@ -69,11 +72,13 @@ router.get('/:userId/cart', function (req, res, next) {
   .then(function(user) {
     res.send(user.cart)
   })
+  .then(null, next)
 })
 
 router.get('/:userId', function (req, res, next) {
 	if(hasAccess(req.foundUser, req)){
     res.json(req.foundUser)
+    .then(null, next)
   } else {
     res.status(403).end();
   }
@@ -85,6 +90,7 @@ router.get('/owners/get', function(req, res, next){
   .then(function(users){
     res.json(users)
   })
+  .then(null, next)
 })
 
 
@@ -95,6 +101,7 @@ router.post('/:userId/cart', function (req, res, next) {
     .then(function(user) {
       res.json(user);
     })
+    .then(null, next)
   } else {
     res.status(403).end();
   }
@@ -102,7 +109,7 @@ router.post('/:userId/cart', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
   if(req.user && req.user.role === 'siteAdmin') {
-	  delete req.body._id;
+    delete req.body._id;
   	User.create(req.body)
   	.then(function(newUser){
   		res.status(201).json(newUser);
@@ -139,12 +146,6 @@ router.delete('/:userId', function(req, res, next){
     res.status(403).end();
   }
 })
-
-function hasAccess(theUser, req){
-  return theUser.equals(req.user) || req.user.role === "siteAdmin"
-}
-
-
 
 module.exports = router;
 

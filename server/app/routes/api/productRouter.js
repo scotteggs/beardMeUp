@@ -23,6 +23,7 @@ router.param('productId', function(req, res, next, id) {
 
 router.get('/:productId', function (req, res, next) {
 	res.json(req.product)
+  .then(null, next)
 })
 
 router.get('/store/:userId', function (req, res, next) {
@@ -31,6 +32,7 @@ router.get('/store/:userId', function (req, res, next) {
   .then(function(data){
     res.send(data)
   })
+  .then(null, next)
 })
 
 router.post('/', function (req, res, next) {

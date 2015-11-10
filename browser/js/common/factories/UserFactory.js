@@ -34,7 +34,10 @@ app.factory('UserFactory', function ($http) {
 		return $http.post('/api/user/' + userId + '/payment', {token: token, amount: amount})
 	}
 
-	
+	UserFactory.signup = function(user) {
+		return $http.post('/signup', user)
+		.then(getData)
+	}
 
 	return UserFactory;
 })
