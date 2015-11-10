@@ -37,7 +37,6 @@ app.factory('UserFactory', function ($http) {
 	UserFactory.signup = function(user) {
 		return $http.post('/signup', user)
 		.then(getData)
-		.catch(logError)
 	}
 
 	return UserFactory;
