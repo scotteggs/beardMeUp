@@ -214,7 +214,7 @@ $openSans: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 	overflow: hidden;
 	background: $darkGray url(https://s3.amazonaws.com/beardmeup/homepage2.jpg) center no-repeat;
 	background-size: 1700px auto;
-	border-bottom: 10px solid $darkGray;
+	border-bottom: 4px solid $darkGray;
 }
 
 #about-header{
@@ -227,8 +227,8 @@ $openSans: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 	overflow: hidden;
 	background: $darkGray url(https://s3.amazonaws.com/beardmeup/about.jpg) center no-repeat;
 	background-size: 1700px auto;
-	border-bottom: 10px solid $darkGray;
-	border-top: 10px solid $darkGray;
+	border-bottom: 4px solid $darkGray;
+	border-top: 4px solid $darkGray;
 }
 
 #home-spacer{
@@ -281,7 +281,7 @@ table{
 		text-transform: uppercase;
 		margin: 70px 0 30px 0 !important;
 	}
-	border-bottom: 10px solid $darkGray;
+	border-bottom: 4px solid $darkGray;
 	p{
 		margin-top: -20px;
 		font-size: 2rem;
@@ -556,7 +556,7 @@ textarea, input{
 
 .take-selfie{
 	margin-top: 50px;
-	border-top: 10px solid black;
+	border-top: 4px solid $darkGray;
 }
 
 #login-form{
@@ -661,3 +661,18 @@ textarea, input{
 canvas {
 	display: none;
 }
+
+.fixed {
+    position:fixed;
+    top:0;
+    margin: auto;
+    width: 100%;
+    border-bottom: 4px solid $darkGray;
+}
+
+.nav-sticky{
+	z-index: 10;
+	background-image: url("https://s3.amazonaws.com/beardmeup/espressowood_export.jpg");
+}
+
+
