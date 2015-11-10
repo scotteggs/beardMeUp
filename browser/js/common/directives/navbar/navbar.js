@@ -58,6 +58,15 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
             $rootScope.$on(AUTH_EVENTS.logoutSuccess, removeUser);
             $rootScope.$on(AUTH_EVENTS.sessionTimeout, removeUser);
 
+            var num = 250;
+            $(window).bind('scroll', function() {
+                if($(window).scrollTop() > num) {
+                    $('.nav-sticky').addClass('fixed');
+                } else {
+                    $('nav-sticky').removeClass('fixed');
+                }
+            })
+
         }
 
     };
