@@ -1,4 +1,6 @@
-app.controller('editProductCtrl', function (theProduct, $scope, ProductFactory, $uibModalInstance) {
+app.controller('editProductCtrl', function (theProduct, $scope, ProductFactory, $uibModalInstance, theOwners, $state) {
+	console.log("the product is ", theProduct)
+	$scope.owners = theOwners;
 	theProduct.price = theProduct.price/100;
 	var colorsObject = {};
 	theProduct.colors.forEach(function(color) {
@@ -10,9 +12,12 @@ app.controller('editProductCtrl', function (theProduct, $scope, ProductFactory, 
 	$scope.theProduct = theProduct;
 	$scope.updateStatus = '';
 	$scope.submitEdit = function(){
+		console.log($scope.theProduct)
 		ProductFactory.editProduct($scope.theProduct)
 		.then(function(edited){
 			$scope.updateStatus = 'Update Successful';
+			$state.reload();
+			setTimeout(function(){$uibModalInstance.dismiss('cancel')}, 1000);
 		})
 	}
 })

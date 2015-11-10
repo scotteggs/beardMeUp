@@ -1,11 +1,11 @@
+<br>
 <div id = "cart" class = "clearfix">
 	<hr>
 	<div class = "cartItems">
 		<div ng-repeat="(idx, cartItem) in cart" class="row cart-row">
 			<div class="col-xs-3">
 				<span ng-click = "remove(cartItem)" class = "glyphicon glyphicon-remove"></span>
-				<!--src="{{cartItem.product.thumbnailUrl}}"-->
-				<img src="{{cartItem.product.imageUrl}}"  class="cart-thumb">
+				<img src="{{imageUrl(cartItem)}}"  class="cart-thumb">
 			</div>
 			<div class="col-xs-3"> 
 				{{cartItem.product.name || "A great beard"}}
@@ -14,6 +14,7 @@
 				<button type = "button" ng-click = "changeQuantity(idx, -1)">-</button>
 				<span class="cart-qty">{{cartItem.qty}}</span>
 				<button type = "button" ng-click = "changeQuantity(idx, 1)">+</button>
+
 			</div>
 			<div class="col-xs-2">
 				{{cartItem.price/100 | currency}}
@@ -22,8 +23,10 @@
 	</div>
 
 	<div class = "total clearfix">
-		<div id = "subtotal" class = "clearfix"><span class = "col-xs-6"><h5>Subtotal</h5></span><span class = "col-xs-6">{{cartTotal()/100| currency}}</span></div>
+		<div class = "clearfix"><span class = "col-xs-6"><h4 class="no-bold">Subtotal</h4></span><span class = "col-xs-6">{{cartTotal()/100| currency}}</span></div>
 
-		<div id = "total"><span class = "col-xs-6">Total:</span><span class = "col-xs-6">{{(cartTotal() + 3000)/100| currency}}</span></div>
+		<div id = "tax" class = "clearfix"><span class = "col-xs-6"><h4 class="no-bold">Tax</h4></span><span class = "col-xs-6">{{cartTotal()/100 * .09| currency}}</span></div>
+
+		<div id = "total"><h4 class = "col-xs-6">Total</h4><span class = "col-xs-6"><b>{{(cartTotal() * 1.09)/100| currency}}</b></span></div>
 	</div>
 </div>

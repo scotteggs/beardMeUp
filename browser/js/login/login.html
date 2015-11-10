@@ -1,16 +1,27 @@
+<<<<<<< HEAD
 <form id="login-form" name="loginForm">
 
+=======
+<h2 class="text-center">Hey, Fellow Beardo!</h2>
+<form id="login-form" class="text-center" name="loginForm" ng-submit="loginForm.$valid && sendLogin(login)">
+>>>>>>> master
     <alert type="danger" ng-show="error">
         {{ error }}
     </alert>
     <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="text" ng-model="login.email" class="form-control" id="email" placeholder="Enter email">
+        <label class="formtitle" for="email">EMAIL</label>
+        <input type="text" class="form-control text-center" ng-model="login.email"id="email" placeholder="Enter email">
     </div>
+    <br>
     <div class="form-group">
-        <label for="login-password">Password</label>
-        <input type="password" ng-model="login.password" class="form-control" id="login-password" placeholder="Password">
+        <label class="formtitle" for="login-password">PASSWORD</label>
+        <input type="password" ng-model="login.password" class="form-control text-center" id="login-password" placeholder="Password">
     </div>
+<<<<<<< HEAD
     <button ng-click="sendLogin(login)" class="btn btn-default">Sign In</button>
     <button ng-click="signup()" class="btn btn-default">Create Account</button>
+=======
+    <br>
+    <button type="submit" class="btn bmu-bg-red">Submit</button>
+>>>>>>> master
 </form>

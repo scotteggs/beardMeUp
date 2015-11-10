@@ -26,6 +26,7 @@ var Product = Promise.promisifyAll(mongoose.model('Product'));
 var Order = Promise.promisifyAll(mongoose.model('Order'));
 var Review = Promise.promisifyAll(mongoose.model('Review'));
 
+
 var seedUsers = function (products) {
 
     var users = [
@@ -86,9 +87,63 @@ var seedUsers = function (products) {
             }]
         },
         {
-            firstName: 'Omri',
-            lastName: 'Bernstein',
+            firstName: 'Beard',
+            lastName: 'Admin',
             email: 'somekh.daniel@gmail.com',
+            password: 'password',
+            primaryAddress: [{
+                line1: '123 fullstack',
+                // line2: '',
+                city: 'New York',
+                state: 'NY',
+                zip: '42424',
+                phone: '555-555-5555'
+            }],
+            role: 'siteAdmin',
+            cart: [{
+                qty: 2,
+                product: products[0].id,
+                color: 'blue',
+                price: products[0].price
+            },
+            {
+                qty: 3,
+                product: products[1].id,
+                color: 'black',
+                price: products[1].price
+            }]
+        },
+        {
+            firstName: 'Weirdo',
+            lastName: 'Beardo',
+            email: 'somekh.daniel@gmail.com',
+            password: 'password',
+            primaryAddress: [{
+                line1: '123 fullstack',
+                // line2: '',
+                city: 'New York',
+                state: 'NY',
+                zip: '42424',
+                phone: '555-555-5555'
+            }],
+            role: 'storeOwner',
+            cart: [{
+                qty: 2,
+                product: products[0].id,
+                color: 'blue',
+                price: products[0].price
+            },
+            {
+                qty: 3,
+                product: products[1].id,
+                color: 'black',
+                price: products[1].price
+            }]
+        },
+        {
+            firstName: 'Fullstack',
+            lastName: 'Seller',
+            email: 'lesterechem@gmail.com',
             password: 'password',
             primaryAddress: [{
                 line1: '123 fullstack',
@@ -246,7 +301,7 @@ var seedProducts = function () {
             price: 10000,
             stock: 23,
             type: 'Beard',
-            colors: ['black', 'dark brown', 'brown', 'gray', 'blond'],
+            colors: ['dark brown', 'black', 'brown', 'gray', 'blond'],
             tags: ['fancy', 'beard'],
             imageUrl: 'https://s3.amazonaws.com/beardmeup/beards/1-afghan_chic.jpg'
         },
@@ -256,7 +311,7 @@ var seedProducts = function () {
             price: 5500,
             type: 'Beard',
             stock: 55,
-            colors: ['black', 'blond', 'brown', 'dark brown', 'green', 'red', ],
+            colors: ['red', 'black', 'blond', 'brown', 'dark brown', 'green' ],
             tags: ['casual', 'beard'],
             imageUrl: 'https://s3.amazonaws.com/beardmeup/beards/2-irish_burly.jpg'
         },
@@ -265,7 +320,7 @@ var seedProducts = function () {
             description: 'Ryan Thomas Gosling (born November 12, 1980) is a Canadian actor, film director, screenwriter, musician and businessman. He began his career as a child star on the Disney Channel.',
             price: 10299,
             stock: 39,
-            colors: ['brown', 'dark brown'],
+            colors: ['dark brown', 'brown'],
             type: 'Beard',
             tags: ['gosling', 'sexy', 'celebrity'],
             imageUrl: 'https://s3.amazonaws.com/beardmeup/beards/3-gosling.jpg'
@@ -275,7 +330,7 @@ var seedProducts = function () {
             description: 'yeah you know you like it. is this long enough yet? HOW ABOUT NOW!?!?!?! i like pizza i like pizza i like pizza yeah yeah yeah heh yeh hey hey. Seriously, Omri has the best beard known to man.',
             price: 9999,
             stock: 99,
-            colors: [ 'black', 'dark brown', 'blond'],
+            colors: [ 'dark brown', 'black', 'blond'],
             type: 'Beard',
             tags: ['fullstack', 'omri', 'celebrity'],
             imageUrl: 'https://s3.amazonaws.com/beardmeup/beards/4-berstein_special.jpg'
@@ -285,7 +340,7 @@ var seedProducts = function () {
             description: 'Suspendisse aliquet dictum erat, in imperdiet lorem aliquet id. Nam non condimentum tellus. Nulla elementum consequat nibh, non scelerisque magna gravida auctor.',
             price: 5999,
             stock: 929,
-            colors: [ 'black', 'dark brown'],
+            colors: [ 'dark brown', 'black'],
             type: 'Beard',
             tags: ['sexy', 'stubble'],
             imageUrl: 'https://s3.amazonaws.com/beardmeup/beards/5-heavy_stubble.jpg'
@@ -305,7 +360,7 @@ var seedProducts = function () {
             description: 'Jacob Benjamin "Jake" Gyllenhaal (born December 19, 1980) is an American actor. The son of director Stephen Gyllenhaal and screenwriter Naomi Foner, Gyllenhaal began acting at the age of ten.',
             price: 9229,
             stock: 99,
-            colors: [ 'black', 'brown', 'dark brown'],
+            colors: [ 'dark brown', 'black', 'brown'],
             type: 'Beard',
             tags: ['jake', 'celebrity'],
             imageUrl: 'https://s3.amazonaws.com/beardmeup/beards/7-gyllenhooliheay.jpg'
@@ -315,7 +370,7 @@ var seedProducts = function () {
             description: 'yMichiel Huisman is a Dutch actor, musician, and singer-songwriter, who has acted in both Dutch and English-language TV series and films.',
             price: 8779,
             stock: 99,
-            colors: [ 'dark brown', 'black'],
+            colors: [ 'black', 'dark brown'],
             type: 'Beard',
             tags: ['sexy', 'celebrity', 'michiel'],
             imageUrl: 'https://s3.amazonaws.com/beardmeup/beards/8-huismann.jpg'
@@ -335,7 +390,7 @@ var seedProducts = function () {
             description: 'Suspendisse nec augue tempus, ornare risus a, suscipit purus. Nullam ut consequat ipsum. Donec fringilla lobortis aliquet. Cras consectetur diam lectus, eget tempor risus suscipit non. In malesuada pellentesque velit at interdum.',
             price: 1099,
             stock: 99,
-            colors: [ 'black', 'brown', 'dark brown'],
+            colors: [ 'dark brown', 'black', 'brown'],
             type: 'Mustache',
             tags: ['perverted', 'Orange is the New Black'],
             imageUrl: 'https://s3.amazonaws.com/beardmeup/beards/10-pornstache.jpg'
@@ -375,7 +430,7 @@ var seedProducts = function () {
             description: 'Suspendisse nec augue tempus, ornare risus a, suscipit purus. Nullam ut consequat ipsum. Donec fringilla lobortis aliquet. Cras consectetur diam lectus, eget tempor risus suscipit non. In malesuada pellentesque velit at interdum.',
             price: 1999,
             stock: 99,
-            colors: [ 'black', 'gray', 'dark brown'],
+            colors: [ 'dark brown', 'black', 'gray'],
             type: 'Mustache',
             tags: ['vintage', 'cute'],
             imageUrl: 'https://s3.amazonaws.com/beardmeup/beards/14-the_comb.jpg'
@@ -390,9 +445,10 @@ connectToDb.then(function () {
     mongoose.connection.db.dropDatabase(function() {
         var products;
         var users;
+        var adminUser;
         seedProducts()
         .then(function (_products) {
-            products = _products;
+            products = _products
             return seedUsers(products)
         })
         .then(function(_users) {
@@ -401,6 +457,14 @@ connectToDb.then(function () {
         }).then(function() {
             return seedReviews(users, products)
         }).then(function(){
+            return mongoose.model('User').findOne({role: 'siteAdmin'})
+        }).then(function(admin){
+            return Promise.map(products, function(product){
+                product.user = admin;
+                return product.save()
+            })
+        })
+        .then(function(){
             console.log(chalk.green('Seed successful!'));
             process.kill(0);  
         }).catch(function (err) {

@@ -1,4 +1,4 @@
-app.factory('EditProductModal', function(ProductFactory){
+app.factory('EditProductModal', function(ProductFactory, UserFactory){
 	return function(id){
 		return {
 			animation: true,
@@ -8,6 +8,9 @@ app.factory('EditProductModal', function(ProductFactory){
 			resolve: {
 				theProduct: function(ProductFactory){
 					return ProductFactory.fetchOne(id);
+				},
+				theOwners: function(UserFactory){
+					return UserFactory.getStoreOwners();
 				}
 			}
 		}

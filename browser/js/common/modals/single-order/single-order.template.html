@@ -1,40 +1,38 @@
-<div id = "single-order">
+<div id = "single-order" class="text-center">
 	<h1>ORDER</h1>
-	<form ng-submit = "updateOrder()" name = "singleOrder">
-		<div class = "formitem">
-			<span class = "formtitle">Order Number</span>
-			Order {{order._id}}
-		</div>
+	<form ng-submit = "updateOrder()" name="singleOrder"  class="text-center" novalidate>
+		<p class="text-center">{{order._id}}<br>
+		{{order.datePlaced}}</p>
 
-		<div class = "formitem"> 
-			<span class = "formtitle">Order Date</span> 
-			{{order.datePlaced}}
+		<div>
+			<div class="formitem col-xs-6"> 
+				<span class = "formtitle">USER</span>
+				{{order.user.firstName + " " + order.user.lastName}}
+			</div>
+			<div class = "formitem col-xs-6"> 
+				<span class = "formtitle">EMAIL</span>
+				{{order.user.email}}
+			</div>
 		</div>
-
-		<div class = "formitem"> 
-			<span class = "formtitle">User</span> 
-			{{order.user.firstName + " " + order.user.lastName}}
-		</div>
-
-		<div class = "formitem"> 
-			<span class = "formtitle">Email</span> 
-			{{order.user.email}}
-		</div>
-		<address address = "order.deliveryAddress[0]" form-name = "singleOrder"></address>
-
-		<table>
+		<br>
+		<hr>
+		<address address = "order.deliveryAddress[0]" style="line-height: 20px;"class="text-right" form-name = "singleOrder"></address>
+		<hr>
+		<h5>ORDERS</h5>
+		<table class="text-center user-orders" style="margin-top: 10px !important">
+			
 			<tr>
 				<th>ID</th>
-				<th>QUANTITY</th>
+				<th>QTY</th>
 				<th>PRICE</th>
 			</tr>
 			<tr ng-repeat = "item in order.cart">
 				<td>{{item.product._id}}</td> 
 				<td>{{item.qty}}</td> 
-				<td>{{item.product.price}}</td>
+				<td>{{item.product.price/100 | currency}}</td>
 			</tr>
 		</table>
-
+		<hr>
 		<div class = "order-status">
 			<label>Order Status</label>
 			<select ng-model = "order.status">
@@ -43,8 +41,12 @@
 				<option value = "overdue">Overdue </option>
 			</select>
 		</div>
-
-		<button>Update Order</button>
 	</form>
+	<div class='btn-group'>
+		<button class="btn margin-auto" ng-click='updateOrder()'>Update Order</button> <button ng-hide='order.status=="fulfilled"' class="btn bmu-bg-red margin-auto" ng-click='fulfillOrder()'>Fulfill Order</button>
+	</div>
+	<br>{{statusMessage}}
+	<br>
+	<br>
 
 </div>
