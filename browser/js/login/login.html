@@ -1,6 +1,7 @@
 
-<form id="login-form" name="loginForm">
+<form id="login-form" class="text-center" name="loginForm">
 <h2 class="text-center">Hey, Fellow Beardo!</h2>
+<br><br>
 <form id="login-form" class="text-center" name="loginForm" ng-submit="loginForm.$valid && sendLogin(login)">
 
     <alert type="danger" ng-show="error">
@@ -15,7 +16,10 @@
         <label class="formtitle" for="login-password">PASSWORD</label>
         <input type="password" ng-model="login.password" class="form-control text-center" id="login-password" placeholder="Password">
     </div>
-
+    <br>
     <button ng-click="sendLogin(login)" class="btn bmu-bg-red">Sign In</button>
-    <button ng-click="signup()" class="btn bmu-bg-red">Create Account</button>
+    <br><br><br>
+    <p class='text-italic'>If you haven't signed up yet, click the button below.</p>
+    <button ng-click="signup()" class="btn btn-default">Create Account</button>
+    <br><br>
 </form>

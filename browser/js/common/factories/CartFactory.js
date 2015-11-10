@@ -1,5 +1,35 @@
-app.factory('CartFactory', function ($http, AuthService, $uibModal) {
+app.factory('CartFactory', function ($http, AuthService, $uibModal, $rootScope) {
 	var CartFactory = {};
+	var cartItemCount = 0;
+	function getCartItems(){
+        return AuthService.getLoggedInUser(true)
+        .then(function(theUser){
+            var cartTotal=0;
+            var userCart = theUser.cart;
+            userCart.forEach(function(item){
+                cartTotal += item.qty;
+            })
+            return cartItemCount = cartTotal;
+        });
+    }
+
+    $rootScope.$on('auth-logout-success', function(){
+    	cartItemCount = 0;
+    })
+
+    $rootScope.$on('auth-login-success', function(){
+    	getCartItems();
+    })
+
+    CartFactory.zeroCart = function(){
+    	cartItemCount = 0;
+    }
+
+    CartFactory.getCartCount = function(){
+    	return cartItemCount;
+    }
+
+    getCartItems();
 	CartFactory.add = function (product, color) {
 		AuthService.getLoggedInUser()
 		.then(function(user) {
@@ -10,6 +40,7 @@ app.factory('CartFactory', function ($http, AuthService, $uibModal) {
 				price: product.price
 			})
 			.then(function() {
+				cartItemCount++;
 				var modalInstance = $uibModal.open({
                   animation: true,
                   templateUrl: '/js/common/modals/cart/cart.html',
