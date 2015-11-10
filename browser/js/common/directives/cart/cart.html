@@ -24,8 +24,10 @@
 	</div>
 
 	<div class = "total clearfix">
-		<div id = "subtotal" class = "clearfix"><span class = "col-xs-6"><h4 class="no-bold">Subtotal</h4></span><span class = "col-xs-6">{{cartTotal()/100| currency}}</span></div>
+		<div class = "clearfix"><span class = "col-xs-6"><h4 class="no-bold">Subtotal</h4></span><span class = "col-xs-6">{{cartTotal()/100| currency}}</span></div>
 
-		<div id = "total"><h4 class = "col-xs-6">Total</h4><span class = "col-xs-6"><b>{{(cartTotal() + 3000)/100| currency}}</b></span></div>
+		<div id = "tax" class = "clearfix"><span class = "col-xs-6"><h4 class="no-bold">Tax</h4></span><span class = "col-xs-6">{{cartTotal()/100 * .09| currency}}</span></div>
+
+		<div id = "total"><h4 class = "col-xs-6">Total</h4><span class = "col-xs-6"><b>{{(cartTotal() * 1.09)/100| currency}}</b></span></div>
 	</div>
 </div>

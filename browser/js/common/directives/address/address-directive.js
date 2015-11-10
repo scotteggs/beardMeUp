@@ -4,7 +4,8 @@ app.directive('address', function(){
 		templateUrl: '/js/common/directives/address/address.template.html',
 		scope: {
 			address: '=',
-			formName:'='
+			formName:'=',
+			title: '@'
 		},
 		require: 'ngModel'
 	}
