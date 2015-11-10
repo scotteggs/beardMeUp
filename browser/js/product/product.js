@@ -22,6 +22,9 @@ app.controller('ProductController', function ($scope, $rootScope, AuthService, t
     $scope.showReviewForm = false;
     $scope.alreadyReviewed = false;
     $scope.loggedIn = false;
+    $scope.cutoutUrl = $scope.product.imageUrl.slice(0,-4) + '-cutout.png';
+    $scope.streaming = false;
+
     AuthService.getLoggedInUser()
     .then(function(user) {
         if (user) $scope.loggedIn = true;
@@ -43,48 +46,47 @@ app.controller('ProductController', function ($scope, $rootScope, AuthService, t
         })
     }
     $scope.imageUrl = function() {
-        if($scope.theSelfieUrl) return $scope.theSelfieUrl;
         if ($scope.color) {
             return $scope.product.imageUrl.slice(0,-4) + '-' + $scope.color + '.jpg';
         } else return $scope.product.imageUrl;
     }
 
-    window.plot = function(x, y, w, h) {
-        console.log("plot has been called", x, y, w, h)
-        var rect = document.createElement('div');
-        document.querySelector('#productImage').appendChild(rect);
-        rect.classList.add('rect');
-        rect.style.width = w + 'px';
-        rect.style.height = h + 'px';
-        rect.style.left = (x) + 'px';
-        rect.style.top = (y) + 'px';
-    };
+    $scope.stream = function() {
+        $scope.streaming = !$scope.streaming;
+        $('.take-selfie').css('height', $scope.streaming ? '800px' : '300px');
+        $('#selfie-spacer').css('height', $('.take-selfie').css('height'));
+        var video = document.querySelector("#videoElement");
+        // var canvas = $('#canvas');
+        // console.log(canvas)
+        // canvas.css('height', video.css('height'));
+        // canvas.css('width', video.css('width'));
+        // var ctx = canvas[0].getContext('2d');
+        // ctx.fillStyle = '#AAA';
+        // ctx.fillRect(0,0,canvas.width,canvas.height);
+ 
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+ 
+        if (navigator.getUserMedia) {       
+            navigator.getUserMedia({video: true}, handleVideo, videoError);
+        }
+         
+        function handleVideo(stream) {
+            video.src = window.URL.createObjectURL(stream);
+        }
 
-    var el = document.getElementById('upload-selfie');
-    el.addEventListener('change', function() {
-        document.getElementById('productImage').className = "product-image"
-        var theImage = this.files[0];
-        $scope.theSelfieUrl = window.URL.createObjectURL(theImage);
-        $scope.uploaded = true;
-        $scope.$digest();
+        function videoError(e) {
+            console.log(e);
+        }
+    }
 
-        var img = document.getElementById('preview-img')
+    $scope.takePhoto = function() {
+        var video = document.querySelector('#videoElement');
+        video.pause();
+        // var canvas = $('#canvas');
+        // var ctx = canvas[0].getContext('2d');
+        // ctx.drawImage(video, 0,0, canvas.css('width'), canvas.css('height'));
+        // var data = canvas.toDataUrl('image/png');
+        // console.log(data);
 
-        var tracker = new tracking.ObjectTracker(['face', 'mouth']);
-        tracker.setStepSize(1.7);
-        tracking.track('#product-img', tracker);
-        tracker.on('track', function(event){
-            console.log(event)
-            event.data.forEach(function(rect){
-                window.plot(rect.x, rect.y, rect.width, rect.height);
-            })
-        })
-        // tracker.emit('track')
-
-
-
-    })
-
-
-
+    }
 })
