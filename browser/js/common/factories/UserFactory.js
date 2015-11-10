@@ -32,6 +32,10 @@ app.factory('UserFactory', function ($http) {
 		.catch(logError)
 	}
 
+	UserFactory.handlePayment = function(userId, token, amount){
+		return $http.post('/api/user/' + userId + '/payment', {token: token, amount: amount})
+	}
+
 	
 
 	return UserFactory;

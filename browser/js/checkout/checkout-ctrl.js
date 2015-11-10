@@ -1,9 +1,20 @@
-app.controller('checkoutCtrl', function($scope, theUser, theCart, $state, OrdersFactory, ProductFactory, $uibModal, orderSuccess){
+app.controller('checkoutCtrl', function($scope, theUser, theCart, $state, OrdersFactory, ProductFactory, $uibModal, orderSuccess, UserFactory){
 	$scope.user = theUser;
 	$scope.cart= theCart;
 	$scope.billing = theUser.primaryAddress[0]||{};
 
+	$scope.showDelivery = function(){
+		if($scope.showDelivery) $scope.delivery = $scope.billing;
+		$scope.delivery = {}
+	}
+
 	$scope.placeOrder = function(){
+		window.Stripe.card.createToken({
+			number: '4242424242424242',
+			exp_month: '12',
+			exp_year: '16'
+		}, $scope.handleStripe)
+
 		var order = {};
 		order.cart = $scope.cart;
 		order.user = $scope.user;
@@ -22,5 +33,25 @@ app.controller('checkoutCtrl', function($scope, theUser, theCart, $state, Orders
 			console.error(err)
 		})
 	}
+
+	$scope.cartTotal = function(){
+		var total = 0;
+		$scope.cart.forEach(function(cartItem){
+			total += cartItem.qty * cartItem.price;
+		})
+		return total;
+	}
+
+	$scope.handleStripe = function(status, response){
+		if(response.error){
+			console.error(response.error)
+		}
+		else{
+			var token = response.id;
+			var amount = $scope.cartTotal()
+			UserFactory.handlePayment(theUser._id, token, amount)
+		}
+	}
+
 
 })

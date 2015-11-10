@@ -43,6 +43,7 @@ var schema = new mongoose.Schema({
     primaryAddress: [addressSchema],
     addresses: [addressSchema],
     cart: [cartSchema],
+    stripeCustomer: String,
     role: { // @OB/ND 'role'?
         type: String,
         enum: ['customer', 'storeAdmin', 'storeMgr', 'siteAdmin'],

@@ -1,7 +1,7 @@
 'use strict';
 
 
-window.app = angular.module('FullstackGeneratedApp', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'ngMessages']);
+window.app = angular.module('FullstackGeneratedApp', ['fsaPreBuilt', 'ui.router', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'ngMessages','angularPayments']);
 
 
 app.config(function ($urlRouterProvider, $locationProvider) {
