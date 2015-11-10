@@ -5,27 +5,31 @@
 
 
     <img id="bmu-logo" src="https://s3.amazonaws.com/beardmeup/logo_2.png" ui-sref="home"></img>
-    <ul>
-     <!-- class="nav navbar-nav myNav"> -->
-        <!-- Non-admin -->
-        <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
-            <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
-        </li>
+    <div id = "nav-wrapper" class = "clearfix">
+        <div class="nav-sticky">
+            <ul>
+             <!-- class="nav navbar-nav myNav"> -->
+                <!-- Non-admin -->
+                <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
+                    <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
+                </li>
 
-        <!-- Admin console -->
-        <li ng-repeat = "item in adminItems" ng-show = "isSiteAdmin()">
-            <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label}}</a>
-        </li> 
-        <li>
-            <a ng-show="!user" ui-sref="login">User Login</a>
-        </li>
+                <!-- Admin console -->
+                <li ng-repeat = "item in adminItems" ng-show = "isSiteAdmin()">
+                    <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label}}</a>
+                </li> 
+                <li>
+                    <a ng-show="!user" ui-sref="login">User Login</a>
+                </li>
 
-        <li ng-click="open()" id="cart-icon"><span class="glyphicon glyphicon-shopping-cart"></span> </li>
+                <li ng-click="open()" id="cart-icon"><span class="glyphicon glyphicon-shopping-cart"></span> </li>
 
-        <li ng-show="user" class="welcome">
-            <a ng-click="logout()" style="font-weight: 800">Logout</a>
-        </li>
-    </ul>
+                <li ng-show="user" class="welcome">
+                    <a ng-click="logout()" style="font-weight: 800">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 </div>
 <!-- </nav> -->
