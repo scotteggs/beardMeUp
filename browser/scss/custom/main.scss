@@ -631,3 +631,21 @@ textarea, input{
 	cursor: pointer;
 }
 
+#view-user-orders{
+	table{
+		margin:auto;
+		tr{
+			th{
+				text-align: center;
+				padding-bottom: 2em;
+				border-bottom: .2em solid black;
+			}
+			td{
+				border-bottom: .1em solid black;
+				padding-bottom:10px;
+				padding-top:10px;
+			}
+		}
+	}
+	text-align: center;
+}

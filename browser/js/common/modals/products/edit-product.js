@@ -14,7 +14,7 @@ app.controller('editProductCtrl', function (theProduct, $scope, ProductFactory, 
 	$scope.submitEdit = function(){
 		console.log($scope.theProduct)
 		ProductFactory.editProduct($scope.theProduct)
-		.then(function(edited){
+		.then(function(){
 			$scope.updateStatus = 'Update Successful';
 			$state.reload();
 			setTimeout(function(){$uibModalInstance.dismiss('cancel')}, 1000);

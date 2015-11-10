@@ -1,4 +1,4 @@
-app.value('cartModal', {
+ app.value('cartModal', {
   animation: true,
   templateUrl: '/js/common/modals/cart/cart.html',
   controller: 'CartCtrl',

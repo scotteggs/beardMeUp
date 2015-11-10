@@ -1,4 +1,4 @@
-app.controller('OrderSuccessCtrl', function($scope, $uibModalInstance, order){
+app.controller('OrderSuccessCtrl', function($state, $scope, $uibModalInstance, order){
 	console.log("in order success ctrl");
 	$scope.order = order;
 	$scope.checkout = function(){

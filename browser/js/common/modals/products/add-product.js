@@ -3,7 +3,7 @@ app.controller('addProductCtrl', function ($scope, ProductFactory, $uibModalInst
 	$scope.colors = ['black', 'blond', 'brown', 'dark brown', 'red', 'green', 'blue', 'gray'];
 	$scope.addProduct = function(){
 		ProductFactory.addProduct($scope.newProduct)
-		.then(function(newItem){
+		.then(function(){
 			$uibModalInstance.dismiss();
 			$state.go($state.current, {}, {reload: true});
 		})

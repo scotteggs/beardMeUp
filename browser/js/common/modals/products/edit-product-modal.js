@@ -1,4 +1,4 @@
-app.factory('EditProductModal', function(ProductFactory, UserFactory){
+app.factory('EditProductModal', function(){
 	return function(id){
 		return {
 			animation: true,

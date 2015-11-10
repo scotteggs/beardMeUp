@@ -30,11 +30,11 @@ app.directive('cart', function(UserFactory){
 			}
 
 			$scope.imageUrl = function(cartItem) {
-		        if (cartItem.color) {
-		            return cartItem.product.imageUrl.slice(0,-4) + '-' + cartItem.color + '.jpg';
-		        } else return cartItem.product.imageUrl;
-		    }
+				if (cartItem.color) {
+					return cartItem.product.imageUrl.slice(0,-4) + '-' + cartItem.color + '.jpg';
+						} else return cartItem.product.imageUrl;
+				}
+			}
 		}
-	}
-})
+	})
 

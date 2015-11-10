@@ -39,7 +39,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
 
             scope.open = function() {
                 console.log('cartModal is ', cartModal);
-                var modalInstance = $uibModal.open(cartModal)
+                $uibModal.open(cartModal)
             };
 
             var setUser = function () {

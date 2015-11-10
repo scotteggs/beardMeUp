@@ -2,10 +2,10 @@ app.controller('signupCtrl', function (UserFactory, AuthService, $scope, $uibMod
 	$scope.signup = function (user) {
 		//signup and login here
 		UserFactory.signup(user)
-		.then( function (user) {			
-			AuthService.getLoggedInUser(user)
+		.then( function (auser) {			
+			AuthService.getLoggedInUser(auser)
 		})	
-		.then( function (user) {
+		.then( function () {
 			$uibModalInstance.dismiss()
 			$state.go('home');	
 		})
