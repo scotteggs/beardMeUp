@@ -4,12 +4,26 @@ var mongoose = require('mongoose')
 var Product = mongoose.model('Product')
 
 router.get('/', function (req, res, next) {
-	Product.find()
+	Product.find({active: true})
 	.then(function(products) {
  		res.json(products)
 	})
 	.then(null,next)
 })
+
+router.get('/get/all', function (req, res, next) {
+  console.log("getting all products")
+  if(req.user && req.user.role === 'siteAdmin') {
+    Product.find()
+    .then(function(products) {
+      res.json(products)
+    })
+    .then(null,next)
+  } else {
+    res.status(403).end();
+  }
+})
+
 
 router.param('productId', function(req, res, next, id) {
   Product.findById(id).populate('user')
@@ -28,7 +42,7 @@ router.get('/:productId', function (req, res, next) {
 
 router.get('/store/:userId', function (req, res, next) {
   // res.send(req.params.userId);
-  Product.find({user: req.params.userId})
+  Product.find({user: req.params.userId, active: true})
   .then(function(data){
     res.send(data)
   })

@@ -1,4 +1,5 @@
 $darkRed: #9e202b;
+$lightRed: #c82b3c;
 $lightGray: #eeeded;
 $mediumGray: #a7a4a2;
 $darkGray: #424341;
@@ -153,7 +154,7 @@ $openSans: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .bmu-bg-red:hover {
-	background-color: #c82b3c !important;
+	background-color: $lightRed !important;
 	color: white;
 }
 
@@ -325,8 +326,13 @@ h5{
 }
 
 #submit-btn{
-	padding: 10px 30px;
+	padding: 10px 80px;
 	margin-bottom: 50px;
+	font-family: $openSans;
+	font-weight: 800;
+	font-size: 2rem;
+	text-transform: uppercase;
+	font-style: normal;
 }
 
 #contact-title{
@@ -411,12 +417,20 @@ textarea, input{
 }
 
 .checkout-btn {
-	margin-top: 35px;
+	margin-top: 15px;
 	margin-left: 0px;
 	color: white;
 	width: 100%;
 	background-color: $darkRed;
+	h5 {
+		font-size: 2rem !important;
+		font-style: normal;
+
+	}
+
 }
+
+
 
 .cart{
 	overflow: hidden;	
@@ -554,10 +568,14 @@ textarea, input{
 	margin: auto;
 }
 
-.delivery-item{
+.delivery-item, .checkout-container{
 	.formtitle {
 		padding-top: 5px;
 	}
+}
+
+.delivery-item{
+	height: 35px;
 }
 
 .user-orders{
@@ -567,9 +585,49 @@ textarea, input{
 	}
 }
 
+
+.place-order-btn {
+	font-style: normal;
+	padding: 10px 60px;
+}
+
 .rect {
 	border: 2px solid #a64ceb;
 	left: -1000px;
 	position: absolute;
 	top: -1000px;
 }
+
+.confirmation{
+	h5{
+		font-size: 5rem;
+		padding: 100px 0 50px 0;
+		letter-spacing: 3px;
+	}
+	img{
+		height: 80px;
+	}
+	p{
+		margin: 50px 0 100px 0;
+	}
+}
+
+.modal-content{
+	border-radius: 0;
+}
+
+.form-control{
+	border-radius: 0;
+}
+
+.contact-form{
+	.form-control{
+		text-align: center;
+	}
+}
+
+#bmu-logo:hover{
+	-webkit-filter: drop-shadow(0px 0px 3px white);
+	cursor: pointer;
+}
+

@@ -5,7 +5,7 @@ app.config(function($stateProvider){
 		controller: 'AllProductsCtrl',
 		resolve: {
 			allProducts: function(ProductFactory){
-				return ProductFactory.fetchAll();
+				return ProductFactory.fetchAllAdmin();
 			}
 		}
 	})

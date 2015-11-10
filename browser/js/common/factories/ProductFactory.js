@@ -21,6 +21,12 @@ app.factory('ProductFactory', function ($http) {
 		.catch(logError)
 	}
 
+	ProductFactory.fetchAllAdmin = function () {
+		return $http.get('/api/product/get/all/')
+		.then(getData)
+		.catch(logError)
+	}
+
 	ProductFactory.fetchOne = function(id) {
 		return $http.get('/api/product/' + id)
 		.then(getData)

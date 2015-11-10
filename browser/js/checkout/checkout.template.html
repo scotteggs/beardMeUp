@@ -18,17 +18,17 @@
   <input type = "checkbox" ng-change = "showDelivery()" ng-model = "showDelivery" ng-init="showDelivery=true"> Delivery Address Same as Billing Address</input>
   <address ng-hide = "showDelivery" address = "delivery" title = "Delivery Address"></address>
 
-  <div class = "clearfix">
+  <div class = "clearfix credit-card-input">
   <br>
   <br>
     <h5>Credit Card Info</h5>
 
     <div class = "form-group clearfix">
       <div class = "col-xs-3">
-        <label class='formtitle'>Card Number</label>
+        <label class='formtitle'>CARD</label>
       </div>
       <div class = "col-xs-9">
-        <input ng-model = "number" name = "cardNumber" placeholder = "4444 4444 4444 4444" payments-validate="card" payments-format="card" payments-type-model = "type"/>
+        <input class="form-control" ng-model = "number" name = "cardNumber" placeholder = "4444 4444 4444 4444" payments-validate="card" payments-format="card" payments-type-model = "type"/>
         <div ng-messages="checkout.cardNumber.$error" ng-hide="checkout.$pristine" role="alert">
           <div ng-message="required" class="alert alert-warning">Please enter a card number.</div>
         </div>
@@ -37,10 +37,10 @@
 
     <div class = "form-group clearfix">
      <div class = "col-xs-3">
-      <label class='formtitle'>Expiration</label>
+      <label class='formtitle'>EXPIRATION</label>
      </div>
      <div class = "col-xs-9">
-      <input type="text" name = "expiry" placeholder = "05/2018" ng-model = "expiry" payments-format="expiry" payments-validate="expiry"/>
+      <input type="text" class="form-control" name = "expiry" placeholder = "05/2018" ng-model = "expiry" payments-format="expiry" payments-validate="expiry"/>
       <div ng-messages="checkout.expiry.$error" ng-hide="checkout.$pristine" role="alert">
         <div ng-message="required" class="alert alert-warning">Please enter an expiration date.</div>
       </div>
@@ -52,7 +52,7 @@
       <label class="formtitle">CVC</label>
      </div>
      <div class = "col-xs-9">
-      <input type="text" name = "cvc" ng-model="cvc" placeholder = "382" payments-validate="cvc" payments-format="cvc" payments-type-model = "type"/>
+      <input type="text" class="form-control" name = "cvc" ng-model="cvc" placeholder = "382" payments-validate="cvc" payments-format="cvc" payments-type-model = "type"/>
       <div ng-messages="checkout.cvc.$error" ng-hide="checkout.$pristine" role="alert">
         <div ng-message="required" class="alert alert-warning">Please enter a CVC.</div>
       </div>
@@ -65,7 +65,8 @@
   <h5 id = "checkout-cart">Cart</h5>
   <cart cart = "cart" user = "user" class = "clearfix"></cart>
   <div id = "place-order">
-    <button type = "submit" id = "submit" class = "btn" ng-disabled = "!cart.length">Place Order</button>
+    <button type = "submit" id = "submit" class = "btn bmu-bg-red place-order-btn" ng-disabled = "!cart.length"><h5>Place Order</h5></button>
+    
   </div>
 </div>
 

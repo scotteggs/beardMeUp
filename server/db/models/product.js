@@ -14,7 +14,7 @@ var schema = new Schema({
 	imageUrl: String, // @OB/ND consider url + S3 instead of storing image in DB
 	thumbnailUrl: String,
 	cutoutUrl: String,
-	active: {type: Boolean, default: false},
+	active: {type: Boolean, default: true},
 	colors: [{type: String, enum: ['black', 'blond', 'brown', 'dark brown', 'red', 'green', 'blue', 'gray']}],
 	tags: [String],
 	user: {ref: 'User', type: Schema.Types.ObjectId}
