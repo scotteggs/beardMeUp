@@ -6,6 +6,7 @@ var _ = require('lodash');
 
 var User = mongoose.model('User')
 var Product = mongoose.model('Product');
+var stripe = require('stripe')('sk_test_cF41RQVpkFeQRg2DRxcJD4cY')
 
 router.get('/', function (req, res, next) {
   if(req.user && req.user.role === 'siteAdmin') {
@@ -30,11 +31,37 @@ router.param('userId', function(req, res, next, id) {
 })
 
 
+
 router.get('/:userId/products', function(req, res, next){
     Product.find({user: req.foundUser._id})
     .then(function(products){
       res.json(products)
     })
+})
+
+router.post('/:userId/payment', function(req, res, next){
+  var token = req.body.token;
+  var amount = req.body.amount;
+  stripe.customers.create({
+    source: token,
+    description: "somekh.daniel@gmail.com"
+  })
+  .then(function(customer){
+    return stripe.charges.create({
+      amount: amount,
+      currency: "usd",
+      customer: customer.id
+    })
+  }, function(err){
+    res.sendStatus(400)
+  })
+  .then(function(charge){
+    return req.foundUser.update({stripeCustomer: charge.customer})
+  })
+  .then(function(){
+    res.sendStatus(200)  
+  })
+  .then(null, next)
 })
 
 router.get('/:userId/cart', function (req, res, next) {

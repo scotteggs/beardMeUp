@@ -1,23 +1,23 @@
 <div class="clearfix modal-contents add-products">
   <h1 style="margin-top: -20px">Edit Customer</h1><br><br>
-  <form class="form-horizontal add-product" novalidate name="theCustomerForm" ng-submit="submitEdit()">
+  <form class="form-horizontal add-product text-center" novalidate name="theCustomerForm" ng-submit="submitEdit()">
 
     <div class="formitem"><span class="formtitle">FIRST NAME</span> <br>
-      <input name="first-name" class="form-control" type="text" name="name" ng-model="theCustomer.firstName" required><br>
+      <input name="first-name" class="form-control text-center" type="text" name="name" ng-model="theCustomer.firstName" required><br>
       <div ng-messages="theCustomerForm.first-name.$error" ng-hide="!theCustomerForm.first-name.$dirty" role="alert">
         <div ng-message="required" class="alert alert-warning">Please enter a first name.</div> 
       </div>
     </div>
 
     <div class="formitem"><span class="formtitle">LAST NAME</span> <br>
-      <input name="last-name" class="form-control" type="text" name="name" ng-model="theCustomer.lastName" required><br>
+      <input name="last-name" class="form-control text-center" type="text" name="name" ng-model="theCustomer.lastName" required><br>
       <div ng-messages="theCustomerForm.last-name.$error" ng-hide="!theCustomerForm.last-name.$dirty" role="alert">
         <div ng-message="required" class="alert alert-warning">Please enter a last name.</div> 
       </div>
     </div>
 
     <div class="formitem"><span class="formtitle">EMAIL</span> <br>
-      <input name="last-name" class="form-control" type="text" name="name" ng-model="theCustomer.email" required><br>
+      <input name="last-name" class="form-control text-center" type="text" name="name" ng-model="theCustomer.email" required><br>
       <div ng-messages="theCustomerForm.email.$error" ng-hide="!theCustomerForm.email.$dirty" role="alert">
         <div ng-message="required" class="alert alert-warning">Please enter a last name.</div> 
       </div>
@@ -64,7 +64,7 @@
     <span class="color-checkbox"  ng-repeat="color in colors"><input type="checkbox" ng-model="theCustomer.colors[color]" value="true">  {{color}}   </span></div><br>
     
     <div class="formitem"><span class="formtitle">TAGS </span><input class="form-control tagform" type="text" ng-model="theCustomer.tags"></div><br><br><br> -->
-    
+    <br><br>
     <button type="submit" class="btn bmu-bg-red" ng-disabled="theCustomerForm.$invalid">Update Customer </button>
     <br>
     {{updateStatus}}
