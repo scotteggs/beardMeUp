@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('LoginCtrl', function ($scope, AuthService, $state) {
+app.controller('LoginCtrl', function ($scope, AuthService, $state, $uibModal) {
 
     $scope.login = {};
     $scope.error = null;
@@ -21,7 +21,14 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
         }).catch(function () {
             $scope.error = 'Invalid login credentials.';
         });
-
+    };
+    $scope.signup = function() {
+        $uibModal.open({
+          animation: true,
+          templateUrl: '/js/common/modals/signup/signup.html',
+          controller: 'signupCtrl',
+          size: 'lg'
+        })
     };
 
 });

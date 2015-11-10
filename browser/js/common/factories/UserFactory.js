@@ -32,7 +32,11 @@ app.factory('UserFactory', function ($http) {
 		.catch(logError)
 	}
 
-	
+	UserFactory.signup = function(user) {
+		return $http.post('/signup', user)
+		.then(getData)
+		.catch(logError)
+	}
 
 	return UserFactory;
 })
