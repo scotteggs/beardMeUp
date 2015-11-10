@@ -29,6 +29,14 @@ router.param('userId', function(req, res, next, id) {
     .then(null, next)
 })
 
+
+router.get('/:userId/products', function(req, res, next){
+    Product.find({user: req.foundUser._id})
+    .then(function(products){
+      res.json(products)
+    })
+})
+
 router.get('/:userId/cart', function (req, res, next) {
   req.foundUser.populate('cart.product').execPopulate()
   .then(function(user) {
@@ -43,6 +51,16 @@ router.get('/:userId', function (req, res, next) {
     res.status(403).end();
   }
 })
+
+
+router.get('/owners/get', function(req, res, next){
+  User.find({$or: [{role: 'storeOwner'}, {role: 'siteAdmin'}]})
+  .then(function(users){
+    res.json(users)
+  })
+})
+
+
 
 router.post('/:userId/cart', function (req, res, next) {
   if(hasAccess(req.foundUser, req)) {

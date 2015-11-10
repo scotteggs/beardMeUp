@@ -6,10 +6,11 @@ app.controller('AllProductsCtrl', function ($scope, allProducts, ProductFactory,
 		$scope.productFilter = newFilter;
 	};
 	$scope.editProduct = function(id){
-		var modalInstance = $uibModal.open(EditProductModal(id))
+		console.log(id)
+		var modalInstance = $uibModal.open(EditProductModal(id));
 	}
 	$scope.addProduct = function(){
-		var modalInstance = $uibModal.open(addProduct) 
+		var modalInstance = $uibModal.open(addProduct);
 	}
 })
 

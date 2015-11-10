@@ -4,32 +4,30 @@ app.factory('UserFactory', function ($http) {
 	function getData(response){
 		return response.data;
 	}
-	function logError(err){
-		console.error(err);
-	}
 
 	UserFactory.fetchAll = function () {
 		return $http.get('/api/user/')
 		.then(getData)
-		.catch(logError)
 	}
 
 	UserFactory.fetchOne = function(id) {
 		return $http.get('/api/user/' + id)
 		.then(getData)
-		.catch(logError)
 	}
 
 	UserFactory.updateOne = function(id, params) {
 		return $http.put('/api/user/' + id, params)
 		.then(getData)
-		.catch(logError)
 	}
 
 	UserFactory.getCart = function(userId) {
 		return $http.get('/api/user/' + userId + '/cart')
 		.then(getData)
-		.catch(logError)
+	}
+
+	UserFactory.getStoreOwners = function(){
+		return $http.get('/api/user/owners/get')
+		.then(getData)
 	}
 
 	

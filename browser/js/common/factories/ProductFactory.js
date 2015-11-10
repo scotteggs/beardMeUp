@@ -89,5 +89,12 @@ app.factory('ProductFactory', function ($http) {
 		})
 	}
 
+	ProductFactory.fetchStore = function(id){
+		return $http.get('/api/product/store/' + id)
+		.then(function(response){
+			return response.data;
+		})
+	}
+
 	return ProductFactory;
 })

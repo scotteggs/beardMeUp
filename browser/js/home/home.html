@@ -6,16 +6,15 @@
 	<div id="home-spacer"> </div>
 	<div class="gray-divider">
 		<h1>Winter is coming</h1>
-		<button class='btn bmu-bg-red' ui-sref="products"> Discover the hottest beards.</button>
+		<button class='btn bmu-bg-red' ui-sref="products">Discover the hottest beards.</button>
 	</div>
 	<div class="gray-divider-spacer"></div>
 	<h2 class="med-tb-space">Top Sellers</h2>
-	<div class="clearfix">
-	<div ng-repeat="product in products" class="col-md-4 beard-item">
+	<div class="clearfix best-sellers">
+		<div ng-repeat="product in products" class="col-md-4 beard-item">
 			<product-box the-product=product></product-box>
 		</div>
 	</div>
-
 
 	
 

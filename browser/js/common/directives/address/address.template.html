@@ -1,8 +1,8 @@
-<div class = "clearfix">
-  <h4>Delivery Address</h4>
+<div class = "clearfix address-template">
+  
 
   <div class = "form-group delivery-item">
-    <div class = "col-xs-2"><label>Address</label></div>
+    <div class = "col-xs-2"><label class='formtitle'>ADDRESS</label></div>
 
     <div class = "col-xs-10">
       <input class ="form-control" type = "text" name = "line1" ng-model = "address.line1" placeholder = "Address Line 1" required>
@@ -16,7 +16,7 @@
 
   <div class = "form-group delivery-item">
     <div class = "col-xs-2">
-      <label>City</label>
+      <label class='formtitle'>CITY</label>
     </div>
 
     <div class = "col-xs-10">
@@ -30,7 +30,7 @@
 
   <div class = "form-group delivery-item">
     <div class = "col-xs-2">
-      <label>State</label>
+      <label class='formtitle'>STATE</label>
     </div>
     <div class = "col-xs-10">
       <input class = "form-control" type = "text" ng-model = "address.state" placeholder = "State" name = "state" required>
@@ -42,12 +42,12 @@
 
   <div class = "form-group delivery-item">
     <div class = "col-xs-2">
-      <label>Zip Code</label>
+      <label class='formtitle'>ZIP</label>
     </div>
     <div class = "col-xs-10">
       <input class = "form-control" type = "text" ng-model = "address.zip" placeholder = "Zip Code" name = "zip" required>
       <div ng-messages="formName['zip']['$error']" ng-hide="formName['$pristine']" role="alert">
-        <div ng-message="required" class="alert alert-warning">Please enter a zipcode.</div>
+        <div ng-message="required" class="alert alert-warning">Please enter a zipcode. </div>
       </div>
     </div>
   </div>

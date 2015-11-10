@@ -13,4 +13,5 @@ app.config(function ($stateProvider) {
 
 app.controller('ProductsController', function ($scope, allProducts) {
 	$scope.products = allProducts;
+    $scope.title = "All Beards & Mustaches"
 })

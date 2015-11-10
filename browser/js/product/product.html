@@ -10,29 +10,46 @@
 			<h5 ng-show="areReviews" class='rating'>{{averageRating}} / 5</h5>
 			<p class="product-description">{{product.description}}</p>
 			<color-selector the-colors="product.colors" ng-model="color"></color-selector>
-			<button class="btn bmu-bg-red add-to-cart" ng-click="addToCart()">Add To Cart</button>
+			<button class="btn bmu-bg-red add-to-cart" ng-click="addToCart()">Add To Cart</button><br> 
+			<br> See all from <a ng-href="http://localhost:1337/store/{{product.user._id}}"> {{product.user.firstName + " " + product.user.lastName}} </a>
 		</div>
 	</div>
-	<br>
-	<h4>Reviews</h4>
-	<hr>
-	<p ng-hide="areReviews">There are no reviews... yet</p>
+	<div class="gray-divider take-selfie">
+		<h1>TRY THIS BEARD ON</h1>
+		<button class='btn bmu-bg-red' ui-sref="">Upload selfie</button>
+	</div>
+	<div class="gray-divider-spacer"></div>
+	<br><br><br><br>
+	<h5 class="text-center">Reviews</h5>
+	<p ng-hide="areReviews" class="text-center">There are no reviews... yet </p><br>
+	<uib-carousel class="review-carousel" interval="3000" no-wrap="noWrapSlides">
+      <uib-slide class="single-review" ng-repeat="review in reviews">
+      <br><br>
+      	<mustaches num-staches="review.rating"></mustaches>
+		<p class="review-text">{{review.content}}</p>
+		<h5>- {{review.reviewer.firstName}} {{review.reviewer.lastName}}</h5>
+      </uib-slide>
+    </uib-carousel>
+
+<!-- 
 	<div ng-repeat="review in reviews">
 		<mustaches num-staches="review.rating"></mustaches>
 		<p>{{review.content}}</p>
 		- {{review.reviewer.firstName}} {{review.reviewer.lastName}}
 		<hr>
-	</div>
-	<div ng-show="loggedIn">
+	</div> -->
+	<div class="text-center" ng-show="loggedIn">
 		<button ng-hide="alreadyReviewed" ng-click="toggleReviewForm()">Leave a review</button>
-		<br>
-		<form name="reviewForm" ng-submit="submitReview()" ng-show="showReviewForm">
+		<br><br>
+		<form cname="reviewForm" ng-submit="submitReview()" ng-show="showReviewForm">
 			<div>
 				<mustaches-hover required ng-model="newReview.rating"></mustaches-hover>
 			</div>
+			<br>
 			<div>
-				<input size="50" type="text" name="content" required ng-minlength="5" ng-model="newReview.content" placeholder="Review">
+				<input class="form-control text-center" size="50" type="text" name="content" required ng-minlength="5" ng-model="newReview.content" placeholder="Review">
 			</div>
+			<br>
 			<button ng-disabled="reviewForm.$invalid" type="submit" >Submit</button>
 		</form>
 	</div>
