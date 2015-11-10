@@ -87,6 +87,14 @@ $openSans: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 	}
 }
 
+.product-image{
+	overflow: hidden;
+	img{
+		height:350px;
+		margin-left: -25%;
+	}
+}
+
 #checkout{
 	.billing-item{
 		padding-bottom:30px;
@@ -557,4 +565,11 @@ textarea, input{
 	th{
 		text-align: center;
 	}
+}
+
+.rect {
+	border: 2px solid #a64ceb;
+	left: -1000px;
+	position: absolute;
+	top: -1000px;
 }
