@@ -4,8 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Review = mongoose.model('Review');
 
-
-var schema =  new Schema({
+var schema = new Schema({
 	name: {type: String, required: true, unique: true},
 	description: String, 
 	price: {type: Number, required: true}, 

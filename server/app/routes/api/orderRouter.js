@@ -1,11 +1,11 @@
 'use strict';
 var router = require('express').Router();
 var mongoose = require('mongoose')
-
 var Order = mongoose.model('Order')
 
-
-
+function hasAccess(order, req) {
+  return req.user.equals(order.user) || req.user.role === 'siteAdmin';
+}
 
 router.get('/', function (req, res, next) {
   if(req.user.role === 'siteAdmin'){
@@ -45,12 +45,11 @@ router.get('/:orderId', function (req, res, next) {
     .then(function(order){
       res.json(order.toObject({virtuals: true}))
     })
+    .then(null, next)
   } else {
     res.status(403).end();
   }
 })
-
-
 
 
 // @OB/ND set user to be req.user by default
@@ -62,7 +61,6 @@ router.post('/', function (req, res, next) {
 	})
 	.then(null, next)
 })
-
 
 router.put('/:orderId', function(req, res, next) {
   if (hasAccess(req.order, req)) {
@@ -90,24 +88,5 @@ router.delete('/:orderId', function(req, res, next){
   }
 })
 
-function hasAccess(order, req) {
-  return req.user.equals(order.user) || req.user.role === 'siteAdmin';
-}
-
 module.exports = router;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

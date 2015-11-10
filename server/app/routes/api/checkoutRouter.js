@@ -35,10 +35,10 @@ router.post('/', function(req, res, next){
 		order = _order_;
 		var templateString = "<html><body><h1>Thank you for your order</h1><p> Your order number is "+order._id+"</p><p> Your order date is "+order.datePlaced+"</p></body></html>";
 		var mailOptions = {
-		    from: 'Beard Me Up ✔ <beardmeup@gmail.com>', // sender address
-		    to: user.email, // list of receivers
-		    subject: 'Order ${order._id} from Beard Me Up' , // Subject line
-		    html: templateString // plaintext body
+				from: 'Beard Me Up ✔ <beardmeup@gmail.com>', // sender address
+				to: user.email, // list of receivers
+				subject: 'Order ${order._id} from Beard Me Up' , // Subject line
+				html: templateString // plaintext body
 		};
 		return transporter.sendMail(mailOptions)
 	})
