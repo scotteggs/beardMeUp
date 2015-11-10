@@ -5,8 +5,7 @@
 		<div ng-repeat="(idx, cartItem) in cart" class="row cart-row">
 			<div class="col-xs-3">
 				<span ng-click = "remove(cartItem)" class = "glyphicon glyphicon-remove"></span>
-				<!--src="{{cartItem.product.thumbnailUrl}}"-->
-				<img src="{{cartItem.product.imageUrl}}"  class="cart-thumb">
+				<img src="{{imageUrl(cartItem)}}"  class="cart-thumb">
 			</div>
 			<div class="col-xs-3"> 
 				{{cartItem.product.name || "A great beard"}}
