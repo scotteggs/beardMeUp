@@ -1,39 +1,54 @@
-<div class = "clearfix">
-  <h4>Delivery Address</h4>
+<div class = "clearfix address-template">
+  
 
   <div class = "form-group delivery-item">
-    <div class = "col-xs-2"><label>Address</label></div>
+    <div class = "col-xs-2"><label class='formtitle'>ADDRESS</label></div>
 
     <div class = "col-xs-10">
-      <input class ="form-control" type = "text" ng-model = "address.line1" placeholder = "Address Line 1" required>
+      <input class ="form-control" type = "text" name = "line1" ng-model = "address.line1" placeholder = "Address Line 1" required>
+
+    <div ng-messages="formName['line1']['$error']" ng-hide="formName['$pristine']" role="alert">
+      <div ng-message="required" class="alert alert-warning">Please enter an address.</div>
+    </div>
+
     </div>
   </div>
 
   <div class = "form-group delivery-item">
     <div class = "col-xs-2">
-      <label>City</label>
+      <label class='formtitle'>CITY</label>
     </div>
 
     <div class = "col-xs-10">
-      <input type = "text" ng-model = "address.city" placeholder = "City" class = "form-control" required>
+      <input type = "text" ng-model = "address.city" placeholder = "City" class = "form-control" name = "city" required>
+      <div ng-messages="formName['city']['$error']" ng-hide="formName['$pristine']" role="alert">
+        <div ng-message="required" class="alert alert-warning">Please enter a city.</div>
+      </div>
+
     </div>
   </div>
 
   <div class = "form-group delivery-item">
     <div class = "col-xs-2">
-      <label>State</label>
+      <label class='formtitle'>STATE</label>
     </div>
     <div class = "col-xs-10">
-      <input class = "form-control" type = "text" ng-model = "address.state" placeholder = "State" required>
+      <input class = "form-control" type = "text" ng-model = "address.state" placeholder = "State" name = "state" required>
+      <div ng-messages="formName['state']['$error']" ng-hide="formName['$pristine']" role="alert">
+        <div ng-message="required" class="alert alert-warning">Please enter a state.</div>
+      </div>
     </div>
   </div>
 
   <div class = "form-group delivery-item">
     <div class = "col-xs-2">
-      <label>Zip Code</label>
+      <label class='formtitle'>ZIP</label>
     </div>
     <div class = "col-xs-10">
-      <input class = "form-control" type = "text" ng-model = "address.zip" placeholder = "Zip Code"required>
+      <input class = "form-control" type = "text" ng-model = "address.zip" placeholder = "Zip Code" name = "zip" required>
+      <div ng-messages="formName['zip']['$error']" ng-hide="formName['$pristine']" role="alert">
+        <div ng-message="required" class="alert alert-warning">Please enter a zipcode. </div>
+      </div>
     </div>
   </div>
 </div>

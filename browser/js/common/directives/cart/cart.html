@@ -1,3 +1,4 @@
+<br>
 <div id = "cart" class = "clearfix">
 	<hr>
 	<div class = "cartItems">
@@ -14,6 +15,7 @@
 				<button type = "button" ng-click = "changeQuantity(idx, -1)">-</button>
 				<span class="cart-qty">{{cartItem.qty}}</span>
 				<button type = "button" ng-click = "changeQuantity(idx, 1)">+</button>
+
 			</div>
 			<div class="col-xs-2">
 				{{cartItem.price/100 | currency}}
@@ -22,8 +24,8 @@
 	</div>
 
 	<div class = "total clearfix">
-		<div id = "subtotal" class = "clearfix"><span class = "col-xs-6"><h5>Subtotal</h5></span><span class = "col-xs-6">{{cartTotal()/100| currency}}</span></div>
+		<div id = "subtotal" class = "clearfix"><span class = "col-xs-6"><h4 class="no-bold">Subtotal</h4></span><span class = "col-xs-6">{{cartTotal()/100| currency}}</span></div>
 
-		<div id = "total"><span class = "col-xs-6">Total:</span><span class = "col-xs-6">{{(cartTotal() + 3000)/100| currency}}</span></div>
+		<div id = "total"><h4 class = "col-xs-6">Total</h4><span class = "col-xs-6"><b>{{(cartTotal() + 3000)/100| currency}}</b></span></div>
 	</div>
 </div>

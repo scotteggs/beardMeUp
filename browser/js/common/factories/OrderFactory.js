@@ -8,13 +8,11 @@ app.factory('OrdersFactory', function($http){
 			return $http.get('/api/order')
 			.then(getData)	
 		},
-		getOrdersByUser: function(userId) {
-			return $http.get('/api/order')
+		getOrdersByUser: function(user) {
+			return $http.get('/api/order/user/' + user._id)
 			.then(getData)
 			.then(function (orders) {
-				return orders.filter(function (order) {
-					return order.user === userId
-				})
+				return orders
 			})
 		},
 		checkout: function(order){

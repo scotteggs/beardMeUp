@@ -4,6 +4,9 @@ var mongoose = require('mongoose')
 
 var Order = mongoose.model('Order')
 
+
+
+
 router.get('/', function (req, res, next) {
   if(req.user.role === 'siteAdmin'){
   	Order.find().populate('user').exec()
@@ -16,6 +19,14 @@ router.get('/', function (req, res, next) {
   } else {
     res.status(403).end();
   }
+})
+
+router.get('/user/:userId', function (req, res, next) {
+    Order.find({user: req.params.userId})
+    .then(function(orders) {
+      res.json(orders)
+    }) 
+    .then(null,next)
 })
 
 router.param('orderId', function(req, res, next, id) {
@@ -38,6 +49,8 @@ router.get('/:orderId', function (req, res, next) {
     res.status(403).end();
   }
 })
+
+
 
 
 // @OB/ND set user to be req.user by default

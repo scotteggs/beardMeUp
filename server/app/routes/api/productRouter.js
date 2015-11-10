@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
 })
 
 router.param('productId', function(req, res, next, id) {
-  Product.findById(id)
+  Product.findById(id).populate('user')
     .then(function(product) {
       if(!product) throw new Error('not found!')
       req.product = product
@@ -23,6 +23,14 @@ router.param('productId', function(req, res, next, id) {
 
 router.get('/:productId', function (req, res, next) {
 	res.json(req.product)
+})
+
+router.get('/store/:userId', function (req, res, next) {
+  // res.send(req.params.userId);
+  Product.find({user: req.params.userId})
+  .then(function(data){
+    res.send(data)
+  })
 })
 
 router.post('/', function (req, res, next) {
