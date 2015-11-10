@@ -1,7 +1,9 @@
 <div class="clearfix single-product-view">
 	<div class="row">
 		<div class="col-md-6">
-			<img src={{imageUrl()}}>
+			<div id = "productImage">
+			<img id="preview-img" src={{imageUrl()}}>
+			</div>
 		</div>
 		<div class="col-md-6 text-center">
 			<h5>{{product.name}}</h5>
@@ -16,7 +18,7 @@
 	</div>
 	<div class="gray-divider take-selfie">
 		<h1>TRY THIS BEARD ON</h1>
-		<button class='btn bmu-bg-red' ui-sref="">Upload selfie</button>
+		<input type="file" id="upload-selfie" accept="image/*">
 	</div>
 	<div class="gray-divider-spacer"></div>
 	<br><br><br><br>
@@ -30,14 +32,6 @@
 		<h5>- {{review.reviewer.firstName}} {{review.reviewer.lastName}}</h5>
       </uib-slide>
     </uib-carousel>
-
-<!-- 
-	<div ng-repeat="review in reviews">
-		<mustaches num-staches="review.rating"></mustaches>
-		<p>{{review.content}}</p>
-		- {{review.reviewer.firstName}} {{review.reviewer.lastName}}
-		<hr>
-	</div> -->
 	<div class="text-center" ng-show="loggedIn">
 		<button ng-hide="alreadyReviewed" ng-click="toggleReviewForm()">Leave a review</button>
 		<br><br>

@@ -3,7 +3,6 @@ app.controller('checkoutCtrl', function($scope, theUser, theCart, $state, Orders
 	$scope.cart= theCart;
 	$scope.billing = theUser.primaryAddress[0]||{};
 
-	$scope.showDelivery = false;
 	$scope.showDelivery = function(){
 		if($scope.showDelivery) $scope.delivery = $scope.billing;
 		$scope.delivery = {}
