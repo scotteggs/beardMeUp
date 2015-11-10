@@ -1,11 +1,9 @@
 <h1 class='text-center'>All Products</h1><br><br>
 <div id = "all-products">
 	<table class = "center">
-		
 		<div class = "btn-group">
 			<button ng-repeat="aType in types" ng-class="{'btn':true, 'bmu-bg-red': true, 'bmu-bg-red2': productFilter===aType.toLowerCase(), 'filter-buttons': true}" ng-click="changeFilter(aType.toLowerCase())" >{{aType}}</button>
 		</div>
-
 		<tr>
 				<th><a ng-click="sortType = 'sku'; sortReverse=!sortReverse">SKU</a></th>
 				<th><a ng-click="sortType = 'name'; sortReverse=!sortReverse">NAME</a></th>
