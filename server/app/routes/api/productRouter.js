@@ -12,7 +12,6 @@ router.get('/', function (req, res, next) {
 })
 
 router.get('/get/all', function (req, res, next) {
-  console.log("getting all products")
   if(req.user && req.user.role === 'siteAdmin') {
     Product.find()
     .then(function(products) {
