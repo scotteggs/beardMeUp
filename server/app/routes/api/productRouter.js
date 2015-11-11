@@ -36,7 +36,6 @@ router.param('productId', function(req, res, next, id) {
 
 router.get('/:productId', function (req, res, next) {
 	res.json(req.product)
-  .then(null, next)
 })
 
 router.get('/store/:userId', function (req, res, next) {
