@@ -1,17 +1,17 @@
 <div id="view-user-orders">
-	hello {{user.firstName}}
-	<table class = "center">
-		<tr>
-			<th>ORDER</th>
-			<th>STATUS</th>
-			<th>DATE PLACED</th>
-			<th>CART</th>
-		</tr>
-		<tr ng-repeat="order in orders" class="row">
-			<td class="col-xs-3">{{order._id}}</td>
-			<td class="col-xs-3">{{order.status}}</td>
-			<td class="col-xs-3">{{order.datePlaced}}</td>
-			<td class="col-xs-3">Order Cart</td>
-		</tr>
-	</table>
+	Hello {{user.firstName}}, Check out your order history below:<br><br>
+
+	<div class="row">
+		<div class="col-xs-3">ORDER</div>
+		<div class="col-xs-2">STATUS</div>
+		<div class="col-xs-2">DATE PLACED</div>
+		<div class="col-xs-5">CART</div>
+	</div>
+	<div ng-repeat="order in orders" class="row">
+		<div class="col-xs-3">{{order._id}}</div>
+		<div class="col-xs-2">{{order.status}}</div>
+		<div class="col-xs-2">{{order.datePlaced}}</div>
+		<div class="col-xs-5">order cart</div>
+		{{order.cart[0].product.name}}
+	</div>
 </div>
