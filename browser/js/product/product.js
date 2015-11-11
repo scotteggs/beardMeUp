@@ -70,21 +70,51 @@ app.controller('ProductController', function ($scope, $rootScope, AuthService, t
 
         var img = document.getElementById('preview-img')
 
-        var tracker = new tracking.ObjectTracker(['face', 'mouth']);
-        tracker.setStepSize(1.7);
-        tracking.track('#product-img', tracker);
-        tracker.on('track', function(event){
-            console.log(event)
-            event.data.forEach(function(rect){
-                window.plot(rect.x, rect.y, rect.width, rect.height);
-            })
-        })
+        // var tracker = new tracking.ObjectTracker(['face', 'mouth']);
+        // tracker.setStepSize(1.7);
+        // tracking.track('#product-img', tracker);
+        // tracker.on('track', function(event){
+        //     console.log(event)
+        //     event.data.forEach(function(rect){
+        //         window.plot(rect.x, rect.y, rect.width, rect.height);
+        //     })
+        // })
         // tracker.emit('track')
 
 
 
     })
+    window.twttr = (function(d, s, id) {
+        console.log("in twitter functino with ", d,s,id)
+      var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+     
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+     
+      return t;
+    }(document, "script", "twitter-wjs"));
+    // window.twttr.widgets.load()
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+        
+
 
 
 
 })
+
+

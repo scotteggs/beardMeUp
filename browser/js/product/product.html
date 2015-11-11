@@ -1,3 +1,11 @@
+<head>
+	<meta property="og:title" content="cool" />
+	<meta property="og:type" content="articwhale" />
+	<meta property="og:image" content="testing" />
+	<!-- <meta property="og:url" content="testurl" /> -->
+	<meta property="og:description" content="testdesc" />
+</head>
+
 <div class="clearfix single-product-view">
 	<div class="row">
 		<div class="col-md-6">
@@ -12,7 +20,20 @@
 			<h5 ng-show="areReviews" class='rating'>{{averageRating}} / 5</h5>
 			<p class="product-description">{{product.description}}</p>
 			<color-selector the-colors="product.colors" ng-model="color"></color-selector>
-			<button class="btn bmu-bg-red add-to-cart" ng-click="addToCart()">Add To Cart</button><br> 
+			<button class="btn bmu-bg-red add-to-cart" ng-click="addToCart()">Add To Cart</button>
+
+			<div class = "social-share">
+				<div class = "social-icon">
+					<a href="https://twitter.com/intent/tweet?text=Check out the {{product.type}}: {{product.name}} from BeardMeUp.co" class="twitter-share-button"></a>
+				</div>
+				<div class = "social-icon">
+			    	<div class="fb-share-button" data-href="{{window.location}}" data-layout="button_count"></div>
+				</div>
+			</div>
+
+
+
+
 			<br> See all from <a ng-href="http://localhost:1337/store/{{product.user._id}}"> {{product.user.firstName + " " + product.user.lastName}} </a>
 		</div>
 	</div>
