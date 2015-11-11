@@ -1,9 +1,14 @@
-<section id="user-profile">
+<section id="user-profile" class="barber-bg">
 	<div class='text-center user-profile'>
-		<h3>Hello, {{user.firstName}} {{user.lastName}}</h3>
+		<br>
+		<h2>Hello, {{user.firstName}} {{user.lastName}}</h2>
 		<h4>Welcome to your user page.</h4><br>
-		<img class="barber-pole" src='https://s3.amazonaws.com/beardmeup/barberpole2.gif'><br>
-		<button class="btn bmu-bg-red" ng-click="openUserOrders()">your orders</button>
-		<button class="btn bmu-bg-red" ng-click="openUserInfo()">modify your info</button>
+		<h5>EMAIL</h5> {{user.email}}<br><br>
+		<h5>CONTACT</h5> {{address.phone}}<br><br>
+		<h5>PRIMARY ADDRESS</h5> {{address.line1}}<br>
+		{{address.city + "," + address.state + ' ' + address.zip}} 
+		<br><br><br>
+		<button class="btn bmu-bg-red" ng-click="openUserOrders()">View Your Orders</button>
+		<button class="btn bmu-bg-red" ng-click="openUserInfo()">Modify Your Information</button><br><br>
 	</div>
 </section>

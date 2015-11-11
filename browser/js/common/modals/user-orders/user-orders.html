@@ -1,5 +1,22 @@
-<div id="view-user-orders">
-	hello {{user.firstName}}
+<div id="view-user-orders" class="text-center">
+	<h1>YOUR ORDERS</h1>
+
+	<table class = "text-center">
+		<tr>
+				<th><a class= ng-click="sortType = 'index'; sortReverse=!sortReverse">ORDER</a></th>
+				<th><a ng-click="sortType = 'datePlaced; sortReverse=!sortReverse'">DATE PLACED</a></th>
+				<th><a ng-click="sortType = 'status'; sortReverse=!sortReverse">STATUS</a></th>
+		</tr>
+		<tr ng-repeat = "order in orders">
+
+			<td class = "col-xs-1">{{order._id}}</td>
+			<td class = "col-xs-2">{{order.datePlaced | date: 'mediumDate'}}</td>
+			<td class = "col-xs-2 {{order.status}}">{{order.status | uppercase}}</td>
+		</tr>
+	</table>
+	<br>
+	<button class="btn bmu-bg-red full-width-btn" ng-click="closeWindow()">Close View</button>
+<!-- 
 	<div ng-repeat="order in orders" class="row">
 		<div class="col-xs-3">
 			{{order._id}}
@@ -18,5 +35,5 @@
 				{{item.price}}
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>
