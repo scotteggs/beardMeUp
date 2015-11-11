@@ -41,7 +41,7 @@
 	<div class="text-center" ng-show="loggedIn">
 		<button ng-hide="alreadyReviewed" ng-click="toggleReviewForm()">Leave a review</button>
 		<br><br>
-		<form cname="reviewForm" ng-submit="submitReview()" ng-show="showReviewForm">
+		<form name="reviewForm" ng-submit="submitReview()" ng-show="showReviewForm">
 			<div>
 				<mustaches-hover required ng-model="newReview.rating"></mustaches-hover>
 			</div>
