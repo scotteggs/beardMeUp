@@ -20,8 +20,8 @@ $openSans: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 			}
 			td{
 				border-bottom: .1em solid black;
-				padding-bottom:10px;
-				padding-top:10px;
+				padding-bottom:15px;
+				padding-top:15px;
 			}
 			.unfulfilled{
 				color:blue;
@@ -562,6 +562,9 @@ textarea, input{
 #login-form{
 	margin-top: 50px;
 	margin-bottom: 50px;
+	button{
+		width: 200px;
+	}
 }
 
 .margin-auto{
@@ -655,9 +658,13 @@ textarea, input{
 	}
 	button{
 		margin-bottom: 50px;
+		width: 200px;
 	}
 	input{
 		text-align: center;
+	}
+	.google-signup{
+		margin-top: -30px;
 	}
 }
 
@@ -703,4 +710,14 @@ canvas {
 .nav-sticky{
 	z-index: 10;
 	background-image: url("https://s3.amazonaws.com/beardmeup/espressowood_export.jpg");
+}
+
+.google-button-icon{
+	height: 18px;
+	margin-right: 10px;
+}
+
+#beardmeup{
+	width: 350px;
+	font-size: 1.5rem;
 }

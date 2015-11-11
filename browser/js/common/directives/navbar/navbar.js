@@ -65,7 +65,6 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
                 if($(window).scrollTop() > num) {
                     $('.nav-sticky').addClass('fixed');
                 } else {
-                    console.log("scroll less then num")
                     $('.nav-sticky').removeClass('fixed');
 
                 }

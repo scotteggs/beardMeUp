@@ -53,9 +53,10 @@ app.controller('ProductController', function ($scope, $rootScope, AuthService, t
 
     $scope.stream = function() {
         $scope.streaming = !$scope.streaming;
-        $('.take-selfie').css('height', $scope.streaming ? '800px' : '300px');
+        $('.take-selfie').css('height', $scope.streaming ? '850px' : '300px');
         $('#selfie-spacer').css('height', $('.take-selfie').css('height'));
         var video = document.querySelector("#videoElement");
+        
         // var canvas = $('#canvas');
         // console.log(canvas)
         // canvas.css('height', video.css('height'));

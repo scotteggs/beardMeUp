@@ -31,8 +31,8 @@
 
     <div>
       <span class="formtitle">SELLER</span><br>
-      <select ng-model = "theProduct.user">
-        <option ng-repeat = "owner in owners" ng-model = "theProduct.user" value = "{{owner._id}}">{{owner.firstName + " " + owner.lastName}}</option>
+      <select ng-model="theProduct.user._id">
+        <option ng-repeat = "owner in owners" ng-model="theProduct.user" value="{{owner._id}}">{{owner.firstName + " " + owner.lastName}}</option>
       </select>
     </div>
     <br>
