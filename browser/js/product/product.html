@@ -10,7 +10,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			<div id = "productImage">
-			<img id="preview-img" src={{imageUrl()}}>
+				<img id="preview-img" src="{{imageUrl()}}">
 			</div>
 		</div>
 		<div class="col-md-6 text-center">
@@ -39,14 +39,20 @@
 	</div>
 	<div class="gray-divider take-selfie">
 		<h1>TRY THIS BEARD ON</h1>
-		<input type="file" id="upload-selfie" accept="image/*">
+		<button class="btn bmu-bg-red" id="beardmeup" ng-click="stream()">Beard Me Up!</button>
+			<div ng-show="streaming">
+				<img id="cutout" src="{{cutoutUrl}}">
+				<video autoplay="true" id="videoElement" ></video>
+				<button id="cameraButton" ng-click="takePhoto()"><span class="glyphicon glyphicon-camera" ></span></button>
+				<canvas id="canvas"></canvas>
+			</div>
 	</div>
-	<div class="gray-divider-spacer"></div>
+	<div class="gray-divider-spacer" id="selfie-spacer"></div>
 	<br><br><br><br>
 	<h5 class="text-center">Reviews</h5>
-	<p ng-hide="areReviews" class="text-center">There are no reviews... yet </p><br>
+	<p ng-hide="areReviews" class="text-center">There are no reviews... yet</p><br>
 	<uib-carousel class="review-carousel" interval="3000" no-wrap="noWrapSlides">
-      <uib-slide class="single-review" ng-repeat="review in reviews">
+      <uib-slide class="single-review" ng-repeat="review in reviews" >
       <br><br>
       	<mustaches num-staches="review.rating"></mustaches>
 		<p class="review-text">{{review.content}}</p>

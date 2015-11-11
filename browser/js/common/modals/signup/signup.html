@@ -1,8 +1,9 @@
-<div id="edit-user">
+<div id="edit-user" class="text-center">
+  <h1>Let's Beard it On!</h1>
   <form class="form-horizontal" novalidate name="editUserForm">
   	<div>
-  		E-MAIL
-  		<input type="text" name="email" ng-model="newUser.email" required><br>
+  		<span class="formtitle">E-MAIL</span>
+  		<input type="text" class = 'form-control' name="email" ng-model="newUser.email" required><br>
       <div ng-messages="editUserForm.email.$error" ng-hide="editUserForm.email.$pristine" role="alert">
         <div ng-message="required" class="alert alert-warning">
           Please enter an email
@@ -11,8 +12,8 @@
   	</div>
   	<div>
   	<div>
-  		PASSWORD
-  		<input type="text" name="email" ng-model="newUser.password" required><br>
+  		<span class="formtitle">PASSWORD</span>
+  		<input type="text" class = 'form-control' name="email" ng-model="newUser.password" required><br>
       <div ng-messages="editUserForm.email.$error" ng-hide="editUserForm.email.$pristine" role="alert">
         <div ng-message="required" class="alert alert-warning">
           Please enter a password
@@ -23,8 +24,8 @@
 
 
   	<div>
-  		FIRST NAME
-  		<input type="text" name="firstName" ng-model="newUser.firstName" required><br>
+  		<span class="formtitle">FIRST NAME</span>
+  		<input type="text" class = 'form-control' name="firstName" ng-model="newUser.firstName" required><br>
       <div ng-messages="editUserForm.firstName.$error" ng-hide="editUserForm.firstName.$pristine" role="alert">
         <div ng-message="required" class="alert alert-warning">
           Please enter a firstName
@@ -32,14 +33,16 @@
       </div>
     </div>
     <div>
-  		LAST NAME
-  		<input type="text" name="lastName" ng-model="newUser.lastName" required><br>
+  		<span class="formtitle">LAST NAME</span>
+  		<input type="text" class = 'form-control' name="lastName" ng-model="newUser.lastName" required><br>
       <div ng-messages="editUserForm.lastName.$error" ng-hide="editUserForm.lastName.$pristine" role="alert">
         <div ng-message="required" class="alert alert-warning">
           Please enter a lastName
         </div>
       </div>
   	</div>
+    <div class="formitem">
+    <input type="checkbox" ng-model="newUser.role" value="storeOwner"> <span class="formtitle">I'M A VENDOR</div><br>
   	<br><br>	
 
   	<!-- 	CONTACT INFO<br>
@@ -93,6 +96,6 @@
       	</div>
       </div>
   	</div> -->
-  	<button ng-click="signup(newUser)">Sign Up and Login</button>
+  	<button class="btn bmu-bg-red" ng-click="signup(newUser)">Sign Up and Login</button><br><button ng-click="sendLogin(login)" class="btn bmu-bg-red google-signup"><img src="https://s3.amazonaws.com/beardmeup/google_button.png" class='google-button-icon'>Google Sign-up</button>
   </form>
 </div>

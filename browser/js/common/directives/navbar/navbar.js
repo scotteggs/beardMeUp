@@ -1,4 +1,4 @@
-app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, $uibModal, cartModal) {
+app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, $uibModal, cartModal, CartFactory) {
 
     return {
         restrict: 'E',
@@ -32,9 +32,11 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
 
             scope.logout = function () {
                 AuthService.logout().then(function () {
-                   $state.go('home');
+                   $state.go('home'); 
                 });
             };
+
+            scope.cartItems = CartFactory.getCartCount;
 
 
             scope.open = function() {
@@ -63,7 +65,6 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
                 if($(window).scrollTop() > num) {
                     $('.nav-sticky').addClass('fixed');
                 } else {
-                    console.log("scroll less then num")
                     $('.nav-sticky').removeClass('fixed');
 
                 }

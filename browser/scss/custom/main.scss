@@ -20,8 +20,8 @@ $openSans: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 			}
 			td{
 				border-bottom: .1em solid black;
-				padding-bottom:10px;
-				padding-top:10px;
+				padding-bottom:15px;
+				padding-top:15px;
 			}
 			.unfulfilled{
 				color:blue;
@@ -562,6 +562,9 @@ textarea, input{
 #login-form{
 	margin-top: 50px;
 	margin-bottom: 50px;
+	button{
+		width: 200px;
+	}
 }
 
 .margin-auto{
@@ -631,6 +634,71 @@ textarea, input{
 	cursor: pointer;
 }
 
+.glyphicon-shopping-cart{
+	margin-right: 4px;
+}
+
+.cart-num{
+	p{
+		color: white;
+		font-size: 1rem;	
+	}
+}
+
+.text-italic{
+	font-style: italic;
+}
+
+#edit-user{
+	width: 80%;
+	margin: auto;
+	h1{
+		margin-top:60px;
+		margin-bottom: 50px;
+	}
+	button{
+		margin-bottom: 50px;
+		width: 200px;
+	}
+	input{
+		text-align: center;
+	}
+	.google-signup{
+		margin-top: -30px;
+	}
+}
+
+#cutout {
+	z-index: 1;
+	position: absolute;
+	width: 16%;
+	left: 42%;
+	top: 50%;
+
+}
+
+#videoElement {
+	position: absolute;
+	width: 50%;
+	left: 25%;
+	transform: rotateY(180deg);
+}
+
+#beardmeup {
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+#cameraButton {
+	position: absolute;
+	right: 27%;
+	bottom: 10%;
+}
+
+canvas {
+	display: none;
+}
+
 .fixed {
     position:fixed;
     top:0;
@@ -657,3 +725,37 @@ textarea, input{
 	line-height:10px;
 }
 
+
+.google-button-icon{
+	height: 18px;
+	margin-right: 10px;
+}
+
+#beardmeup{
+	width: 350px;
+	font-size: 1.5rem;
+}
+
+.barber-bg{
+	background-image: url('https://s3.amazonaws.com/beardmeup/modal_bg2.gif');
+	background-size: 900px;
+	background-repeat: no-repeat;
+	background-position: center top; 
+}
+
+#view-user-orders{
+	h1{
+		margin-top: 50px;
+	}
+	table tr th {
+		text-align: center;
+		padding-bottom: 10px;
+		border-bottom: 1px solid $darkGray;
+	}
+	td{
+		padding-top: 10px;
+	}
+	.full-width-btn{
+		width: 100%;
+	}
+}
