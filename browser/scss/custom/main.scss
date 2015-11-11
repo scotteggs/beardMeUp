@@ -721,3 +721,27 @@ canvas {
 	width: 350px;
 	font-size: 1.5rem;
 }
+
+.barber-bg{
+	background-image: url('https://s3.amazonaws.com/beardmeup/modal_bg2.gif');
+	background-size: 900px;
+	background-repeat: no-repeat;
+	background-position: center top; 
+}
+
+#view-user-orders{
+	h1{
+		margin-top: 50px;
+	}
+	table tr th {
+		text-align: center;
+		padding-bottom: 10px;
+		border-bottom: 1px solid $darkGray;
+	}
+	td{
+		padding-top: 10px;
+	}
+	.full-width-btn{
+		width: 100%;
+	}
+}

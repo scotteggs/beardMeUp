@@ -13,6 +13,7 @@ app.config(function ($stateProvider) {
 
 app.controller('UserProfile', function ($scope, theUser, $uibModal, AuthService, OrdersFactory) {
 		$scope.user = theUser;
+		$scope.address = theUser.primaryAddress[0];
 		$scope.showOrders = false;
 		$scope.showEditInfo = false;
 
