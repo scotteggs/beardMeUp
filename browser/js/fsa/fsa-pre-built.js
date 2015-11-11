@@ -73,7 +73,7 @@
             // Optionally, if true is given as the fromServer parameter,
             // then this cached value will not be used.
 
-            if (this.isAuthenticated() && fromServer !== true) {
+            if (this.isAuthenticated() && fromServer  !== true) {
                 return $q.when(Session.user);
             }
             // Make request GET /session.
@@ -101,12 +101,14 @@
                 });
         };
 
-        this.logout = function () {
+        this.logout = function (){
             return $http.get('/logout').then(function () {
                 Session.destroy();
                 $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
             });
         };
+
+
 
     });
 

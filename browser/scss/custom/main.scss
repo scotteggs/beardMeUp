@@ -631,6 +631,36 @@ textarea, input{
 	cursor: pointer;
 }
 
+.glyphicon-shopping-cart{
+	margin-right: 4px;
+}
+
+.cart-num{
+	p{
+		color: white;
+		font-size: 1rem;	
+	}
+}
+
+.text-italic{
+	font-style: italic;
+}
+
+#edit-user{
+	width: 80%;
+	margin: auto;
+	h1{
+		margin-top:60px;
+		margin-bottom: 50px;
+	}
+	button{
+		margin-bottom: 50px;
+	}
+	input{
+		text-align: center;
+	}
+}
+
 #cutout {
 	z-index: 1;
 	position: absolute;
@@ -674,5 +704,3 @@ canvas {
 	z-index: 10;
 	background-image: url("https://s3.amazonaws.com/beardmeup/espressowood_export.jpg");
 }
-
-
