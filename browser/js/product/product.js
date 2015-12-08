@@ -15,6 +15,50 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('ProductController', function ($scope, $rootScope, AuthService, theProduct, theReviews, ProductFactory, CartFactory) {
+    
+    $scope.stream = function() {
+        $scope.streaming = true;
+        $('.take-selfie').css("height", "800px");
+        $('#selfie-spacer').css("height", "800px");
+        $('#beardmeup').hide();
+        // Grab elements, create settings, etc.
+        var canvas = document.getElementById("photo-canvas"),
+            context = canvas.getContext("2d"),
+            video = document.getElementById("video-stream"),
+            videoObj = {"video": true},
+            errBack = function(error) {
+                console.log("Video capture error: ", error.code); 
+            };
+        var photoViewer = document.getElementById('photo-preview');
+
+        // Put video listeners into place
+        if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+            navigator.webkitGetUserMedia(videoObj, function(stream){
+                video.src = window.URL.createObjectURL(stream);
+                video.play();
+            }, errBack);
+        }
+        else if(navigator.mozGetUserMedia) { // Firefox-prefixed
+            navigator.mozGetUserMedia(videoObj, function(stream){
+                video.src = window.URL.createObjectURL(stream);
+                video.play();
+            }, errBack);
+        }
+
+        document.getElementById("snap-photo").addEventListener("click", function() {
+            context.drawImage(video, 0, 0, 640, 480);
+            var data = canvas.toDataURL('image/png');
+            video.style.display = 'none';
+            photoViewer.setAttribute('src', data);
+        });
+
+    };
+    $scope.socialMedia = false;
+
+
+    if(navigator.userAgent.toString().match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|Opera Mini/i)) {
+        $scope.isMobile = true;
+    }
 	$scope.product = theProduct;
     $scope.reviews = theReviews;
     $scope.areReviews = !!$scope.reviews.length;
@@ -51,19 +95,9 @@ app.controller('ProductController', function ($scope, $rootScope, AuthService, t
         } else return $scope.product.imageUrl;
     }
 
-    window.plot = function(x, y, w, h) {
-        console.log("plot has been called", x, y, w, h)
-        var rect = document.createElement('div');
-        document.querySelector('#productImage').appendChild(rect);
-        rect.classList.add('rect');
-        rect.style.width = w + 'px';
-        rect.style.height = h + 'px';
-        rect.style.left = (x) + 'px';
-        rect.style.top = (y) + 'px';
-    };
+    
 
     window.twttr = (function(d, s, id) {
-        console.log("in twitter functino with ", d,s,id)
       var js, fjs = d.getElementsByTagName(s)[0],
         t = window.twttr || {};
       if (d.getElementById(id)) return t;
@@ -88,46 +122,7 @@ app.controller('ProductController', function ($scope, $rootScope, AuthService, t
     //   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
     //   fjs.parentNode.insertBefore(js, fjs);
     // }(document, 'script', 'facebook-jssdk'));
-        
-
-    $scope.stream = function() {
-        $scope.streaming = !$scope.streaming;
-        $('.take-selfie').css('height', $scope.streaming ? '850px' : '300px');
-        $('#selfie-spacer').css('height', $('.take-selfie').css('height'));
-        var video = document.querySelector("#videoElement");
-        
-        // var canvas = $('#canvas');
-        // console.log(canvas)
-        // canvas.css('height', video.css('height'));
-        // canvas.css('width', video.css('width'));
-        // var ctx = canvas[0].getContext('2d');
-        // ctx.fillStyle = '#AAA';
-        // ctx.fillRect(0,0,canvas.width,canvas.height);
- 
-        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
- 
-        if (navigator.getUserMedia) {       
-            navigator.getUserMedia({video: true}, handleVideo, videoError);
-        }
-         
-        function handleVideo(stream) {
-            video.src = window.URL.createObjectURL(stream);
-        }
-
-        function videoError(e) {
-            console.log(e);
-        }
-    }
 
 
-    $scope.takePhoto = function() {
-        var video = document.querySelector('#videoElement');
-        video.pause();
-        // var canvas = $('#canvas');
-        // var ctx = canvas[0].getContext('2d');
-        // ctx.drawImage(video, 0,0, canvas.css('width'), canvas.css('height'));
-        // var data = canvas.toDataUrl('image/png');
-        // console.log(data);
-    }
 })
 

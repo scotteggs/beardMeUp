@@ -7,11 +7,9 @@
 </head>
 
 <div class="clearfix single-product-view">
-	<div class="row">
-		<div class="col-md-6">
-			<div id = "productImage">
-				<img id="preview-img" src="{{imageUrl()}}">
-			</div>
+	<div class="container">
+		<div class="col-md-6 text-center">
+			<img class="preview-img" src="{{imageUrl()}}">
 		</div>
 		<div class="col-md-6 text-center">
 			<h5>{{product.name}}</h5>
@@ -37,17 +35,39 @@
 			<br> See all from <a ng-href="http://localhost:1337/store/{{product.user._id}}"> {{product.user.firstName + " " + product.user.lastName}} </a>
 		</div>
 	</div>
-	<div class="gray-divider take-selfie">
+	<div class="gray-divider take-selfie" ng-if='!isMobile'>
 		<h1>TRY THIS BEARD ON</h1>
 		<button class="btn bmu-bg-red" id="beardmeup" ng-click="stream()">Beard Me Up!</button>
-			<div ng-show="streaming">
-				<img id="cutout" src="{{cutoutUrl}}">
-				<video autoplay="true" id="videoElement" ></video>
-				<button id="cameraButton" ng-click="takePhoto()"><span class="glyphicon glyphicon-camera" ></span></button>
-				<canvas id="canvas"></canvas>
+		<div ng-show="streaming" class='clearfix text-center'>
+			<img id="cutout" src="{{cutoutUrl}}" >
+			<video id="video-stream" width="640" height="480" autoplay></video>
+			<img id='photo-preview' src=''><br>
+			<canvas id="photo-canvas" width="640" height="480"></canvas>
+
+			<button id="snap-photo" class='btn bmu-bg-red' ng-show = "!socialMedia"><span class="glyphicon glyphicon-camera" ng-click = "socialMedia = true;"></span></button>
+
+			<div ng-show = "socialMedia" style = "margin-top: 20px;">
+				<button class = "btn">Share on Facebook</button>
+				<button class = "btn">Share on Twitter</button>
+				
 			</div>
+<!-- 			<div class = "social-share" ng-show = "socialMedia">
+				<div class = "social-icon">
+					<a class="twitter-share-button"></a>
+				</div>
+				<div class = "social-icon">
+			    	<div class="fb-share-button"></div>
+				</div>
+			</div> -->
+
+
+			<br>
+		</div>
 	</div>
-	<div class="gray-divider-spacer" id="selfie-spacer"></div>
+
+	<div class="gray-divider-spacer" id="selfie-spacer" ng-if='!isMobile'></div>
+
+
 	<br><br><br><br>
 	<h5 class="text-center">Reviews</h5>
 	<p ng-hide="areReviews" class="text-center">There are no reviews... yet</p><br>
@@ -59,7 +79,7 @@
 		<h5>- {{review.reviewer.firstName}} {{review.reviewer.lastName}}</h5>
       </uib-slide>
     </uib-carousel>
-	<div class="text-center" ng-show="loggedIn">
+	<div class="text-center container" ng-show="loggedIn">
 		<button ng-hide="alreadyReviewed" ng-click="toggleReviewForm()">Leave a review</button>
 		<br><br>
 		<form cname="reviewForm" ng-submit="submitReview()" ng-show="showReviewForm">
@@ -72,6 +92,7 @@
 			</div>
 			<br>
 			<button ng-disabled="reviewForm.$invalid" type="submit" >Submit</button>
+			<br>
 		</form>
 	</div>
 </div>

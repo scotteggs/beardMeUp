@@ -14,7 +14,7 @@ app.factory("singleOrderModal", function(){
 	}
 })
 
-app.controller('singleOrderCtrl', function($scope, theOrder, OrdersFactory, $state, $uibModalInstance){
+app.controller('singleOrderCtrl', function($scope, theOrder, OrdersFactory, $state, $uibModalInstance){		
 	$scope.order = theOrder;
 	$scope.statusMessage;
 	$scope.fulfillOrder = function(){
