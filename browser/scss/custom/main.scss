@@ -123,9 +123,8 @@ $openSans: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .product-list-view{
-	width: 250px;
-	height: 250px;
-
+	width: 100%;
+	max-width: 250px;
 }
 
 .product-list{
@@ -205,9 +204,6 @@ $openSans: 'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 #home-header{
-	position: absolute;
-	left: 0;
-	display: block;
 	margin-top: -10px;
 	width: 100vw;
 	height: 400px;
@@ -263,6 +259,8 @@ table{
 	right: 120px;
 	margin-left: 50px !important;
 }
+
+
 
 .gray-divider{
 	overflow: hidden;
@@ -375,7 +373,7 @@ h5{
 }
 
 .single-product-view{
-	margin: 50px 200px;
+	margin: 0 auto;
 	h5{
 		font-size: 2rem;
 		margin-bottom: 0px;
@@ -499,7 +497,7 @@ textarea, input{
 }
 
 .best-sellers{
-	margin: 0 80px;
+	margin: 0 auto;
 }
 
 .colorSelect {
@@ -757,5 +755,42 @@ canvas {
 	}
 	.full-width-btn{
 		width: 100%;
+	}
+}
+
+img.preview-img{
+	width: 100%;
+	max-width: 400px;
+}
+
+#video-stream, #photo-preview, #cutout{
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
+}
+
+#snap-photo{
+	margin-top: 10px;
+	font-size: 3rem;
+}
+
+@media(max-width: 800px){
+	#cart-icon{
+		display: none;
+	}
+	h1{
+		font-size: 5rem !important;
+	}
+	h2{
+		font-size: 3rem !important;
+	}
+}
+
+@media(max-width: 400px){
+	#beardMenu {
+		a{
+			font-size: 1.3rem !important;
+		}
+
 	}
 }

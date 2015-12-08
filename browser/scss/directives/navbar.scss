@@ -4,9 +4,11 @@ $mediumGrey: #a7a4a2;
 $darkGray: #424341;
 
 #beardMenu{
-
   margin: auto;
-  width:100%;
+  ul{
+    margin-left: -30px;
+  }
+  width:100vw;
   text-align: center;
   font-weight: 200;
   img{
@@ -52,6 +54,7 @@ $darkGray: #424341;
 }
 
 #beard-footer{
+  width: 100vw;
   border-top: 4px solid $darkGray;
   background-image: url('https://s3.amazonaws.com/beardmeup/espressowood_export.jpg');
   height: 90px;
@@ -116,28 +119,6 @@ navbar {
       background: none;
     }
   }
-
-  // .login-button {
-  //   float: left;
-  //   border: 1px solid black;
-  //   margin-top: 10px;
-  //   background: none;
-  //   outline: none !important;
-  // }
-
-  // .welcome {
-  //   float: right;
-  //   margin-top: 12px;
-  //   span {
-  //     color: black;
-  //     font-size: 16px;
-  //     margin-right: 5px;
-  //   }
-  //   a {
-  //     color: #f30046;
-  //     cursor: pointer;
-  //   }
-  // }
 
 }
 

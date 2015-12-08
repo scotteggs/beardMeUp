@@ -1,4 +1,4 @@
-app.controller('signupCtrl', function (UserFactory, AuthService, $scope, $uibModalInstance, $state) {
+app.controller('signupCtrl', function ($http, UserFactory, AuthService, $scope, $uibModalInstance, $state) {
 	$scope.signup = function (user) {
 		//signup and login here
 		UserFactory.signup(user)
@@ -9,5 +9,9 @@ app.controller('signupCtrl', function (UserFactory, AuthService, $scope, $uibMod
 			$uibModalInstance.dismiss()
 			$state.go('home');	
 		})
+	}
+
+	$scope.googleSignup = function() {
+		return;
 	}
 })
