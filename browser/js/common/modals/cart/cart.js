@@ -1,4 +1,4 @@
-app.controller('CartCtrl', function (theCart, $scope, theUser, UserFactory, $state, $uibModalInstance) {
+app.controller('CartCtrl', ['theCart', '$scope', 'theUser', 'UserFactory', '$state', '$uibModalInstance', function (theCart, $scope, theUser, UserFactory, $state, $uibModalInstance) {
 	$scope.user = theUser;
 	$scope.cart = theCart;
 	$scope.checkout = function(){
@@ -6,4 +6,4 @@ app.controller('CartCtrl', function (theCart, $scope, theUser, UserFactory, $sta
 		$state.go('checkout')
 	}	
 
-})
+}])
