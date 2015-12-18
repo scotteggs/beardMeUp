@@ -18,6 +18,7 @@ app.controller('AllOrdersCtrl', function($scope, allOrders, singleOrderModal, $u
 	}).length;
 
 	$scope.viewOrder = function(orderId){
+		console.log($uibModal);
 		$uibModal.open(singleOrderModal(orderId))
 	}
 })
