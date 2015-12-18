@@ -15,7 +15,7 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('ProductController', function ($scope, $rootScope, AuthService, theProduct, theReviews, ProductFactory, CartFactory) {
-    
+    $scope.reviewing = false;
     $scope.stream = function() {
         $scope.streaming = true;
         $('.take-selfie').css("height", "800px");
@@ -74,6 +74,7 @@ app.controller('ProductController', function ($scope, $rootScope, AuthService, t
         if (user) $scope.loggedIn = true;
     });
     $scope.toggleReviewForm = function() {
+        $scope.reviewing = true;
         $scope.showReviewForm = !$scope.showReviewForm
     }
     $scope.addToCart = function() {

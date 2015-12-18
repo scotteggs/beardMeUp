@@ -80,9 +80,9 @@
       </uib-slide>
     </uib-carousel>
 	<div class="text-center container" ng-show="loggedIn">
-		<button ng-hide="alreadyReviewed" ng-click="toggleReviewForm()">Leave a review</button>
+		<button ng-hide="alreadyReviewed" ng-click="toggleReviewForm()" ng-if="!reviewing">Leave a review</button>
 		<br><br>
-		<form cname="reviewForm" ng-submit="submitReview()" ng-show="showReviewForm">
+		<form cname="reviewForm" ng-submit="submitReview()" ng-show="showReviewForm" id='review'>
 			<div>
 				<mustaches-hover required ng-model="newReview.rating"></mustaches-hover>
 			</div>
@@ -91,7 +91,7 @@
 				<input class="form-control text-center" size="50" type="text" name="content" required ng-minlength="5" ng-model="newReview.content" placeholder="Review">
 			</div>
 			<br>
-			<button ng-disabled="reviewForm.$invalid" type="submit" >Submit</button>
+			<button ng-disabled="reviewForm.$invalid" type="submit" class='btn'>Submit</button>
 			<br>
 		</form>
 	</div>
