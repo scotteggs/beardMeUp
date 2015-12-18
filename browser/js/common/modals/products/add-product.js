@@ -1,4 +1,4 @@
-app.controller('addProductCtrl', function ($scope, ProductFactory, $uibModalInstance, $state) {
+app.controller('addProductCtrl', ['$scope', 'ProductFactory', '$uibModalInstance', '$state', function ($scope, ProductFactory, $uibModalInstance, $state) {
 	$scope.newProduct = {};
 	$scope.colors = ['black', 'blond', 'brown', 'dark brown', 'red', 'green', 'blue', 'gray'];
 	$scope.addProduct = function(){
@@ -8,4 +8,4 @@ app.controller('addProductCtrl', function ($scope, ProductFactory, $uibModalInst
 			$state.go($state.current, {}, {reload: true});
 		})
 	}
-})
+}])

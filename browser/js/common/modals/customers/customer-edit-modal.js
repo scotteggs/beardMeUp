@@ -1,4 +1,4 @@
-app.factory('CustomerEditModal',function(UserFactory){
+app.factory('CustomerEditModal', ['UserFactory', function(UserFactory){
 	return function(id){
 		return{
 			animation: true,
@@ -12,4 +12,4 @@ app.factory('CustomerEditModal',function(UserFactory){
 			}
 		}
 	}
-})
+}])

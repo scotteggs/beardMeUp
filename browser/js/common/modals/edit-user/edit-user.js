@@ -1,4 +1,4 @@
-app.controller('EditUserCtrl', function (theUser, $scope, $state, UserFactory, $uibModalInstance) {
+app.controller('EditUserCtrl', ['theUser', '$scope', '$state', 'UserFactory', '$uibModalInstance', function (theUser, $scope, $state, UserFactory, $uibModalInstance) {
 	$scope.theUser = theUser;
 
 	$scope.updateInfo = function (user) {
@@ -16,4 +16,4 @@ app.controller('EditUserCtrl', function (theUser, $scope, $state, UserFactory, $
 		$state.go($state.current, {}, {reload: true});
 	}
 
-})
+}])

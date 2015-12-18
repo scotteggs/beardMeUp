@@ -1,4 +1,4 @@
-app.controller('editProductCtrl', function (theProduct, $scope, ProductFactory, $uibModalInstance, theOwners, $state) {
+app.controller('editProductCtrl', ['theProduct', '$scope', 'ProductFactory', '$uibModalInstance', 'theOwners', '$state', function (theProduct, $scope, ProductFactory, $uibModalInstance, theOwners, $state) {
 	console.log("the product is ", theProduct)
 	$scope.owners = theOwners;
 	theProduct.price = theProduct.price/100;
@@ -20,4 +20,4 @@ app.controller('editProductCtrl', function (theProduct, $scope, ProductFactory, 
 			setTimeout(function(){$uibModalInstance.dismiss('cancel')}, 1000);
 		})
 	}
-})
+}])

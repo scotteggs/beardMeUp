@@ -1,4 +1,4 @@
-app.controller('editCustomerCtrl', function (theCustomer, $scope, UserFactory, $uibModalInstance) {
+app.controller('editCustomerCtrl', ['theCustomer', '$scope', 'UserFactory', '$uibModalInstance', function (theCustomer, $scope, UserFactory, $uibModalInstance) {
 	$scope.theCustomer = theCustomer;
 	$scope.updateStatus = '';
 	$scope.submitEdit = function(){
@@ -9,4 +9,4 @@ app.controller('editCustomerCtrl', function (theCustomer, $scope, UserFactory, $
 			$scope.updateStatus = 'Update Successful';
 		})
 	}
-})
+}])

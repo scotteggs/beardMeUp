@@ -4,6 +4,5 @@ app.controller('CartCtrl', ['theCart', '$scope', 'theUser', 'UserFactory', '$sta
 	$scope.checkout = function(){
 		$uibModalInstance.dismiss()
 		$state.go('checkout')
-	}	
-
+	}
 }])

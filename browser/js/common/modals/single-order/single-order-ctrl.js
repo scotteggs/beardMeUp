@@ -14,7 +14,7 @@ app.factory("singleOrderModal", function(){
 	}
 })
 
-app.controller('singleOrderCtrl', function($scope, theOrder, OrdersFactory, $state, $uibModalInstance){		
+app.controller('singleOrderCtrl', ['$scope', 'theOrder', 'OrdersFactory', '$state', '$uibModalInstance', function($scope, theOrder, OrdersFactory, $state, $uibModalInstance){		
 	$scope.order = theOrder;
 	$scope.statusMessage;
 	$scope.fulfillOrder = function(){
@@ -36,4 +36,4 @@ app.controller('singleOrderCtrl', function($scope, theOrder, OrdersFactory, $sta
 		$state.reload();
 		setTimeout(function(){$uibModalInstance.dismiss('cancel')}, 1000);
 	}
-})
+}])
