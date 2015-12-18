@@ -1,4 +1,4 @@
-app.controller('editProductCtrl', ['theProduct', '$scope', 'ProductFactory', '$uibModalInstanc', 'theOwners', '$state', function (theProduct, $scope, ProductFactory, $uibModalInstanc, theOwners, $state) {
+app.controller('editProductCtrl', ['theProduct', '$scope', 'ProductFactory', '$uibModalInstance', 'theOwners', '$state', function (theProduct, $scope, ProductFactory, $uibModalInstance, theOwners, $state) {
 	console.log("the product is ", theProduct)
 	$scope.owners = theOwners;
 	theProduct.price = theProduct.price/100;
@@ -17,7 +17,7 @@ app.controller('editProductCtrl', ['theProduct', '$scope', 'ProductFactory', '$u
 		.then(function(edited){
 			$scope.updateStatus = 'Update Successful';
 			$state.reload();
-			setTimeout(function(){$uibModalInstanc.dismiss('cancel')}, 1000);
+			setTimeout(function(){$uibModalInstance.dismiss('cancel')}, 1000);
 		})
 	}
 }])
