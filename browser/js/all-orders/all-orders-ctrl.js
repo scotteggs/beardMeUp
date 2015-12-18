@@ -1,4 +1,4 @@
-app.controller('AllOrdersCtrl', function($scope, allOrders, singleOrderModal, $uibModal){
+app.controller('AllOrdersCtrl', ['$scope', 'allOrders', 'singleOrderModal', '$uibModal', function($scope, allOrders, singleOrderModal, $uibModal){
 	$scope.allOrders = allOrders;
 	$scope.filters = ['All', 'Pending', 'Finished'];
 	$scope.changeFilter = function(newFilter){
@@ -21,4 +21,4 @@ app.controller('AllOrdersCtrl', function($scope, allOrders, singleOrderModal, $u
 		console.log($uibModal);
 		$uibModal.open(singleOrderModal(orderId))
 	}
-})
+}])
