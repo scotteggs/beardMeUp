@@ -4,15 +4,15 @@ app.value('cartModal', {
   controller: 'CartCtrl',
   size: 'lg',
   resolve: {
-    // theCart: function (UserFactory, AuthService) {
-    //   return AuthService.getLoggedInUser()
-    //   .then(function(user) {
-    //     return UserFactory.getCart(user._id);
-    //   })
-    // },
-    // theUser: function(AuthService){
-    //     return AuthService.getLoggedInUser();
-    // }
+    theCart: ['UserFactory', 'AuthService', function (UserFactory, AuthService) {
+      return AuthService.getLoggedInUser()
+      .then(function(user) {
+        return UserFactory.getCart(user._id);
+      })
+    }],
+    theUser: ['AuthService', function(AuthService){
+        return AuthService.getLoggedInUser();
+    }]
   }
                 
 })
