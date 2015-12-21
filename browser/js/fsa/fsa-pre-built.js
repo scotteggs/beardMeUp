@@ -48,7 +48,7 @@
         ]);
     });
 
-    app.service('AuthService', function ($http, Session, $rootScope, AUTH_EVENTS, $q) {
+    app.service('AuthService', ['$http', 'Session', '$rootScope', 'AUTH_EVENTS', '$q', function ($http, Session, $rootScope, AUTH_EVENTS, $q) {
 
         function onSuccessfulLogin(response) {
             var data = response.data;
@@ -110,7 +110,7 @@
 
 
 
-    });
+    }]);
 
     app.service('Session', function ($rootScope, AUTH_EVENTS) {
 

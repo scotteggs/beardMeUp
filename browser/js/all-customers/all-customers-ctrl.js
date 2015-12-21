@@ -1,4 +1,4 @@
-app.controller('AllCustomersCtrl', function($scope, allCustomers, allOrders, UserFactory, $uibModal, CustomerEditModal){
+app.controller('AllCustomersCtrl', ['$scope', 'allCustomers', 'allOrders', 'UserFactory', '$uibModal', 'CustomerEditModal', function($scope, allCustomers, allOrders, UserFactory, $uibModal, CustomerEditModal){
 	$scope.allCustomers = allCustomers;
 	$scope.numOrders = {};
 	$scope.totalSpent = {};
@@ -13,4 +13,4 @@ app.controller('AllCustomersCtrl', function($scope, allCustomers, allOrders, Use
 	$scope.editCustomer = function(id){
 		var modalInstance = $uibModal.open(CustomerEditModal(id))
 	}
-})
+}])
