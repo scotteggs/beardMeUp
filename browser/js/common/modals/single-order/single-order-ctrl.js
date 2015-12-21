@@ -6,9 +6,9 @@ app.factory("singleOrderModal", function(){
 			controller: 'singleOrderCtrl',
 			size: 'lg',
 			resolve: {
-				theOrder: function(OrdersFactory){
+				theOrder: ['OrdersFactory', function(OrdersFactory){
 					return OrdersFactory.getOrderById(orderId)
-				}
+				}]
 			}
 		}
 	}

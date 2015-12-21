@@ -40,8 +40,6 @@ app.directive('navbar', [ '$rootScope', 'AuthService', 'AUTH_EVENTS', '$state', 
 
 
             scope.open = function() {
-                console.log('cartModal is ', cartModal);
-                console.log('modalInstance is ', $uibModal);
                 var modalInstance = $uibModal.open(cartModal)
             };
 

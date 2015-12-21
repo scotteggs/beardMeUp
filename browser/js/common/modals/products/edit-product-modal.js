@@ -6,12 +6,12 @@ app.factory('EditProductModal', function(ProductFactory, UserFactory){
 			controller: 'editProductCtrl',
 			size: 'lg',
 			resolve: {
-				theProduct: function(ProductFactory){
+				theProduct: ['ProductFactory', function(ProductFactory){
 					return ProductFactory.fetchOne(id);
-				},
-				theOwners: function(UserFactory){
+				}],
+				theOwners: ['UserFactory', function(UserFactory){
 					return UserFactory.getStoreOwners();
-				}
+				}]
 			}
 		}
 	}
