@@ -11,6 +11,6 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('HomeController', function ($scope, allProducts) {
+app.controller('HomeController', ['$scope', 'allProducts', function ($scope, allProducts) {
     $scope.products = allProducts.slice(0,6); 
-})
+}])

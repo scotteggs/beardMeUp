@@ -1,4 +1,4 @@
-app.factory('CartFactory', function ($http, AuthService, $uibModal, $rootScope) {
+app.factory('CartFactory', [ '$http', 'AuthService', '$uibModal', '$rootScope', function ($http, AuthService, $uibModal, $rootScope) {
 	var CartFactory = {};
 	var cartItemCount = 0;
 	function getCartItems(){
@@ -62,4 +62,4 @@ app.factory('CartFactory', function ($http, AuthService, $uibModal, $rootScope) 
 		})
 	}
 	return CartFactory;
-})
+}])
