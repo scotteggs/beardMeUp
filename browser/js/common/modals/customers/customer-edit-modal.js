@@ -6,9 +6,9 @@ app.factory('CustomerEditModal', ['UserFactory', function(UserFactory){
 			controller: 'editCustomerCtrl',
 			size: 'lg',
 			resolve: {
-				theCustomer: function(UserFactory){
+				theCustomer: ['UserFactory', function(UserFactory){
 					return UserFactory.fetchOne(id);
-				}
+				}]
 			}
 		}
 	}
