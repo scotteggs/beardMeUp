@@ -5,7 +5,7 @@ app.controller('signupCtrl', ['$http', 'UserFactory', 'AuthService', '$scope', '
 		.then( function (user) {			
 			AuthService.getLoggedInUser(user)
 		})	
-		.then( function (user) {
+		.then( function (user){
 			$uibModalInstance.dismiss()
 			$state.go('home');	
 		})

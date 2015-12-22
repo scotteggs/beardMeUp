@@ -77,8 +77,8 @@ router.get('/:userId/cart', function (req, res, next) {
 
 router.get('/:userId', function (req, res, next) {
 	if(hasAccess(req.foundUser, req)){
-    res.json(req.foundUser)
-    .then(null, next)
+    var theUser = req.foundUser;
+    res.send(theUser)
   } else {
     res.status(403).end();
   }
