@@ -42,7 +42,7 @@ app.controller('ProductController', function ($scope, $rootScope, AuthService, t
             navigator.mozGetUserMedia(videoObj, function(stream){
                 video.src = window.URL.createObjectURL(stream);
                 video.play();
-            }, errBack);
+            }, errBack); 
         }
 
         document.getElementById("snap-photo").addEventListener("click", function() {
